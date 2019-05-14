@@ -1,0 +1,66 @@
+{
+  "name": "create-nom-app",
+  "description": "A node module boilerplate",
+  "version": "0.10.0",
+  "main": "lib/index.js",
+  "license": "MIT",
+  "author": {
+    "name": "Maxim Devoir",
+    "email": "maximdevoir@hotmail.com"
+  },
+  "bugs": {
+    "url": "https://github.com/maximdevoir/create-nom-app/issues"
+  },
+  "homepage": "https://github.com/maximdevoir/create-nom-app",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/maximdevoir/create-nom-app.git"
+  },
+  "scripts": {
+    "build": "npm run build:clean && cross-env NODE_ENV=production npm run build:source",
+    "build:source": "webpack --progress --colors --config webpack.config.babel.js",
+    "build:clean": "rimraf ./lib",
+    "clean": "npm run build:clean && npm run coverage:clean",
+    "coverage": "npm run coverage:clean && npm run coverage:generate",
+    "coverage:check": "./node_modules/.bin/nyc --check-coverage npm test",
+    "coverage:clean": "rimraf ./.nyc_output && rimraf ./coverage",
+    "coverage:coveralls": "npm run coverage:coveralls:report -- | ./node_modules/.bin/coveralls",
+    "coverage:coveralls:report": "npm run coverage && ./node_modules/.bin/nyc report --reporter=text-lcov",
+    "coverage:generate": "./node_modules/.bin/nyc --reporter=lcov --reporter=text npm test",
+    "docs": "echo 'no documentation generation yet'",
+    "lint": "eslint .",
+    "lint:fix": "npm run lint -- --fix",
+    "start": "npm run start:once -- --watch",
+    "start:once": "cross-env NODE_ENV=development npm run build:source --",
+    "test": "cross-env NODE_ENV=test mocha --colors --require @babel/register tests/*.spec.js",
+    "test:watch": "cross-env NODE_ENV=test mocha --colors --watch --require @babel/register tests/*.spec.js"
+  },
+  "keywords": [
+    "node",
+    "module",
+    "boilerplate"
+  ],
+  "dependencies": {
+    "commander": "^2.20.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.4.4",
+    "@babel/preset-env": "^7.4.4",
+    "@babel/register": "^7.4.4",
+    "babel-loader": "^8.0.5",
+    "babel-plugin-add-module-exports": "^1.0.2",
+    "chai": "^4.2.0",
+    "coveralls": "^3.0.3",
+    "cross-env": "^5.2.0",
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb-base": "13.1.0",
+    "eslint-import-resolver-webpack": "^0.11.1",
+    "eslint-loader": "^2.1.2",
+    "eslint-plugin-import": "^2.17.2",
+    "mocha": "^6.1.4",
+    "nyc": "^14.1.0",
+    "rimraf": "^2.6.3",
+    "webpack": "^4.30.0",
+    "webpack-cli": "^3.3.2"
+  }
+}
