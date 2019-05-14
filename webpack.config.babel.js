@@ -1,8 +1,9 @@
 import path from 'path'
-import pkg from './package.json'
+import webpack from 'webpack'
+import nodeExternals from 'webpack-node-externals'
+import { name as libraryName } from './package.json'
 
 const isProduction = process.env.NODE_ENV === 'production'
-const libraryName = pkg.name
 
 process.stdout.write(`\nisProduction: ${isProduction}\n`)
 
@@ -13,26 +14,27 @@ export default {
     minimize: false
   },
   devtool: isProduction ? undefined : 'inline-source-map',
+  // target and externals because
+  // https://www.npmjs.com/package/webpack-node-externals
   target: 'node',
+  externals: [nodeExternals()],
   output: {
-    filename: 'create-nom-app',
+    filename: libraryName,
     path: path.join(__dirname, 'bin'),
-    library: libraryName,
-    libraryTarget: 'umd',
-    umdNamedDefine: true,
-    // Issue described at https://github.com/webpack/webpack/issues/6525
-    // Solution provided by https://github.com/webpack/webpack/issues/6522#issuecomment-371120689
-    globalObject: 'typeof self !== \'undefined\' ? self : this'
+    library: 'createNomApp',
+    libraryTarget: 'var'
   },
   module: {
     rules: [
       {
         test: /\.js$/,
         exclude: /(node_modules)/,
-        use: {
-          loader: 'babel-loader',
-          options: {}
-        }
+        use: [
+          {
+            loader: 'babel-loader',
+            options: {}
+          }
+        ]
       },
       {
         test: /\.js$/,
@@ -52,5 +54,8 @@ export default {
       path.resolve(__dirname, 'src'),
       'node_modules'
     ]
-  }
+  },
+  plugins: [
+    new webpack.BannerPlugin({ banner: '#!/usr/bin/env node\n\n"use strict";\n', raw: true })
+  ]
 }
