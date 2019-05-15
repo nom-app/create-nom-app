@@ -1,4 +1,4 @@
-import './validateNodeVersion'
+import './validators/validateNodeVersion'
 
 import chalk from 'chalk'
 import program from 'commander'
@@ -8,8 +8,10 @@ import semver from 'semver'
 import writeHelp from './writeHelp'
 import writeEnvInfo from './writeEnvInfo'
 import { version } from '../package.json'
-import validateProjectName from './validateProjectName'
-import validateProjectDirectory from './validateProjectDirectory'
+import validateProjectName from './validators/validateProjectName'
+import validateProjectDirectory from './validators/validateProjectDirectory'
+import validateNPMVersion from './validators/validateNPMVersion'
+import validateYarnVersion from './validators/validateYarnVersion'
 import CreateNomApp from './CreateNomApp'
 import packageManagers from './package-managers'
 
@@ -118,23 +120,14 @@ function main() {
 
   console.log('pref', preferredPackageManager, 'using', usePackageManager)
 
-  console.log(chalk.bold('\nEnvironment Info:'))
-
-  envinfo
-    .run(
-      {
-        System: ['OS', 'CPU'],
-        Binaries: ['Node', 'Yarn', 'npm'],
-        Browsers: ['Chrome', 'Edge', 'Internet Explorer', 'Firefox', 'Safari'],
-        npmPackages: ['nom-scripts'],
-        npmGlobalPackages: ['create-nom-app']
-      },
-      {
-        duplicates: true,
-        showNotFound: true
+  if (usePackageManager === 'npm') {
+    validateNPMVersion(packageManagers.getManager('npm').version)
   }
-    )
-    .then(console.log)
+
+  if (usePackageManager === 'yarn') {
+    validateYarnVersion(packageManagers.getManager('yarn').version)
+  }
+
   process.exit(0)
 
   validateProjectName(projectName)
