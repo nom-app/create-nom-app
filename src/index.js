@@ -15,6 +15,8 @@ import validateYarnVersion from './validators/validateYarnVersion'
 import CreateNomApp from './CreateNomApp'
 import packageManagers from './package-managers'
 
+// TODO: Use Winston for logging.
+
 function main() {
   // TODO: Implement update-checker with update-notifier
 
