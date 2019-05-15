@@ -10,10 +10,10 @@ module.exports = {
     mocha: true
   },
   rules: {
-    'no-console': 1,
+    'no-console': 0,
     'no-unused-vars': 1,
     semi: ['error', 'never'],
-    'comma-dangle': ['error', 'never']
+    'comma-dangle': ['error', 'never'],
   },
   parserOptions: {
     ecmaVersion: 2018,

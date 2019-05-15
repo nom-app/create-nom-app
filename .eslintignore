@@ -1,5 +1,6 @@
 /coverage/**
 /docs/**
 /lib/**
+/bin/**
 /node_modules/**
 !.babelrc.js

@@ -11,7 +11,7 @@ export default {
   entry: path.join(__dirname, 'src', 'index.js'),
   mode: isProduction ? 'production' : 'development',
   optimization: {
-    minimize: false
+    minimize: true
   },
   devtool: isProduction ? undefined : 'inline-source-map',
   // target and externals because
