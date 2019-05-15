@@ -1,36 +1,123 @@
-/* eslint-disable no-console */
-import './require.node'
+import './validateNodeVersion'
 
 import chalk from 'chalk'
 import program from 'commander'
-import envinfo from 'envinfo'
+import path from 'path'
+import semver from 'semver'
 
-import pkg from '../package.json'
+import writeHelp from './writeHelp'
+import writeEnvInfo from './writeEnvInfo'
+import { version } from '../package.json'
+import validateProjectName from './validateProjectName'
+import validateProjectDirectory from './validateProjectDirectory'
+import CreateNomApp from './CreateNomApp'
+import packageManagers from './package-managers'
 
-const { version } = pkg
+function main() {
+  // TODO: Implement update-checker with update-notifier
 
+  const cwd = process.cwd()
+  let projectDirectory
+  let projectName
 
-// TODO: Implement update-checker with update-notifier
+  program
+    .description('create-nom-app description')
+    .arguments('<project-name>')
+    .usage(`${chalk.blue('<project-name>')} [options]`)
+    .action((name) => {
+      projectName = name
+      projectDirectory = path.join(cwd, projectName)
+    })
+    .on('--help', () => {
+      writeHelp()
+    })
+    .option('--info', 'print environment info')
+    .option('--use-npm')
+    .option('--use-yarn')
+    .option('-v, --version', `output the version number ${version}`, () => {
+      console.log(`v${version}`)
+      process.exit(0)
+    })
+    .option('-V', '', () => {
+      console.log(`v${version}`)
+      process.exit(0)
+    })
 
-program
-  .description('create-nom-app description')
-  .usage('<project-directory> [options]')
-  // .command('<project-directory> [options]', 'creates a new nom app', {
-  //   isDefault: true
-  // })
-  .option('--info', 'print environment info')
-  .option('-v, --version', `output the version number ${version}`, () => {
-    console.log(version)
+  program.parse(process.argv)
+
+  if (program.info) {
+    return writeEnvInfo()
+  }
+
+  if (typeof projectName !== 'string') {
+    console.log(`${chalk.green('create-nom-app')} ${chalk.blue('<project-name>')} [options]`)
+    writeHelp()
     process.exit(0)
-  })
-  .option('-V', '', () => {
-    console.log(version)
-    process.exit(0)
-  })
+  }
 
-program.parse(process.argv)
+  if (program.useNpm && program.useYarn) {
+    console.error(chalk.red('Unable to create the project because you have --use-npm and --use-yarn.'))
+    console.error(chalk.red('You must remove one of the options.'))
+    process.exit(1)
+  }
 
-if (program.info) {
+  packageManagers.discoverCommon()
+
+  const preferredPackageManager = (() => {
+    if (program.useNpm) {
+      return 'npm'
+    }
+
+    if (program.useYarn) {
+      return 'yarn'
+    }
+
+    return false
+  })()
+
+  /**
+   * If the user has a preference (via --use-{package-manager}) then it will
+   * load that manager. If the preferred manager does not exist, an error will
+   * be provided and the process will quit.
+   *
+   * If the user has no preference, then it will search through a list of
+   * package managers and return the first existing manager on the system.
+   *
+   * If no package manager exists on the system, an error is logged and the
+   * process quits.
+   */
+  // eslint-disable-next-line consistent-return
+  const usePackageManager = (() => {
+    if (preferredPackageManager) {
+      if (packageManagers.hasManager(preferredPackageManager)) {
+        return preferredPackageManager
+      }
+
+      console.error(chalk.red(
+        `You preferred the package manager ${preferredPackageManager}. However, we did not\n`
+        + `find ${preferredPackageManager} on your system`
+      ))
+      console.error(chalk.red('You can install the package manager you prefer, or remove any preference.'))
+      process.exit(1)
+    }
+
+    const pkgManagerDefaultPreference = ['yarn', 'npm']
+
+    // eslint-disable-next-line no-restricted-syntax
+    for (const manager of pkgManagerDefaultPreference) {
+      if (packageManagers.hasManager(manager)) {
+        return manager
+      }
+    }
+
+    console.error(chalk.red('Unable to find any package managers on your system.'))
+    console.error(chalk.red(`Searched for ${pkgManagerDefaultPreference.join(', ')}.`))
+    console.error(chalk.red('Please install a package manager.'))
+    process.exit(1)
+  })()
+
+  console.log('pref', preferredPackageManager, 'using', usePackageManager)
+
   console.log(chalk.bold('\nEnvironment Info:'))
 
   envinfo
@@ -45,9 +132,21 @@ if (program.info) {
       {
         duplicates: true,
         showNotFound: true
-      }
+  }
     )
     .then(console.log)
+  process.exit(0)
+
+  validateProjectName(projectName)
+  validateProjectDirectory(projectDirectory)
+
+  const app = new CreateNomApp(projectName, {
+    projectDirectory
+  })
+
+  console.log('finished')
+
+  return undefined
 }
 
-// console.log(program)
+main()
