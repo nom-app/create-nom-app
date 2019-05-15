@@ -3,7 +3,6 @@ import './validators/validateNodeVersion'
 import chalk from 'chalk'
 import program from 'commander'
 import path from 'path'
-import semver from 'semver'
 
 import writeHelp from './writeHelp'
 import writeEnvInfo from './writeEnvInfo'
