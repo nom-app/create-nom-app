@@ -119,7 +119,9 @@ function main() {
     process.exit(1)
   })()
 
-  console.log('pref', preferredPackageManager, 'using', usePackageManager)
+  const packageManagerBinary = packageManagers.getManager(usePackageManager).binary
+
+  console.log('pref', preferredPackageManager, ';using', usePackageManager, ';binary', packageManagerBinary)
 
   if (usePackageManager === 'npm') {
     validateNPMVersion(packageManagers.getManager('npm').version)
@@ -129,16 +131,15 @@ function main() {
     validateYarnVersion(packageManagers.getManager('yarn').version)
   }
 
-  process.exit(0)
-
   validateProjectName(projectName)
   validateProjectDirectory(projectDirectory)
 
   const app = new CreateNomApp(projectName, {
-    projectDirectory
+    projectDirectory,
+    packageManagerBinary
   })
 
-  console.log('finished')
+  console.log('finished', app)
 
   return undefined
 }
