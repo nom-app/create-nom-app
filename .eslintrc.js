@@ -15,6 +15,7 @@ module.exports = {
     semi: ['error', 'never'],
     'comma-dangle': ['error', 'never'],
   },
+  parser: 'babel-eslint',
   parserOptions: {
     ecmaVersion: 2018,
     sourceType: 'module'
