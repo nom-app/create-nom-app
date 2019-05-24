@@ -1,9 +1,11 @@
 import path from 'path'
+import fs from 'fs'
 import webpack from 'webpack'
 import nodeExternals from 'webpack-node-externals'
 import { name as libraryName } from './package.json'
 
 const isProduction = process.env.NODE_ENV === 'production'
+const shebangNode = '#!/usr/bin/env node'
 
 process.stdout.write(`\nisProduction: ${isProduction}\n`)
 
@@ -56,6 +58,67 @@ export default {
     ]
   },
   plugins: [
-    new webpack.BannerPlugin({ banner: '#!/usr/bin/env node\n\n"use strict";\n', raw: true })
+    new webpack.BannerPlugin({ banner: `${shebangNode}\n\n"use strict";\n`, raw: true }),
+    // TODO: Move hook into own module.
+    {
+      apply: (compiler) => {
+        // This hook changes the permissions of the outputted
+        compiler.hooks.afterEmit.tap('BinaryPermissionsPlugin', (compilation) => {
+          Object.keys(compilation.assets).forEach((key) => {
+            const assetName = key
+            const asset = compilation.assets[key]
+            // Detects if an asset is likely supposed to be a binary file. The
+            // shebang string `shebangNode` should have been set by the
+            // BannerPlugin. If set correctly then `shebangNode` should be at
+            // `assets.children[0]`.
+            const likelyBinary = asset.children[0].includes(shebangNode)
+
+            if (!likelyBinary) {
+              console.log(`The asset "${assetName}" does not look like a binary file.`)
+              console.log(`Ignoring setting permissions for ${assetName}.`)
+              return
+            }
+
+            const assetPath = asset.existsAt
+            const assetExistsAtType = typeof assetPath
+
+            if (assetExistsAtType !== 'string') {
+              console.log(`The afterEmit hook for asset "${assetName}" does not contain a valid "existsAt" key.`)
+              console.log(`The "existsAt" key should be a string. Instead, got "${assetExistsAtType}".`)
+              return
+            }
+
+            try {
+              const setMode = '0775'
+              fs.chmodSync(assetPath, setMode)
+
+              // In some non-*nix environments (we are only checking for Windows
+              // environments, right now), it is not possible to change all
+              // permissions to how we like. Returning now before we fail the
+              // file `mode` check.
+              if (process.platform === 'win32') {
+                return
+              }
+
+              const stats = fs.statSync(assetPath)
+              const mode = stats.mode.toString(8)
+              const expectedMode = `10${setMode}`
+              if (mode !== expectedMode) {
+                throw new Error(`Expected the stat of ${assetName} to be ${expectedMode}. Instead got ${mode}.`)
+              }
+            } catch (error) {
+              console.error(`Error with changing the access level for the asset: ${assetName}`)
+              console.error(error)
+
+              // If in production mode, fail. We don't want to ship a
+              // non-executable file.
+              if (isProduction) {
+                process.exit(1)
+              }
+            }
+          })
+        })
+      }
+    }
   ]
 }
