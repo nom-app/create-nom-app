@@ -67,6 +67,10 @@ export default {
           Object.keys(compilation.assets).forEach((key) => {
             const assetName = key
             const asset = compilation.assets[key]
+
+            if (typeof asset.children?.[0] !== 'string') {
+              return
+            }
             // Detects if an asset is likely supposed to be a binary file. The
             // shebang string `shebangNode` should have been set by the
             // BannerPlugin. If set correctly then `shebangNode` should be at
