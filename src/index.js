@@ -48,6 +48,10 @@ function main() {
 
   program.parse(process.argv)
 
+  if (program.rawArgs.includes('-h') || program.rawArgs.includes('--help')) {
+    program.help()
+  }
+
   if (program.info) {
     return writeEnvInfo()
   }
