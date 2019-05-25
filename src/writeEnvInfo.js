@@ -9,6 +9,7 @@ async function writeEnvInfo() {
       {
         System: ['OS', 'CPU'],
         Binaries: ['Node', 'npm', 'Yarn'],
+        Utilities: ['Git'],
         Browsers: ['Chrome', 'Edge', 'Firefox', 'Internet Explorer', 'Safari'],
         npmPackages: ['nom-scripts'],
         npmGlobalPackages: ['create-nom-app']
