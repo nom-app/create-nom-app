@@ -3,6 +3,9 @@
   "description": "A node module boilerplate",
   "version": "0.10.0",
   "main": "lib/index.js",
+  "bin": {
+    "create-nom-app": "./bin/create-nom-app"
+  },
   "license": "MIT",
   "author": {
     "name": "Maxim Devoir",
