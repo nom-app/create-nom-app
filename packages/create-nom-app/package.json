@@ -17,7 +17,8 @@
   "homepage": "https://github.com/maximdevoir/create-nom-app",
   "repository": {
     "type": "git",
-    "url": "https://github.com/maximdevoir/create-nom-app.git"
+    "url": "https://github.com/maximdevoir/create-nom-app.git",
+    "directory": "packages/create-nom-app"
   },
   "scripts": {
     "build": "npm run build:clean && cross-env NODE_ENV=production npm run build:source",
