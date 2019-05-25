@@ -12,6 +12,7 @@ const packageManagers = {}
  * @returns {undefined} Always returns `undefined`.
  */
 function discoverManager(manager, ignoreCache = false) {
+  // The `manager` was previously discovered and is in the cache.
   if (ignoreCache === false
      && Object.prototype.hasOwnProperty.call(packageManagers, manager)
   ) {
