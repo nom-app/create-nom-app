@@ -65,6 +65,7 @@
     "babel-loader": "^8.0.5",
     "babel-plugin-add-module-exports": "^1.0.2",
     "chai": "^4.2.0",
+    "copy-webpack-plugin": "^5.0.3",
     "coveralls": "^3.0.3",
     "cross-env": "^5.2.0",
     "eslint": "^5.16.0",
@@ -77,6 +78,7 @@
     "rimraf": "^2.6.3",
     "webpack": "^4.30.0",
     "webpack-cli": "^3.3.2",
-    "webpack-node-externals": "^1.7.2"
+    "webpack-node-externals": "^1.7.2",
+    "webpack-permissions-plugin": "^1.0.3"
   }
 }
