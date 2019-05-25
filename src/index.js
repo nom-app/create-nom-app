@@ -13,6 +13,7 @@ import validateNPMVersion from './validators/validateNPMVersion'
 import validateYarnVersion from './validators/validateYarnVersion'
 import CreateNomApp from './CreateNomApp'
 import packageManagers from './package-managers'
+import git from './discover-git'
 
 // TODO: Use Winston for logging.
 
@@ -138,12 +139,20 @@ function main() {
   validateProjectName(projectName)
   validateProjectDirectory(projectDirectory)
 
+  git.discoverGit()
+
+  const { gitBinary } = git.gitInfo
+  console.log('gitInfo', git.gitInfo)
   const app = new CreateNomApp(projectName, {
     projectDirectory,
-    packageManagerBinary
+    packageManagerBinary,
+    gitBinary
   })
 
-  console.log('finished', app)
+  console.log('createNomApp', app)
+
+  app.create()
+  app.initGitRepo()
 
   return undefined
 }
