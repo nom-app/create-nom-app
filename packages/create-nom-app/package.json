@@ -45,6 +45,7 @@
     "boilerplate"
   ],
   "dependencies": {
+    "@babel/runtime": "^7.4.5",
     "chalk": "^2.4.2",
     "commander": "^2.20.0",
     "envinfo": "^7.3.1",
@@ -61,7 +62,6 @@
     "@babel/plugin-transform-runtime": "^7.4.4",
     "@babel/preset-env": "^7.4.4",
     "@babel/register": "^7.4.4",
-    "@babel/runtime": "^7.4.4",
     "babel-eslint": "^10.0.1",
     "babel-loader": "^8.0.5",
     "babel-plugin-add-module-exports": "^1.0.2",
