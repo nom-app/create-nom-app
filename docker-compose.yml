@@ -1,0 +1,56 @@
+version: '3'
+services:
+  verdaccio:
+    image: verdaccio/verdaccio:4.x-next
+    container_name: cna_verdaccio
+    ports:
+      - "4873:4873"
+    networks:
+      cnan:
+        ipv4_address: 172.30.20.18
+    volumes:
+        # https://github.com/verdaccio/docker-examples/tree/master/docker-local-storage-volume
+        # - "./services/verdaccio/storage:/verdaccio/storage"
+        - "./services/verdaccio/conf:/verdaccio/conf"
+
+  portainer:
+    image: portainer/portainer
+    container_name: cna_portainer
+    restart: always
+    command: --host=unix:///var/run/docker.sock --bind :80 --admin-password '$$2y$$05$$X5bSwyr6tRYMC.mA8vaMw.ACTWr43O4r0WBUAdy.Xdgc76SHLAlqS'
+    expose:
+      - 80
+    networks:
+      cnan:
+        ipv4_address: 172.30.20.20
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - "portainer-data:/data"
+
+  local_publish:
+    container_name: cna_local_publish
+    build:
+      context: .
+      dockerfile: ./services/e2e/Dockerfile
+    command: /bin/bash ./install-packages.sh
+    networks:
+      cnan:
+    volumes:
+      - ./packages/:/usr/app/packages
+      - ./tasks/:/usr/app
+    depends_on:
+      - verdaccio
+
+networks:
+  # Create Nom App network
+  cnan:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.30.20.0/24
+
+
+volumes:
+  portainer-data:
+  verdaccio:
+    driver: local
