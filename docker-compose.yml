@@ -10,7 +10,7 @@ services:
         ipv4_address: 172.30.20.18
     volumes:
         # https://github.com/verdaccio/docker-examples/tree/master/docker-local-storage-volume
-        # - "./services/verdaccio/storage:/verdaccio/storage"
+        - "verdaccio:/verdaccio/storage"
         - "./services/verdaccio/conf:/verdaccio/conf"
 
   portainer:
@@ -35,9 +35,6 @@ services:
     command: /bin/bash ./install-packages.sh
     networks:
       cnan:
-    volumes:
-      - ./packages:/usr/app/packages
-      - ./tasks:/usr/app
     depends_on:
       - verdaccio
 
