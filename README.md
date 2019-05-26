@@ -2,7 +2,7 @@
 
 > The monorepo for Create Nom App
 
-## Testing
+## Docker
 
 ### Testing in Docker
 
@@ -21,9 +21,9 @@ the `--registry` tag:
 npm install --global --registry http://172.30.20.18:4873 create-nom-app
 ```
 
-### Services
+## Docker Services
 
-#### Portainer
+### Portainer
 
 [Portainer](https://github.com/portainer/portainer) is used to easily monitor
 and manage Docker services through a simple web interface.
@@ -34,7 +34,7 @@ Username: `admin`
 
 Password: `portpass`
 
-#### Verdaccio
+### Verdaccio
 
 [Verdaccio](https://github.com/verdaccio/verdaccio) is a local private npm
 registry. It is primarily used to publish local development packages which are,
@@ -48,7 +48,7 @@ username: `cna`
 
 password: `local-registry`
 
-#### local_publish
+### local_publish
 
 This service builds and publishes all `packages` to the Verdaccio registry.
 
