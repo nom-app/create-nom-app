@@ -91,3 +91,10 @@ for package in "${local_packages[@]}"; do
 
   buildAndPublish "$package"
 done
+
+
+echo "finished, sleeping now"
+
+# Sleep gives us time to open an interactive shell. This should be removed when
+# opening an interactive shell is no longer required.
+sleep 1000s
