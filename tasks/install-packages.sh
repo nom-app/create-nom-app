@@ -10,6 +10,20 @@ if ! curl --head http://172.30.20.18:4873/; then
   exit 16
 fi
 
+
+# NPM_USERNAME=cna
+# NPM_PASSWORD="local-registry"
+# NPM_EMAIL="localregistry@example.local"
+
+# echo "adding npm user for Verdaccio registry"
+# npm adduser --registry=http://172.30.20.18:4873 --verbose <<!
+# $NPM_USERNAME
+# $NPM_PASSWORD
+# $NPM_EMAIL
+# !
+
+
+
 source ./check-registry-config.sh
 
 if ! checkRegistryConfig; then
