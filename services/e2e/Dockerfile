@@ -10,4 +10,8 @@ RUN npm set registry http://172.30.20.18:4873/
 
 RUN yarn config set registry http://172.30.20.18:4873/
 
+COPY ./packages ./packages
+
+COPY ./tasks .
+
 CMD ["echo", "no command set"]
