@@ -14,6 +14,11 @@ help: ## Displays the help information.
 up: #[Docker] Spin up the project.
 	docker-compose up --build
 
+reup-packages: #! Reupload packages to Verdaccio registry
+	docker-compose stop local_publish
+	docker-compose rm -v --force local_publish
+	docker-compose up --force-recreate --build local_publish
+
 recreate: #[Docker] Force recreate the project, and spin up.
 	docker-compose up --force-recreate --no-deps --build
 
