@@ -74,7 +74,7 @@ function buildAndPublish() {
   yarn build
 
   echo "publishing $package to Verdaccio"
-  npm publish --registry http://172.30.20.18:4873 --verbose
+  npm publish --tag dev --registry http://172.30.20.18:4873 --verbose
 
   cd "$prevPWD" || exit 1
 }
@@ -107,8 +107,11 @@ for package in "${local_packages[@]}"; do
 done
 
 
-echo "finished, sleeping now"
-
 # Sleep gives us time to open an interactive shell. This should be removed when
-# opening an interactive shell is no longer required.
-sleep 1000s
+# opening an interactive shell is no longer required. TODO: Remove sleep time
+# when no longer required for development.
+POST_INSTALL_SLEEP_TIME="1s"
+
+echo "finished, sleeping now for $POST_INSTALL_SLEEP_TIME"
+
+sleep $POST_INSTALL_SLEEP_TIME
