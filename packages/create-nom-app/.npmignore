@@ -1,3 +1,6 @@
+# !**/templates/**
+!**/templates/**/gitignore
+
 .github/
 .vscode/
 src/
@@ -6,16 +9,18 @@ tests/
 # dot files
 .*
 
-# js files
-*.js
-
 # Package locks
 yarn.lock
 package-lock.json
 
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
 
-# webpack configs
+# configs
 webpack.config*
+*config.js
 
 # future TS typings support
 typings/
