@@ -14,6 +14,9 @@ help: ## Displays the help information.
 up: #[Docker] Spin up the project.
 	docker-compose up --build
 
+up-detached: #[Docker] Spin up the project in detached mode.
+	docker-compose up -d --build
+
 reup-packages: #! Reupload packages to Verdaccio registry
 	docker-compose stop local_publish
 	docker-compose rm -v --force local_publish
