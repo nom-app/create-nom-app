@@ -52,6 +52,9 @@ password: `local-registry`
 
 This service builds and publishes all `packages` to the Verdaccio registry.
 
+If you make changes to a package, or wish to republish the packages to the
+Verdaccio registry, run `make reup-packages`.
+
 ## License
 
 Licenses are also available within each package.
