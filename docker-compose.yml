@@ -31,7 +31,7 @@ services:
     container_name: cna_local_publish
     build:
       context: .
-      dockerfile: ./services/e2e/Dockerfile
+      dockerfile: ./services/local-publish/Dockerfile
     command: /bin/bash ./install-packages.sh
     networks:
       cnan:
