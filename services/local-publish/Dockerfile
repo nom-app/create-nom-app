@@ -1,4 +1,4 @@
-FROM node:12.3.1-alpine as create-nom-app-e2e
+FROM node:12.3.1-alpine as create-nom-app-local-publish
 
 RUN apk add bash
 
