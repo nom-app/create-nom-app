@@ -1,7 +1,7 @@
 import './validators/validateNodeVersion'
 
 import chalk from 'chalk'
-import program from 'commander'
+import commander from 'commander'
 import path from 'path'
 
 import writeHelp from './writeHelp'
@@ -24,7 +24,7 @@ function main() {
   let projectDirectory
   let projectName
 
-  program
+  const program = new commander.Command('create-nom-app')
     .description('create-nom-app description')
     .arguments('<project-name>')
     .usage(`${chalk.blue('<project-name>')} [options]`)
