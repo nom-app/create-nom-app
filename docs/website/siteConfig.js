@@ -12,13 +12,17 @@ const siteConfig = {
   title: 'Create Nom App',
   tagline: 'Begin your next module in seconds.',
   url: 'https://md.github.io', // Your website URL
-  baseUrl: '/', // Base URL for your project */
+  baseUrl: '/create-nom-app/', // TODO: I think this needs to be '/create-nom-app/' when publish to Github Pages.
+  // Base URL for your project */
   // For github.io type URLs, you would set the url and baseUrl like:
   //   url: 'https://facebook.github.io',
   //   baseUrl: '/test-site/',
+  editUrl: 'https://github.com/MaximDevoir/create-nom-app/edit/master/docs/docs/',
+  enableUpdateBy: true,
+  enableUpdateTime: true,
 
   // Used for publishing and more
-  projectName: 'create-react-app',
+  projectName: 'create-nom-app',
   organizationName: 'MaximDevoir',
   // For top-level user or org sites, the organization is still the same.
   // e.g., for the https://JoelMarcey.github.io site, it would be set like...
@@ -29,6 +33,10 @@ const siteConfig = {
     {
       doc: 'getting-started',
       label: 'Docs'
+    },
+    {
+      doc: 'contributing-introduction',
+      label: 'Contribute'
     },
     {
       href: 'https://www.github.com/MaximDevoir/create-nom-app',
@@ -94,6 +102,7 @@ const siteConfig = {
   // You may provide arbitrary config keys to be used as needed by your
   // template. For example, if you need your repo's URL...
   //   repoUrl: 'https://github.com/facebook/test-site',
+  scrollToTop: true,
 };
 
 module.exports = siteConfig;
