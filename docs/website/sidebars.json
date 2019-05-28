@@ -1,6 +1,17 @@
 {
-  "docs": {
+  "Docs": {
     "Create Nom App": ["introduction"],
     "Getting Started": ["getting-started"]
+  },
+  "contrib": {
+    "Foreword": [
+      "contributing-introduction",
+      "contributing-prerequisites"
+    ],
+    "Contributing": [
+      "contributing-getting-started",
+      "contributing-project-structure",
+      "contributing-docker-services"
+    ]
   }
 }
