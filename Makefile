@@ -5,7 +5,7 @@
 
 help: ## Displays the help information.
 	@awk 'BEGIN {FS = ":.*?## "} /^[a-zA-Z_-]+:.*?## / {printf "\033[36m%-30s [main]\033[0m %s\n", $$1, $$2}' $(MAKEFILE_LIST)
-	@awk 'BEGIN {FS = ":.*?#\[Docker] "} /^[a-zA-Z_-]+:.*?#\[Docker\] / {printf "\033[34m%-30s [Docker]\033[0m %s\n", $$1, $$2}' $(MAKEFILE_LIST)
+	@awk 'BEGIN {FS = ":.*?#\\[Docker] "} /^[a-zA-Z_-]+:.*?#\[Docker\] / {printf "\033[34m%-30s [Docker]\033[0m %s\n", $$1, $$2}' $(MAKEFILE_LIST)
 	@awk 'BEGIN {FS = ":.*?#! "} /^[a-zA-Z_-]+:.*?#! / {printf "\033[31m%-30s [behind-the-scenes]\033[0m %s\n", $$1, $$2}' $(MAKEFILE_LIST)
 
 .DEFAULT_GOAL := help
