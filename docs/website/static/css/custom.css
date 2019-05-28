@@ -14,3 +14,11 @@
 
 @media only screen and (min-width: 1500px) {
 }
+
+.toc .toggleNav ul li a {
+  font-size: 16px
+}
+
+.onPageNav a {
+  font-size: 13.5px
+}
