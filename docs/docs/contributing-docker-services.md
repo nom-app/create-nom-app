@@ -37,4 +37,5 @@ If you make changes to a package, or wish to republish the packages to the
 Verdaccio registry, run `make reup-packages`.
 
 > **Note:** Packages published to Verdaccio are on the `dev` tag at the registry
-> http://172.30.20.18:4873.
+> <http://172.30.20.18:4873>.
+
