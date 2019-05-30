@@ -1,6 +1,6 @@
 ---
 id: contributing-prerequisites
-title: Developer Prerequisites
+title: Contributor Prerequisites
 sidebar_label: Prerequisites
 ---
 
