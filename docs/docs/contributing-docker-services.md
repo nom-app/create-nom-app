@@ -39,3 +39,12 @@ Verdaccio registry, run `make reup-packages`.
 > **Note:** Packages published to Verdaccio are on the `dev` tag at the registry
 > <http://172.30.20.18:4873>.
 
+## docs_docusaurus
+
+Docusaurus builds the documentation.
+
+The `docker-compose.yml` file for Docusaurus is in the `docs/` folder.
+
+Build the documentation with `docker-compose up`.
+
+View the documentation locally at <http://localhost:3000/create-nom-app/>
