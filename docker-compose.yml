@@ -37,6 +37,9 @@ services:
       cnan:
     depends_on:
       - verdaccio
+  terminal_render:
+    build: ./services/terminal
+
 
 networks:
   # Create Nom App network
