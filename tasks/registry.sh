@@ -6,12 +6,12 @@ original_yarn_registry=`yarn config get registry`
 
 function useVerdaccioRegistry () {
   _printRegistryInformation
-  _setRegistries $verdaccio_registry $verdaccio_registry
+  _setRegistries "$verdaccio_registry" "$verdaccio_registry"
 }
 
 function useOriginalRegistry () {
   _printRegistryInformation
-  _setRegistries $original_npm_registry $original_yarn_registry
+  _setRegistries "$original_npm_registry" "$original_yarn_registry"
 }
 
 function _printRegistryInformation () {
