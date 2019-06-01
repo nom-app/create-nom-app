@@ -59,7 +59,7 @@ OUTPUT_DIR=./output node render.js` from the `services/termr` directory.
 >    ...
 > ```
 
-## docs_docusaurus
+## Docs Docusaurus
 
 Docusaurus builds the documentation.
 
