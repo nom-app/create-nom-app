@@ -39,6 +39,26 @@ Verdaccio registry, run `make reup-packages`.
 > **Note:** Packages published to Verdaccio are on the `dev` tag at the registry
 > <http://172.30.20.18:4873>.
 
+## Terminal Renderer
+
+This service will render recorded
+[Terminalizer](https://github.com/faressoft/terminalizer) files. The files are
+written to the `output` folder.
+
+You can run the project without Docker by using `RAW_TERM_DIR=./rawTerminalData
+OUTPUT_DIR=./output node render.js` from the `services/termr` directory.
+
+> **Note:** The only font currently supported for rendering is "Menlo for
+> Powerline". Make sure that your configuration is set correctly.
+>
+> ```yaml
+> config:
+>   fontFamily: "Menlo for Powerline"
+>   ...
+> records:
+>    ...
+> ```
+
 ## docs_docusaurus
 
 Docusaurus builds the documentation.
