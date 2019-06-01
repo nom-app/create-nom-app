@@ -48,8 +48,10 @@ written to the `output` folder.
 You can run the project without Docker by using `RAW_TERM_DIR=./rawTerminalData
 OUTPUT_DIR=./output node render.js` from the `services/termr` directory.
 
-> **Note:** The only font currently supported for rendering is "Menlo for
-> Powerline". Make sure that your configuration is set correctly.
+> **Note:** The only font currently supported for rendering is [Menlo for
+> Powerline][MFP-font]. Make sure that your configuration is set correctly and
+> that, if you plan on running `render.js` outside of the Docker service, you
+> have the Menlo for Powerline font installed locally on your system.
 >
 > ```yaml
 > config:
@@ -68,3 +70,5 @@ The `docker-compose.yml` file for Docusaurus is in the `docs/` folder.
 Build the documentation with `docker-compose up`.
 
 View the documentation locally at <http://localhost:3000/create-nom-app/>
+
+[MFP-font]: https://github.com/abertsch/Menlo-for-Powerline
