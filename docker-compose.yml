@@ -37,9 +37,15 @@ services:
       cnan:
     depends_on:
       - verdaccio
-  terminal_render:
-    build: ./services/terminal
 
+  termr:
+    container_name: terminal_renderer
+    build: ./services/termr
+    volumes:
+      - "./services/termr/rawTerminalData:/home/rterm/rawTerminalData"
+      - "./services/termr/output:/home/rterm/output"
+    networks:
+      cnan:
 
 networks:
   # Create Nom App network
