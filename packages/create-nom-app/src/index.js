@@ -25,7 +25,6 @@ function main() {
   let projectName
 
   const program = new commander.Command('create-nom-app')
-    .description('create-nom-app description')
     .arguments('<project-name>')
     .usage(`${chalk.blue('<project-name>')} [options]`)
     .action((name) => {
