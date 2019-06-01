@@ -1,28 +1,13 @@
 #!/bin/bash
 
-REGISTRY_WARMUP_TIME="5s"
+printf "Waiting for Verdaccio"
 
-echo "Giving Verdaccio some time to warm up: $REGISTRY_WARMUP_TIME"
-sleep "$REGISTRY_WARMUP_TIME"
+until curl --output /dev/null --silent --head --fail http://172.30.20.18:4873; do
+    printf "."
+    sleep 1s
+done
 
-if ! curl --head http://172.30.20.18:4873/; then
-  echo "Verdaccio is still not responding after $REGISTRY_WARMUP_TIME seconds. Exiting now"
-  exit 16
-fi
-
-
-# NPM_USERNAME=cna
-# NPM_PASSWORD="local-registry"
-# NPM_EMAIL="localregistry@example.local"
-
-# echo "adding npm user for Verdaccio registry"
-# npm adduser --registry=http://172.30.20.18:4873 --verbose <<!
-# $NPM_USERNAME
-# $NPM_PASSWORD
-# $NPM_EMAIL
-# !
-
-
+printf "\n"
 
 source ./check-registry-config.sh
 
