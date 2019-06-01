@@ -12,10 +12,10 @@ help: ## Displays the help information.
 
 # Docker Compose Tasks
 up: #[Docker] Spin up the project.
-	docker-compose up --build
+	docker-compose up --build& docker-compose -f docs/docker-compose.yml up
 
 up-detached: #[Docker] Spin up the project in detached mode.
-	docker-compose up -d --build
+	docker-compose up -d --build& docker-compose -f docs/docker-compose.yml up -d --build
 
 reup-packages: #! Reupload packages to Verdaccio registry
 	docker-compose stop local_publish
@@ -23,10 +23,10 @@ reup-packages: #! Reupload packages to Verdaccio registry
 	docker-compose up --force-recreate --build local_publish
 
 recreate: #[Docker] Force recreate the project, and spin up.
-	docker-compose up --force-recreate --no-deps --build
+	docker-compose up --force-recreate --no-deps --build& docker-compose up -f docs/docker-compose.yml up --force-recreate --no-deps --build
 
 down: #[Docker] Shut down the project.
-	docker-compose down
+	docker-compose down& docker-compose -f docs/docker-compose.yml down
 
 restart: #[Docker] Restarts the project.
 	@make down
