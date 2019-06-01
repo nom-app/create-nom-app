@@ -29,7 +29,7 @@ username: `cna`
 
 password: `local-registry`
 
-## local_publish
+## Local Publish
 
 This service builds and publishes all `packages` to the Verdaccio registry.
 
