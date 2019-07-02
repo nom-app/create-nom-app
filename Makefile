@@ -6,6 +6,7 @@
 help: ## Displays the help information.
 	@awk 'BEGIN {FS = ":.*?## "} /^[a-zA-Z_-]+:.*?## / {printf "\033[36m%-30s [main]\033[0m %s\n", $$1, $$2}' $(MAKEFILE_LIST)
 	@awk 'BEGIN {FS = ":.*?#\\[Docker] "} /^[a-zA-Z_-]+:.*?#\[Docker\] / {printf "\033[34m%-30s [Docker]\033[0m %s\n", $$1, $$2}' $(MAKEFILE_LIST)
+	@awk 'BEGIN {FS = ":.*?#\\[Docs] "} /^[a-zA-Z_-]+:.*?#\[Docs\] / {printf "\033[35m%-30s [Docs]\033[0m %s\n", $$1, $$2}' $(MAKEFILE_LIST)
 	@awk 'BEGIN {FS = ":.*?#! "} /^[a-zA-Z_-]+:.*?#! / {printf "\033[31m%-30s [behind-the-scenes]\033[0m %s\n", $$1, $$2}' $(MAKEFILE_LIST)
 
 .DEFAULT_GOAL := help
@@ -31,3 +32,7 @@ down: #[Docker] Shut down the project.
 restart: #[Docker] Restarts the project.
 	@make down
 	@make up
+
+docs-local: #[Docs] Build the documentation.
+	@echo "Documentation available at \033[1;32mhttp://localhost:3000/create-nom-app/\033[0m"
+	docker-compose -f docs/docker-compose.yml up
