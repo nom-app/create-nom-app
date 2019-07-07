@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 import { execSync } from 'child_process'
 import os from 'os'
 import path from 'path'
@@ -39,20 +40,8 @@ class CreateNomApp {
     })
   }
 
-  create() {
-    console.log(`Creating app ${this.projectName}`)
-    // console.log('Ensuring app directory')
-    // fs.ensureDirSync(this.options.projectDirectory)
-    console.log('Copying structure and files from template.')
-    const sourceTemplatePath = path.join(__dirname, 'templates', 'base')
-    console.log('from: ', sourceTemplatePath)
-    console.log('to: ', this.options.projectDirectory)
-    fs.copySync(sourceTemplatePath, this.options.projectDirectory)
-
-    // TODO: `nom-scripts` needs to point to the local development directory
-    // when in development mode because...
-
-    const basicPackageJson = {
+  _writeBasePackage() {
+    const basePackage = {
       name: this.projectName,
       description: 'A boilerplate create-nom-app project.',
       version: '0.1.0',
@@ -73,11 +62,44 @@ class CreateNomApp {
       }
     }
 
-    fs.writeJSONSync(path.join(this.options.projectDirectory, 'package.json'), basicPackageJson, {
+    fs.writeJSONSync(path.join(this.options.projectDirectory, 'package.json'), basePackage, {
       spaces: 2,
       EOL: os.EOL,
       mode: '644'
     })
+  }
+
+  create() {
+    console.log(`Creating app ${this.projectName}`)
+    // console.log('Ensuring app directory')
+    // fs.ensureDirSync(this.options.projectDirectory)
+    console.log('Copying structure and files from template.')
+    const sourceTemplatePath = path.join(__dirname, 'templates', 'base')
+    console.log('from: ', sourceTemplatePath)
+    console.log('to: ', this.options.projectDirectory)
+    fs.copySync(sourceTemplatePath, this.options.projectDirectory)
+
+    // Convert files to dotfiles, relative to project root directory.
+    const dotfiles = ['gitignore', ['npmignore']]
+
+    dotfiles.forEach((entry) => {
+      const dotfile = typeof entry === 'string' ? entry : path.join(...entry)
+      const nonDotfilePath = path.join(this.options.projectDirectory, dotfile)
+      const pathToDotfile = path.join(this.options.projectDirectory, `.${dotfile}`)
+      console.log('copying non-dotfile to ', pathToDotfile)
+      try {
+        if (fs.existsSync(nonDotfilePath)) {
+          fs.renameSync(nonDotfilePath, pathToDotfile)
+        }
+      } catch (err) {
+        console.error(err)
+      }
+    })
+
+    // Create a package.json
+    // TODO: `nom-scripts` needs to point to the local development directory
+    // when in development mode because...
+    this._writeBasePackage()
   }
 }
 
