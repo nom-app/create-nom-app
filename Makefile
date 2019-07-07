@@ -36,3 +36,10 @@ restart: #[Docker] Restarts the project.
 docs-local: #[Docs] Build the documentation.
 	@echo "Documentation available at \033[1;32mhttp://localhost:3000/create-nom-app/\033[0m"
 	docker-compose -f docs/docker-compose.yml up
+
+# TODO: Not working properly. Should load source script into shell. This Make
+#       script may have to be removed; Add to docs about loading the functions
+#       from registry.sh and reminding them to save their original registry
+#       configs.
+source-registry: # Sources the regsitry
+	source ./tasks/registry.sh
