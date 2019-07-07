@@ -54,7 +54,7 @@ class CreateNomApp {
 
     const basicPackageJson = {
       name: this.projectName,
-      description: '',
+      description: 'A boilerplate create-nom-app project.',
       version: '0.1.0',
       main: 'lib/index.js',
       private: true,
@@ -69,7 +69,7 @@ class CreateNomApp {
       },
       keywords: ['create-nom-app', 'boilerplate'],
       dependencies: {
-        // TODO: add nom-scripts dependency
+        'nom-scripts': '^0.1.0'
       }
     }
 
