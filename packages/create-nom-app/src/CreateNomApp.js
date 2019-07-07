@@ -1,12 +1,12 @@
 /* eslint-disable no-underscore-dangle */
-import { execSync } from 'child_process'
+import { execSync, spawnSync } from 'child_process'
 import os from 'os'
 import path from 'path'
 import fs from 'fs-extra'
 
 const defaultOptions = {
   projectDirectory: null,
-  packageManagerBinary: null,
+  packageManager: null,
   gitBinary: null
 }
 
@@ -57,9 +57,7 @@ class CreateNomApp {
         extends: 'eslint-config-airbnb'
       },
       keywords: ['create-nom-app', 'boilerplate'],
-      dependencies: {
-        'nom-scripts': '^0.1.0'
-      }
+      dependencies: {}
     }
 
     fs.writeJSONSync(path.join(this.options.projectDirectory, 'package.json'), basePackage, {
@@ -67,6 +65,33 @@ class CreateNomApp {
       EOL: os.EOL,
       mode: '644'
     })
+  }
+
+  installPackages() {
+    console.log('package manager is', this.options.packageManager.manager, 'at', this.options.packageManager.binary)
+    const dependencies = ['nom-scripts']
+    let installCommand
+
+    // eslint-disable-next-line default-case
+    switch (this.options.packageManager.manager) {
+      case 'npm':
+        installCommand = ['install', '--save', '--verbose']
+        break
+      case 'yarn':
+        installCommand = ['add']
+        break
+    }
+
+    installCommand.push(...dependencies)
+    const install = spawnSync(this.options.packageManager.binary, installCommand, {
+      cwd: this.options.projectDirectory,
+      stdio: 'inherit'
+    })
+
+    if (install.status !== 0) {
+      console.error(`Failed to execute ${this.options.packageManager.binary} ${installCommand.join(' ')}`)
+      process.exit(1)
+    }
   }
 
   create() {

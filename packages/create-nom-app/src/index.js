@@ -144,13 +144,17 @@ function main() {
   console.log('gitInfo', git.gitInfo)
   const app = new CreateNomApp(projectName, {
     projectDirectory,
-    packageManagerBinary,
+    packageManager: {
+      manager: usePackageManager,
+      binary: packageManagerBinary
+    },
     gitBinary
   })
 
   console.log('createNomApp', app)
 
   app.create()
+  app.installPackages()
   app.initGitRepo()
 
   return undefined
