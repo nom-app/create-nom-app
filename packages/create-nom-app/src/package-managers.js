@@ -2,6 +2,8 @@ import { execSync } from 'child_process'
 import { sync as whichSync } from 'which'
 
 const packageManagers = {}
+// TODO: Bring this module to its own package, preferably using
+// nom-scripts/create-nom-app to handle dependencies.
 
 /**
  * Searches for a `manager` on the system and, if it exists, adds information
