@@ -1,15 +1,35 @@
 #!/bin/bash
 
+# Specify a package to install. ./install-packages.sh nom-scripts
+installPackage=$1
+
+printf "Set to install "
+if [ -n "$installPackage" ]; then
+  printf "%s\n" "$installPackage"
+elif [ -z "$installPackage" ]; then
+  printf "all packages.\n"
+fi
+
 printf "Waiting for Verdaccio"
+
+# From https://stackoverflow.com/a/246128
+SOURCE="${BASH_SOURCE[0]}"
+while [ -h "$SOURCE" ]; do # resolve $SOURCE until the file is no longer a symlink
+  DIR="$( cd -P "$( dirname "$SOURCE" )" >/dev/null 2>&1 && pwd )"
+  SOURCE="$(readlink "$SOURCE")"
+  [[ $SOURCE != /* ]] && SOURCE="$DIR/$SOURCE" # if $SOURCE was a relative symlink, we need to resolve it relative to the path where the symlink file was located
+done
+DIR="$( cd -P "$( dirname "$SOURCE" )" >/dev/null 2>&1 && pwd )"
 
 until curl --output /dev/null --silent --head --fail http://172.30.20.18:4873; do
     printf "."
     sleep 1s
 done
 
-printf "\n"
+printf "... service detected.\n"
 
-source ./check-registry-config.sh
+# shellcheck source=./check-registry-config.sh
+source "${DIR}/check-registry-config.sh"
 
 if ! checkRegistryConfig; then
   exit 12
@@ -55,8 +75,8 @@ function buildAndPublish() {
   echo "yarn install"
   yarn install
 
-  echo "yarn build"
-  yarn build
+  echo "yarn run start:once"
+  yarn run start:once
 
   echo "publishing $package to Verdaccio"
   npm publish --tag dev --registry http://172.30.20.18:4873 --verbose
@@ -74,8 +94,10 @@ function getPackages() {
 
   for package in *; do
     if [ -d "$package" ]; then
-      if isPackage "$(pwd)" "$package"; then
-        local_packages+=("$package")
+      if [[ -f "$(pwd)/$package/package.json" ]]; then
+        if [ -n "$installPackage" ] && [ "$package" = "$installPackage" ] || [ -z "$installPackage" ]; then
+          local_packages+=("$package")
+        fi
       fi
     fi
   done
