@@ -44,7 +44,7 @@ function main() {
   switch (script) {
     case 'start':
     case 'test':
-    case 'builds':
+    case 'build':
     case 'eject': {
       console.log('spawning', `./scripts/${script}`)
       // Webpack or Babel override/mangle the Node `resolve` mechanism. A
