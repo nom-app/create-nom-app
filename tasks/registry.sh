@@ -1,6 +1,6 @@
 #!/bin/bash
 
-verdaccio_registry=http://localhost:4873
+verdaccio_registry=http://172.30.20.18:4873
 original_npm_registry=$(npm config get registry)
 original_yarn_registry=$(yarn config get registry)
 
