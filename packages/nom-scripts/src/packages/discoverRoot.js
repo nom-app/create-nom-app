@@ -12,15 +12,16 @@ const cwd = process.cwd()
  */
 function discoverRoot() {
   const candidates = [
-    path.join(cwd, 'package.json')
+    path.join(cwd)
   ]
 
   for (let i = 0; i <= candidates.length; i += 1) {
     const candidate = candidates[i]
-    console.log('file maybe at ', candidate)
-    if (fs.existsSync(candidate)) {
+    const candidatePkg = path.join(candidate, 'package.json')
+
+    if (fs.existsSync(candidatePkg)) {
       // eslint-disable-next-line global-require, import/no-dynamic-require
-      const pkg = JSON.parse(fs.readFileSync(candidate, 'utf8'))
+      const pkg = JSON.parse(fs.readFileSync(candidatePkg, 'utf8'))
 
       if (typeof pkg.dependencies === 'object' && 'nom-scripts' in pkg.dependencies) {
         return candidate
