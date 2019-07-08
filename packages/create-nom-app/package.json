@@ -23,7 +23,7 @@
   "scripts": {
     "build": "npm run build:clean && cross-env NODE_ENV=production npm run build:source",
     "build:source": "webpack --progress --colors --config webpack.config.babel.js",
-    "build:clean": "rimraf ./lib",
+    "build:clean": "rimraf ./lib && rimraf ./bin",
     "clean": "npm run build:clean && npm run coverage:clean",
     "coverage": "npm run coverage:clean && npm run coverage:generate",
     "coverage:check": "./node_modules/.bin/nyc --check-coverage npm test",
