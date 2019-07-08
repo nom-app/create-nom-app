@@ -66,7 +66,7 @@ yarn upgrade nom-scripts
 
 ### Direct Call
 
-From any `create-react-app` directory: where you would normally run `yarn start`,
+From any `create-nom-app` directory: where you would normally run `yarn start`,
 you can run:
 
 ```sh
