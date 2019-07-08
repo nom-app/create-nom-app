@@ -45,7 +45,7 @@ class CreateNomApp {
       name: this.projectName,
       description: 'A boilerplate create-nom-app project.',
       version: '0.1.0',
-      main: 'lib/index.js',
+      main: 'dist/main.js',
       private: true,
       scripts: {
         start: 'nom-scripts start',
