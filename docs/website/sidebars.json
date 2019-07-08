@@ -12,6 +12,9 @@
       "contributing-getting-started",
       "contributing-project-structure",
       "contributing-docker-services"
+    ],
+    "nom-scripts": [
+      "contributing-nom-scripts"
     ]
   }
 }
