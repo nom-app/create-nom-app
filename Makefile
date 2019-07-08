@@ -19,9 +19,7 @@ up-detached: #[Docker] Spin up the project in detached mode.
 	docker-compose up -d --build
 
 reup-packages: #! Reupload packages to Verdaccio registry
-	docker-compose stop local_publish
-	docker-compose rm -v --force local_publish
-	docker-compose up --force-recreate --build local_publish
+	./tasks/install-packages.sh
 
 recreate: #[Docker] Force recreate the project, and spin up.
 	docker-compose up --force-recreate --no-deps --build
