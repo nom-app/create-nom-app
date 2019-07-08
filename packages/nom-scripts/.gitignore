@@ -1,0 +1,21 @@
+# dependencies
+/node_modules
+
+# testing
+/coverage
+.nyc_output
+
+# production
+/lib
+
+# Built during continuous integration
+/bin
+
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# misc
+.DS_Store
+Thumbs.db
