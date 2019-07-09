@@ -29,6 +29,58 @@ username: `cna`
 
 password: `local-registry`
 
+### Setting Yarn and NPM to the Verdaccio Registry
+
+From the root directory of the `create-nom-app` monorepo:
+
+1. Source the `registry.sh` file
+
+    ```sh
+    source ./tasks/registry.sh
+    ```
+
+2. Print your registry information with
+
+    ```sh
+    _printRegistryInformation
+    # verdaccio registry: http://172.30.20.18:4873
+    #
+    # original npm  registry: https://registry.npmjs.org
+    # original yarn registry: https://registry.yarnpkg.com
+    #
+    # current npm   registry: https://registry.npmjs.org
+    # current yarn  registry: https://registry.yarnpkg.com
+    ```
+
+    > **First Time Users Notice**: If this is your fist time running any `registry.sh` commands,
+    > you will want to save your original registries somewhere.
+
+3. Set your package managers registry to Verdaccio.
+
+    ```sh
+    useVerdaccioRegistry
+    ```
+
+4. When you are finished using the Verdaccio registry, switch back to your
+   original registry.
+
+    ```sh
+    useOriginalRegistry
+    ```
+
+    If your package managers do not set themselves to how they originally were,
+    which can be the case when the `registry.sh` file was sourced while
+    Verdaccio was the active registry, use the `_setRegistries [npm registry]
+    [yarn registry]` command
+
+    ```sh
+    _setRegistries https://registry.npmjs.org/ https://registry.yarnpkg
+    ```
+
+> When the Verdaccio service is stopped, you will no longer be able to
+> interact with any package registry. Remember to switch back to your
+> original registries.
+
 ## Local Publish
 
 This service builds and publishes all `packages` to the Verdaccio registry.
