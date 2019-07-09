@@ -26,7 +26,7 @@ Follow this guide and learn how to test your forked
 1. From the root folder of your forked `create-nom-app` repository, run:
 
    ```sh
-   make reup-packages
+   make reup-packages nom-scripts
    ```
 
 ### Manually
