@@ -16,8 +16,12 @@ function useOriginalRegistry () {
 
 function _printRegistryInformation () {
   echo "verdaccio registry: ${verdaccio_registry}"
-  echo "original npm registry: ${original_npm_registry}"
+  echo ""
+  echo "original npm  registry: ${original_npm_registry}"
   echo "original yarn registry: ${original_yarn_registry}"
+  echo ""
+  echo "current  npm  registry: $(npm config get registry)"
+  echo "current  yarn registry: $(yarn config get registry)"
 }
 
 # Usage: _setRegistries [newNPMRegistry] [newYarnRegistry]
