@@ -29,6 +29,9 @@ username: `cna`
 
 password: `local-registry`
 
+> **Note**: The secondary entrypoint address, `localhost`/`0.0.0.0`, should not
+> be used to reference the registry; use the primary address.
+
 ### Setting Yarn and NPM to the Verdaccio Registry
 
 From the root directory of the `create-nom-app` monorepo:
