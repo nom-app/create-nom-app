@@ -18,8 +18,15 @@ up: #[Docker] Spin up the project.
 up-detached: #[Docker] Spin up the project in detached mode.
 	docker-compose up -d --build
 
+
+ifeq (reup-packages, $(firstword $(MAKECMDGOALS)))
+  REUP_ARGS := $(wordlist 2, $(words $(MAKECMDGOALS)), $(MAKECMDGOALS))
+  $(eval $(REUP_ARGS) :;@:)
+endif
+
+.PHONY: reup-packages
 reup-packages: #! Reupload packages to Verdaccio registry
-	./tasks/install-packages.sh
+	./tasks/install-packages.sh $(REUP_ARGS)
 
 recreate: #[Docker] Force recreate the project, and spin up.
 	docker-compose up --force-recreate --no-deps --build
