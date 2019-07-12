@@ -108,8 +108,10 @@ class CreateNomApp {
     const nomScriptsBin = path.resolve(this.options.projectDirectory,
       path.join(this.options.projectDirectory, 'node_modules', '.bin', 'nom-scripts'))
     const handoffOptions = JSON.stringify({
+      projectName: this.projectName,
       projectDirectory: this.options.projectDirectory,
-      packageManager: this.options.packageManager
+      packageManager: this.options.packageManager,
+      gitBinary: this.options.gitBinary
     })
     const handoffProc = spawnSync(nomScriptsBin, ['init', '--options-string', handoffOptions], {
       stdio: 'inherit',
