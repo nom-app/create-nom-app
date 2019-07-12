@@ -53,22 +53,20 @@ function main() {
       const argsToForward = []
       const receivedArgs = minimist(process.argv.slice(3))
 
-      for (let arg in receivedArgs) {
-        if (receivedArgs.hasOwnProperty(arg)) {
-          if (arg === '_') {
-            argsToForward.push(...receivedArgs._)
-            continue
-          }
-
-          const value = receivedArgs[arg]
-
-          if (typeof value === 'boolean') {
-            argsToForward.push(`--${arg}`)
-          } else {
-            argsToForward.push(`--${arg}=${value}`)
-          }
+      Object.keys(receivedArgs).forEach((arg) => {
+        if (arg === '_') {
+          argsToForward.push(...receivedArgs._)
+          return
         }
-      }
+
+        const value = receivedArgs[arg]
+
+        if (typeof value === 'boolean') {
+          argsToForward.push(`--${arg}`)
+        } else {
+          argsToForward.push(`--${arg}=${value}`)
+        }
+      })
 
       // Webpack or Babel override/mangle the Node `resolve` mechanism. A
       // solution is to place statement in `eval`.
