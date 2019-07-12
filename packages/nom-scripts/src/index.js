@@ -4,6 +4,7 @@ import commander from 'commander'
 import minimist from 'minimist'
 
 import { version } from '../package.json'
+import logger from '../../create-nom-app/src/logger'
 
 process.on('unhandledRejection', (reason, promise) => {
   console.error('Unhandled Rejection at:', promise, 'reason:', reason)
@@ -48,7 +49,7 @@ function main() {
     case 'build':
     case 'init':
     case 'eject': {
-      console.log('spawning', `./scripts/${script}`)
+      logger.debug('spawning', `./scripts/${script}`)
 
       const argsToForward = []
       const receivedArgs = minimist(process.argv.slice(3))
