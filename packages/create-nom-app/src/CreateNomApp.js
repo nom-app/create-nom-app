@@ -6,6 +6,8 @@ import os from 'os'
 import path from 'path'
 import fs from 'fs-extra'
 
+import pkg from '../package'
+
 const defaultOptions = {
   projectDirectory: null,
   packageManager: null,
@@ -75,7 +77,8 @@ class CreateNomApp {
 
   installPackages() {
     console.log('package manager is', this.options.packageManager.manager, 'at', this.options.packageManager.binary)
-    const dependencies = ['nom-scripts']
+    const cnaMajorVersion = pkg.version.split('.')[0]
+    const dependencies = [`nom-scripts@^${cnaMajorVersion}`]
     let installCommand
 
     // eslint-disable-next-line default-case
