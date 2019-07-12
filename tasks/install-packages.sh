@@ -117,7 +117,7 @@ done
 # Sleep gives us time to open an interactive shell. This should be removed when
 # opening an interactive shell is no longer required. TODO: Remove sleep time
 # when no longer required for development.
-POST_INSTALL_SLEEP_TIME="1s"
+POST_INSTALL_SLEEP_TIME="0s"
 
 echo "finished, sleeping now for $POST_INSTALL_SLEEP_TIME"
 
