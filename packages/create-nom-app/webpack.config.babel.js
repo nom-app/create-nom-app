@@ -2,8 +2,6 @@ import path from 'path'
 import fs from 'fs'
 import webpack from 'webpack'
 import nodeExternals from 'webpack-node-externals'
-import CopyPlugin from 'copy-webpack-plugin'
-import CopyPluginPermissionFix from 'webpack-permissions-plugin'
 import { name as libraryName } from './package.json'
 
 const isProduction = process.env.NODE_ENV === 'production'
@@ -66,22 +64,6 @@ export default {
   },
   plugins: [
     new webpack.BannerPlugin({ banner: `${shebangNode}\n\n"use strict";\n`, raw: true }),
-    // copy-webpack-plugin does not preserve file permissions when copying
-    // files. See more at
-    // https://github.com/webpack-contrib/copy-webpack-plugin/issues/35
-    new CopyPlugin([
-      {
-        from: path.join(__dirname, 'src', 'templates'),
-        to: path.join(__dirname, 'bin', 'templates')
-      }
-    ]),
-    new CopyPluginPermissionFix({
-      buildFolders: [{
-        path: path.resolve(__dirname, 'bin/templates'),
-        dirMode: '775',
-        fileMode: '664'
-      }]
-    }),
     // TODO: Move hook into own module.
     {
       apply: (compiler) => {
