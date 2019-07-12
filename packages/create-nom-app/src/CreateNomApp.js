@@ -17,6 +17,10 @@ class CreateNomApp {
     this.options = Object.assign({}, defaultOptions, options)
   }
 
+  ensureProjectDir() {
+    fs.ensureDirSync(this.options.projectDirectory)
+  }
+
   /**
    * Initializes a Git repo inside the project directory.
    */
