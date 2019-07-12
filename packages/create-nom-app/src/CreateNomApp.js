@@ -1,5 +1,7 @@
 /* eslint-disable no-underscore-dangle */
-import { execSync, spawnSync } from 'child_process'
+import { execSync } from 'child_process'
+import { sync as spawnSync } from 'cross-spawn'
+
 import os from 'os'
 import path from 'path'
 import fs from 'fs-extra'
