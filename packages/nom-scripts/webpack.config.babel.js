@@ -12,7 +12,8 @@ process.stdout.write(`\nisProduction: ${isProduction}\n`)
 export default {
   entry: {
     'nom-scripts': path.join(__dirname, 'src', 'index.js'),
-    'scripts/start': path.join(__dirname, 'src', 'scripts', 'start.js')
+    'scripts/start': path.join(__dirname, 'src', 'scripts', 'start.js'),
+    'scripts/eject': path.join(__dirname, 'src', 'scripts', 'eject.js')
   },
   mode: isProduction ? 'production' : 'development',
   optimization: {
