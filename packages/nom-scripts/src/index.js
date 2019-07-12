@@ -76,8 +76,6 @@ function main() {
       // eslint-disable-next-line no-eval
       const proc = spawnSync('node', [eval(`require.resolve('./scripts/${script}')`)].concat(argsToForward), { stdio: 'inherit' })
 
-      console.log('proc', proc)
-
       if (proc.signal) {
         if (proc.signal === 'SIGKILL') {
           // https://www.unix.com/302096767-post5.html?s=de4e02dec039bad162ad857af7942bda
