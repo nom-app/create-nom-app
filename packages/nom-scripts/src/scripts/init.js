@@ -134,9 +134,6 @@ class InitializeCNA {
       }
     })
 
-    // Create a package.json
-    // TODO: `nom-scripts` needs to point to the local development directory
-    // when in development mode because...
     this._writeBasePackage()
   }
 
