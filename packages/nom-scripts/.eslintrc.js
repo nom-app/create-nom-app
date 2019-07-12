@@ -22,6 +22,9 @@ module.exports = {
   },
   settings: {
     'import/resolver': {
+      // See https://github.com/benmosher/eslint-plugin-import/issues/1396
+      // Solution at https://github.com/benmosher/eslint-plugin-import/issues/1396#issuecomment-511007063
+      node: {},
       webpack: {
         config: babelConfigFile
       }
