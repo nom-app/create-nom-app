@@ -1,9 +1,11 @@
+import chalk from 'chalk'
 import { sync as spawnSync } from 'cross-spawn'
 
 import path from 'path'
 import fs from 'fs-extra'
 
 import pkg from '../package'
+import logger from './logger'
 
 const defaultOptions = {
   projectDirectory: null,
@@ -13,6 +15,8 @@ const defaultOptions = {
 
 class CreateNomApp {
   constructor(projectName, options) {
+    console.log(`Creating ${chalk.blue(projectName)} app.`)
+
     // TODO: Do recursive deep-assign
     this.projectName = projectName
     this.options = Object.assign({}, defaultOptions, options)
@@ -23,9 +27,10 @@ class CreateNomApp {
   }
 
   installPackages() {
-    console.log('package manager is', this.options.packageManager.manager, 'at', this.options.packageManager.binary)
-    const cnaMajorVersion = pkg.version.split('.')[0]
-    const dependencies = [`nom-scripts@^${cnaMajorVersion}`]
+    console.log(`\nInstalling ${chalk.green('nom-scripts')}. This may take a few minutes...\n`)
+
+    logger.debug('package manager is', this.options.packageManager.manager, 'at', this.options.packageManager.binary)
+    const dependencies = ['nom-scripts']
     let installCommand
 
     // eslint-disable-next-line default-case
@@ -65,7 +70,7 @@ class CreateNomApp {
     })
 
     if (handoffProc.status !== 0) {
-      console.log('Create Nom App failed during handoff to local create-nom-app project.')
+      console.error('Create Nom App failed failed to initialize the project.')
       process.exit(handoffProc.status)
     }
   }
