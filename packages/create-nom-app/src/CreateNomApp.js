@@ -36,7 +36,7 @@ class CreateNomApp {
     // eslint-disable-next-line default-case
     switch (this.options.packageManager.manager) {
       case 'npm':
-        installCommand = ['install', '--save', '--verbose']
+        installCommand = ['install', '--save']
         break
       case 'yarn':
         installCommand = ['add']
