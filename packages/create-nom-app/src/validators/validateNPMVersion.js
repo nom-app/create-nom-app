@@ -1,10 +1,12 @@
 import chalk from 'chalk'
 import semver from 'semver'
 
+import logger from '../logger'
+
 const minimumNPMVersion = '6.0.0'
 
 function validateNPMVersion(version) {
-  console.log('Validating NPM version', version)
+  logger.verbose('Validating NPM version', version)
 
   if (!semver.gte(version, minimumNPMVersion)) {
     console.error(

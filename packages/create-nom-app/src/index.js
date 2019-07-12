@@ -4,6 +4,7 @@ import chalk from 'chalk'
 import commander from 'commander'
 import path from 'path'
 
+import logger from './logger'
 import writeHelp from './writeHelp'
 import writeEnvInfo from './writeEnvInfo'
 import { version } from '../package.json'
@@ -14,8 +15,6 @@ import validateYarnVersion from './validators/validateYarnVersion'
 import CreateNomApp from './CreateNomApp'
 import packageManagers from './package-managers'
 import git from './discover-git'
-
-// TODO: Use Winston for logging.
 
 function main() {
   // TODO: Implement update-checker with update-notifier
@@ -100,10 +99,7 @@ function main() {
         return preferredPackageManager
       }
 
-      console.error(chalk.red(
-        `You preferred the package manager ${preferredPackageManager}. However, we did not\n`
-        + `find ${preferredPackageManager} on your system`
-      ))
+      console.error(chalk.red(`You preferred the package manager ${preferredPackageManager}, which was not found on your system.`))
       console.error(chalk.red('You can install the package manager you prefer, or remove any preference.'))
       process.exit(1)
     }
@@ -125,7 +121,7 @@ function main() {
 
   const packageManagerBinary = packageManagers.getManager(usePackageManager).binary
 
-  console.log('pref', preferredPackageManager, ';using', usePackageManager, ';binary', packageManagerBinary)
+  logger.debug('pref', preferredPackageManager, ';using', usePackageManager, ';binary', packageManagerBinary)
 
   if (usePackageManager === 'npm') {
     validateNPMVersion(packageManagers.getManager('npm').version)
@@ -141,7 +137,7 @@ function main() {
   git.discoverGit()
 
   const { gitBinary } = git.gitInfo
-  console.log('gitInfo', git.gitInfo)
+  logger.debug('gitInfo', git.gitInfo)
 
   const app = new CreateNomApp(projectName, {
     projectDirectory,
@@ -152,14 +148,11 @@ function main() {
     gitBinary
   })
 
-  console.log('createNomApp', app)
+  logger.debug('createNomApp', app)
 
   app.ensureProjectDir()
   app.installPackages()
-
-  console.log('create-nom-app package should be finished. handing off to nom-scripts')
   app.handoff()
-  console.log('cna fin')
 
   return undefined
 }
