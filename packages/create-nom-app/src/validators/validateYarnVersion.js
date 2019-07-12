@@ -1,10 +1,12 @@
 import chalk from 'chalk'
 import semver from 'semver'
 
+import logger from '../logger'
+
 const minimumYarnVersion = '1.8.0'
 
 function validateYarnVersion(version) {
-  console.log('Validating Yarn version', version)
+  logger.verbose('Validating Yarn version', version)
 
   if (!semver.gte(version, minimumYarnVersion)) {
     console.error(
