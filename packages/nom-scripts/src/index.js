@@ -46,6 +46,7 @@ function main() {
     case 'start':
     case 'test':
     case 'build':
+    case 'init':
     case 'eject': {
       console.log('spawning', `./scripts/${script}`)
 

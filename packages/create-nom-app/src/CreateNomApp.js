@@ -100,6 +100,27 @@ class CreateNomApp {
     }
   }
 
+  handoff() {
+    console.log('start of handoff')
+    const nomScriptsBin = path.resolve(this.options.projectDirectory,
+      path.join(this.options.projectDirectory, 'node_modules', '.bin', 'nom-scripts'))
+    const handoffOptions = JSON.stringify({
+      projectDirectory: this.options.projectDirectory,
+      packageManager: this.options.packageManager
+    })
+    const handoffProc = spawnSync(nomScriptsBin, ['init', '--options-string', handoffOptions], {
+      stdio: 'inherit',
+      cwd: this.options.projectDirectory
+    })
+
+    if (handoffProc.status !== 0) {
+      console.log('Create Nom App failed during handoff to local create-nom-app project.')
+      process.exit(handoffProc.status)
+    }
+
+    console.log('end handoff')
+  }
+
   create() {
     console.log(`Creating app ${this.projectName}`)
     // console.log('Ensuring app directory')

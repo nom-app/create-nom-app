@@ -142,6 +142,7 @@ function main() {
 
   const { gitBinary } = git.gitInfo
   console.log('gitInfo', git.gitInfo)
+
   const app = new CreateNomApp(projectName, {
     projectDirectory,
     packageManager: {
@@ -153,9 +154,12 @@ function main() {
 
   console.log('createNomApp', app)
 
-  app.create()
+  app.ensureProjectDir()
   app.installPackages()
-  app.initGitRepo()
+
+  console.log('create-nom-app package should be finished. handing off to nom-scripts')
+  app.handoff()
+  console.log('cna fin')
 
   return undefined
 }

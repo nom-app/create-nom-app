@@ -13,6 +13,7 @@ export default {
   entry: {
     'nom-scripts': path.join(__dirname, 'src', 'index.js'),
     'scripts/start': path.join(__dirname, 'src', 'scripts', 'start.js'),
+    'scripts/init': path.join(__dirname, 'src', 'scripts', 'init.js'),
     'scripts/eject': path.join(__dirname, 'src', 'scripts', 'eject.js')
   },
   mode: isProduction ? 'production' : 'development',
