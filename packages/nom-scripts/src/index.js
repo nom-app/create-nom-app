@@ -1,6 +1,7 @@
 import chalk from 'chalk'
 import { sync as spawnSync } from 'cross-spawn'
 import commander from 'commander'
+import minimist from 'minimist'
 
 import { version } from '../package.json'
 
@@ -47,11 +48,32 @@ function main() {
     case 'build':
     case 'eject': {
       console.log('spawning', `./scripts/${script}`)
+
+      const argsToForward = []
+      const receivedArgs = minimist(process.argv.slice(3))
+
+      for (let arg in receivedArgs) {
+        if (receivedArgs.hasOwnProperty(arg)) {
+          if (arg === '_') {
+            argsToForward.push(...receivedArgs._)
+            continue
+          }
+
+          const value = receivedArgs[arg]
+
+          if (typeof value === 'boolean') {
+            argsToForward.push(`--${arg}`)
+          } else {
+            argsToForward.push(`--${arg}=${value}`)
+          }
+        }
+      }
+
       // Webpack or Babel override/mangle the Node `resolve` mechanism. A
       // solution is to place statement in `eval`.
       // https://github.com/webpack/webpack/issues/1554#issuecomment-336462319
       // eslint-disable-next-line no-eval
-      const proc = spawnSync('node', [eval(`require.resolve('./scripts/${script}')`)], { stdio: 'inherit' })
+      const proc = spawnSync('node', [eval(`require.resolve('./scripts/${script}')`)].concat(argsToForward), { stdio: 'inherit' })
 
       console.log('proc', proc)
 
