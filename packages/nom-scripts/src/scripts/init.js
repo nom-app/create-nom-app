@@ -3,8 +3,11 @@ import { execSync } from 'child_process'
 import os from 'os'
 import path from 'path'
 
+import chalk from 'chalk'
 import fs from 'fs-extra'
 import minimist from 'minimist'
+
+import logger from '../../../create-nom-app/src/logger'
 
 class InitializeCNA {
   constructor(options) {
@@ -41,7 +44,7 @@ class InitializeCNA {
 
   verifyNoPreviousInit() {
     if (this.hasPreviousInit) {
-      console.err('It looks like the directory has already been initialized.')
+      console.error('It looks like the directory has already been initialized.')
       process.exit(1)
     }
   }
@@ -55,18 +58,19 @@ class InitializeCNA {
       return
     }
 
-    console.log('git binary path is', this.gitBinary)
+    logger.debug('git binary path is', this.gitBinary)
     execSync(`${this.gitBinary} init`, {
       cwd: this.projectDirectory
     })
-    console.log('git adding files')
+    logger.debug('git adding files')
     execSync(`${this.gitBinary} add .`, {
       cwd: this.projectDirectory
     })
-    console.log('git initial commit')
+    logger.debug('git initial commit')
     execSync(`${this.gitBinary} commit -m "Initial commit from Create Nom App"`, {
       cwd: this.projectDirectory
     })
+    console.log('\nInitialized a git repository.')
   }
 
   _writeBasePackage() {
@@ -107,11 +111,10 @@ class InitializeCNA {
   }
 
   app() {
-    console.log(`Creating app ${this.projectName}`)
-    console.log('Copying structure and files from template.')
+    logger.debug('Copying structure and files from template.')
     const sourceTemplatePath = path.join(__dirname, '..', 'templates', 'base')
-    console.log('from: ', sourceTemplatePath)
-    console.log('to: ', this.projectDirectory)
+    logger.debug('from: ', sourceTemplatePath)
+    logger.debug('to: ', this.projectDirectory)
     fs.copySync(sourceTemplatePath, this.projectDirectory)
 
     // Convert files to dotfiles, relative to project root directory.
@@ -121,7 +124,7 @@ class InitializeCNA {
       const dotfile = typeof entry === 'string' ? entry : path.join(...entry)
       const nonDotfilePath = path.join(this.projectDirectory, dotfile)
       const pathToDotfile = path.join(this.projectDirectory, `.${dotfile}`)
-      console.log('copying non-dotfile to ', pathToDotfile)
+      logger.debug('copying non-dotfile to ', pathToDotfile)
       try {
         if (fs.existsSync(nonDotfilePath)) {
           fs.renameSync(nonDotfilePath, pathToDotfile)
@@ -136,13 +139,39 @@ class InitializeCNA {
     // when in development mode because...
     this._writeBasePackage()
   }
+
+  success() {
+    const isYarn = this.packageManager.manager === 'yarn'
+    const commands = {
+      start: `${isYarn ? 'yarn' : 'npm'} start`,
+      test: `${isYarn ? 'yarn' : 'npm'} test`,
+      build: `${isYarn ? 'yarn' : 'npm run'} build`
+    }
+
+    console.log(`\nSuccessfully created ${chalk.blue(this.projectName)}.`)
+    console.log('\nBegin using your app with:\n')
+    console.log(`  ${chalk.green('cd')} ${this.projectDirectory}`)
+    console.log(`  ${chalk.green(commands.start)}`)
+    console.log('\nAvailable commands:')
+    console.log(`\n  ${chalk.green(commands.start)}`)
+    console.log('    Start in development mode.')
+    console.log(`\n  ${chalk.green(commands.test)}`)
+    console.log('    Runs test scripts.')
+    console.log(`\n  ${chalk.green(commands.build)}`)
+    console.log('    Builds and optimizes for production.')
+    console.log('')
+  }
 }
 
 const argv = minimist(process.argv.slice(2))
 const options = JSON.parse(argv['options-string'])
-console.log('argv', argv)
+
 const init = new InitializeCNA(options)
 
 init.verifyNoPreviousInit()
+
 init.app()
+
 init.gitRepo()
+
+init.success()
