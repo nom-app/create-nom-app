@@ -1,6 +1,8 @@
 import path from 'path'
 import fs from 'fs-extra'
 import chalk from 'chalk'
+import MemoryFileSystem from 'memory-fs'
+import nodeExternals from 'webpack-node-externals'
 import webpack from 'webpack'
 import FriendlyErrorsWebpackPlugin from 'friendly-errors-webpack-plugin'
 
@@ -25,6 +27,7 @@ const webpackFS = new MemoryFileSystem()
     mode: isProduction ? 'production' : 'development',
     optimization: {},
     target: 'node',
+    externals: [nodeExternals()],
     devtool: isProduction ? false : 'inline-source-map',
     output: {
       filename: 'main.js',
