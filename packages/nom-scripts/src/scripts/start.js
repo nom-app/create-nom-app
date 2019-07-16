@@ -1,23 +1,54 @@
 import path from 'path'
 import fs from 'fs-extra'
 import chalk from 'chalk'
+import minimist from 'minimist'
 import MemoryFileSystem from 'memory-fs'
 import nodeExternals from 'webpack-node-externals'
+
 import webpack from 'webpack'
 import FriendlyErrorsWebpackPlugin from 'friendly-errors-webpack-plugin'
 
 import discoverRoot from '../packages/discoverRoot'
+import whichManager from '../packages/package-managers-local'
 
 const webpackFS = new MemoryFileSystem()
-  const projectRoot = discoverRoot()
+const projectRoot = discoverRoot()
 
-  if (projectRoot === undefined) {
-    console.error(`${chalk.red.inverse('FAIL')} ${chalk.blue('nom-scripts')} did not find a ${chalk.green('create-nom-app')} project.`)
-    console.error('Did you run the script from the root directory of your create-nom-app?')
+if (projectRoot === undefined) {
+  console.error(`${chalk.red.inverse('FAIL')} ${chalk.blue('nom-scripts')} did not find a ${chalk.green('create-nom-app')} project.`)
+  console.error('Did you run the script from the root directory of your create-nom-app?')
 
-    process.exit(1)
+  process.exit(1)
+}
+
+const packageManager = whichManager(projectRoot)
+const isProduction = false
+const args = minimist(process.argv.slice(2))
+const useWatch = args.once !== true
+
+const statsHandler = (err, stats) => {
+  console.log(`Compile your app for production with ${chalk.green(packageManager === 'yarn' ? 'yarn build' : 'npm run build')}.`)
+
+  if (err) {
+    console.error(err.stack || err)
+    if (err.details) {
+      console.error(err.details)
+    }
+    return
   }
 
+  const info = stats.toJson()
+
+  if (stats.hasErrors()) {
+    console.error(info.errors)
+  }
+
+  if (stats.hasWarnings()) {
+    console.warn(info.warnings)
+  }
+}
+
+function main() {
   const pkgPath = path.join(projectRoot, 'package.json')
   const pkg = JSON.parse(fs.readFileSync(pkgPath, 'utf8'))
 
@@ -55,38 +86,19 @@ const webpackFS = new MemoryFileSystem()
       modules: ['node_modules']
     },
     plugins: [
-      new FriendlyErrorsWebpackPlugin({
-        compilationSuccessInfo: {
-          messages: ['message top'],
-          notes: ['message bottom']
-        }
-      })
+      new FriendlyErrorsWebpackPlugin()
     ]
   })
 
   compiler.outputFileSystem = webpackFS
 
-  compiler.watch({
-
-  }, (err, stats) => {
-    if (err) {
-      console.error(err.stack || err)
-      if (err.details) {
-        console.error(err.details)
-      }
-      return
-    }
-
-    const info = stats.toJson()
-
-    if (stats.hasErrors()) {
-      console.error(info.errors)
-    }
-
-    if (stats.hasWarnings()) {
-      console.warn(info.warnings)
-    }
-  })
+  if (useWatch) {
+    compiler.watch({
+      ignored: ['node_modules']
+    }, statsHandler)
+  } else {
+    compiler.run(statsHandler)
+  }
 
   return undefined
 }
