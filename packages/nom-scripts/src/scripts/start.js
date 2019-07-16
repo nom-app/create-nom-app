@@ -20,6 +20,7 @@ const webpackFS = new MemoryFileSystem()
   const pkg = JSON.parse(fs.readFileSync(pkgPath, 'utf8'))
 
   const compiler = webpack({
+    context: projectRoot,
     entry: path.join(projectRoot, 'src', 'main.js'),
     mode: isProduction ? 'production' : 'development',
     optimization: {},
