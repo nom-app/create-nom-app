@@ -25,7 +25,7 @@ const webpackFS = new MemoryFileSystem()
     mode: isProduction ? 'production' : 'development',
     optimization: {},
     target: 'node',
-    devtool: isProduction ? undefined : 'inline-source-map',
+    devtool: isProduction ? false : 'inline-source-map',
     output: {
       filename: 'main.js',
       path: path.join(projectRoot, 'dist'),
