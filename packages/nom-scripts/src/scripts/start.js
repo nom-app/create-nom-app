@@ -6,10 +6,7 @@ import FriendlyErrorsWebpackPlugin from 'friendly-errors-webpack-plugin'
 
 import discoverRoot from '../packages/discoverRoot'
 
-const isProduction = process.env.NODE_ENV === 'production'
-
-
-function main() {
+const webpackFS = new MemoryFileSystem()
   const projectRoot = discoverRoot()
 
   if (projectRoot === undefined) {
@@ -62,6 +59,8 @@ function main() {
       })
     ]
   })
+
+  compiler.outputFileSystem = webpackFS
 
   compiler.watch({
 
