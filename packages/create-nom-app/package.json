@@ -1,6 +1,6 @@
 {
   "name": "create-nom-app",
-  "description": "A node module boilerplate",
+  "description": "Start building a Node app in seconds.",
   "version": "0.0.0",
   "main": "lib/index.js",
   "bin": {
