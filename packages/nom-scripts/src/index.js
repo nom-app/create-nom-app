@@ -83,15 +83,15 @@ function main() {
           console.log('Possible causes are:')
           console.log('   * The system ran out of memory')
           console.log('   * The system is shutting down')
-          console.log('   * The process received kill(-9)')
-          console.log('https://TODO:base-url/create-nom-app/docs/terminated-by-sigkill')
+          console.log('   * The process received kill(-9)\n')
+          // console.log('https://TODO:base-url/create-nom-app/docs/terminated-by-sigkill')
         } else if (proc.signal === 'SIGTERM') {
           console.log('The script failed to finish because the program received a termination signal.')
           console.log('')
           console.log('Possible causes are:')
           console.log('   * A user killed the process')
-          console.log('   * The system is shutting down')
-          console.log('https://TODO:base-url/create-nom-app/docs/terminated-by-sigterm')
+          console.log('   * The system is shutting down\n')
+          // console.log('https://TODO:base-url/create-nom-app/docs/terminated-by-sigterm')
         }
 
         process.exit(1)
