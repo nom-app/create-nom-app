@@ -15,6 +15,7 @@ export default {
   entry: {
     'nom-scripts': path.join(__dirname, 'src', 'index.js'),
     'scripts/start': path.join(__dirname, 'src', 'scripts', 'start.js'),
+    'scripts/test': path.join(__dirname, 'src', 'scripts', 'test.js'),
     'scripts/build': path.join(__dirname, 'src', 'scripts', 'build.js'),
     'scripts/init': path.join(__dirname, 'src', 'scripts', 'init.js'),
     'scripts/eject': path.join(__dirname, 'src', 'scripts', 'eject.js')
