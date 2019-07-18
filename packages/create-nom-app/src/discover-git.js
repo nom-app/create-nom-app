@@ -1,4 +1,4 @@
-import { execSync } from 'child_process'
+import { sync as spawnSync } from 'cross-spawn'
 import { sync as whichSync } from 'which'
 
 // Semver regex string provided by https://github.com/semver/semver/issues/232#issue-48635632
@@ -18,7 +18,7 @@ function discoverGit() {
     return
   }
 
-  const version = execSync(`${binary} --version`, { stdio: 'pipe' }).toString().trim()
+  const version = spawnSync(binary, ['--version'], { stdio: 'pipe' }).stdout.toString().trim()
 
   gitInfo.gitInstalled = true
   gitInfo.gitVersion = version.match(semverRegex)?.[0] || ''
