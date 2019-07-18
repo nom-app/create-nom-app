@@ -1,5 +1,5 @@
 /* eslint-disable no-underscore-dangle */
-import { execSync } from 'child_process'
+import { sync as spawnSync } from 'cross-spawn'
 import os from 'os'
 import path from 'path'
 
@@ -59,17 +59,20 @@ class InitializeCNA {
     }
 
     logger.debug('git binary path is', this.gitBinary)
-    execSync(`${this.gitBinary} init`, {
+    spawnSync(this.gitBinary, ['init'], {
       cwd: this.projectDirectory
     })
+
     logger.debug('git adding files')
-    execSync(`${this.gitBinary} add .`, {
+    spawnSync(this.gitBinary, ['add', '.'], {
       cwd: this.projectDirectory
     })
+
     logger.debug('git initial commit')
-    execSync(`${this.gitBinary} commit -m "Initial commit from Create Nom App"`, {
+    spawnSync(this.gitBinary, ['commit', '-m', '"Initial commit from Create Nom App"'], {
       cwd: this.projectDirectory
     })
+
     console.log('\nInitialized a git repository.')
   }
 
@@ -79,7 +82,9 @@ class InitializeCNA {
       // Semver regex string provided by https://github.com/semver/semver/issues/232#issue-48635632
       const semverRegex = /(0|[5-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(-(0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(\.(0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*)?(\+[0-9a-zA-Z-]+(\.[0-9a-zA-Z-]+)*)?/g
 
-      return execSync(`${pathToNS} --version`).toString().match(semverRegex)
+      return spawnSync(pathToNS, ['--version'], {
+        stdio: 'pipe'
+      }).stdout.toString().match(semverRegex)
     })()
 
     const basePackage = {
