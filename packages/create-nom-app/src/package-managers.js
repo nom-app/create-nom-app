@@ -1,4 +1,4 @@
-import { execSync } from 'child_process'
+import { sync as spawnSync } from 'cross-spawn'
 import { sync as whichSync } from 'which'
 
 const packageManagers = {}
@@ -26,9 +26,13 @@ function discoverManager(manager, ignoreCache = false) {
   if (binary === null) {
     return
   }
+  console.log('binary', binary)
 
-  const version = execSync(`${binary} --version`, { stdio: 'pipe' }).toString().trim()
+  const version = spawnSync(binary, ['--version'], {
+    stdio: 'pipe'
+  }).stdout.toString().trim()
 
+  console.log('version', version)
   packageManagers[manager] = {
     binary,
     version
