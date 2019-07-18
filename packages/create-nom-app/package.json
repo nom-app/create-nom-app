@@ -1,7 +1,7 @@
 {
   "name": "create-nom-app",
   "description": "Start building a Node app in seconds.",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "bin": {
     "create-nom-app": "./bin/create-nom-app"
   },
