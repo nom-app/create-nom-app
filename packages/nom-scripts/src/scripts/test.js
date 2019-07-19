@@ -17,5 +17,31 @@ if (projectRoot === undefined) {
   process.exit(1)
 }
 
-console.log('Tests are not available in your version of nom-scripts.')
-console.log('\nYou may need to update your nom-scripts dependency.\n')
+const mocha = new Mocha({
+
+})
+
+const globbedSpecs = glob.sync('**/*.spec.*', {
+  cwd: path.join(projectRoot, 'tests')
+})
+
+let specs = []
+
+for (let spec of globbedSpecs) {
+  let specExt = path.extname(spec).slice(1)
+
+  if (['js'].includes(specExt)) {
+    specs.push(spec)
+  }
+}
+
+console.log('globbedSpecs', globbedSpecs)
+console.log('specs', specs)
+
+for (let spec of specs) {
+  mocha.addFile(path.join(projectRoot, 'tests', spec))
+}
+
+mocha.run((fails => console.log(fails)))
+
+console.log(mocha)
