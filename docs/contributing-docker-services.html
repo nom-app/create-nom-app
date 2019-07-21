@@ -1,0 +1,150 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Create Nom App&#x27;s Docker Services · Create Nom App</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="## Portainer"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Create Nom App&#x27;s Docker Services · Create Nom App"/><meta property="og:type" content="website"/><meta property="og:url" content="https://maximdevoir.github.io/create-nom-app/"/><meta property="og:description" content="## Portainer"/><meta property="og:image" content="https://maximdevoir.github.io/create-nom-app/img/undraw_online.svg"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://maximdevoir.github.io/create-nom-app/img/undraw_tweetstorm.svg"/><link rel="shortcut icon" href="/create-nom-app/img/favicon.ico"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script src="https://unpkg.com/vanilla-back-to-top@7.1.14/dist/vanilla-back-to-top.min.js"></script><script>
+        document.addEventListener('DOMContentLoaded', function() {
+          addBackToTop(
+            {"zIndex":100}
+          )
+        });
+        </script><script src="/create-nom-app/js/scrollSpy.js"></script><link rel="stylesheet" href="/create-nom-app/css/main.css"/><script src="/create-nom-app/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/create-nom-app/"><img class="logo" src="/create-nom-app/img/favicon.ico" alt="Create Nom App"/><h2 class="headerTitleWithLogo">Create Nom App</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class=""><a href="/create-nom-app/docs/getting-started" target="_self">Docs</a></li><li class="siteNavGroupActive"><a href="/create-nom-app/docs/contributing-introduction" target="_self">Contribute</a></li><li class=""><a href="https://www.github.com/MaximDevoir/create-nom-app" target="_self">GitHub</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>Contributing</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">Foreword<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/create-nom-app/docs/contributing-introduction">Introduction</a></li><li class="navListItem"><a class="navItem" href="/create-nom-app/docs/contributing-prerequisites">Prerequisites</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">Contributing<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/create-nom-app/docs/contributing-getting-started">How to Contribute</a></li><li class="navListItem"><a class="navItem" href="/create-nom-app/docs/contributing-project-structure">Structure</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/create-nom-app/docs/contributing-docker-services">Docker &amp; Services</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">nom-scripts<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/create-nom-app/docs/contributing-nom-scripts">Publishing and Testing</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://github.com/MaximDevoir/create-nom-app/edit/master/docs/docs/contributing-docker-services.md" target="_blank" rel="noreferrer noopener">Edit</a><h1 class="postHeaderTitle">Create Nom App&#x27;s Docker Services</h1></header><article><div><span><h2><a class="anchor" aria-hidden="true" id="portainer"></a><a href="#portainer" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Portainer</h2>
+<p><a href="https://github.com/portainer/portainer">Portainer</a> is used to easily monitor
+and manage Docker services through a simple web interface.</p>
+<p>UI Entrypoint: <a href="http://172.30.20.20">172.30.20.20</a></p>
+<p>Username: <code>admin</code></p>
+<p>Password: <code>portpass</code></p>
+<h2><a class="anchor" aria-hidden="true" id="verdaccio"></a><a href="#verdaccio" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Verdaccio</h2>
+<p><a href="https://github.com/verdaccio/verdaccio">Verdaccio</a> is a local private npm
+registry. It is primarily used to publish local development packages which are,
+in turn, used by e2e and integration testing.</p>
+<p>UI Entrypoint (primary): <a href="http://172.30.20.18:4873">172.30.20.18:4873</a></p>
+<p>UI Entrypoint (secondary): <a href="http://0.0.0.0:4873">0.0.0.0:4873</a></p>
+<p>username: <code>cna</code></p>
+<p>password: <code>local-registry</code></p>
+<blockquote>
+<p><strong>Note</strong>: The secondary entrypoint address, <code>localhost</code>/<code>0.0.0.0</code>, should not
+be used to reference the registry; use the primary address.</p>
+</blockquote>
+<h3><a class="anchor" aria-hidden="true" id="setting-yarn-and-npm-to-the-verdaccio-registry"></a><a href="#setting-yarn-and-npm-to-the-verdaccio-registry" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Setting Yarn and NPM to the Verdaccio Registry</h3>
+<p>From the root directory of the <code>create-nom-app</code> monorepo:</p>
+<ol>
+<li><p>Source the <code>registry.sh</code> file</p>
+<pre><code class="hljs css language-sh"><span class="hljs-built_in">source</span> ./tasks/registry.sh
+</code></pre></li>
+<li><p>Print your registry information with</p>
+<pre><code class="hljs css language-sh">_printRegistryInformation
+<span class="hljs-comment"># verdaccio registry: http://172.30.20.18:4873</span>
+<span class="hljs-comment">#</span>
+<span class="hljs-comment"># original npm  registry: https://registry.npmjs.org</span>
+<span class="hljs-comment"># original yarn registry: https://registry.yarnpkg.com</span>
+<span class="hljs-comment">#</span>
+<span class="hljs-comment"># current npm   registry: https://registry.npmjs.org</span>
+<span class="hljs-comment"># current yarn  registry: https://registry.yarnpkg.com</span>
+</code></pre>
+<blockquote>
+<p><strong>First Time Users Notice</strong>: If this is your fist time running any
+<code>registry.sh</code> commands, you will want to save your original registries
+somewhere.</p>
+</blockquote></li>
+<li><p>Set your package managers registry to Verdaccio.</p>
+<pre><code class="hljs css language-sh">useVerdaccioRegistry
+</code></pre></li>
+<li><p>When you are finished using the Verdaccio registry, switch back to your
+original registry.</p>
+<pre><code class="hljs css language-sh">useOriginalRegistry
+</code></pre>
+<p>If your package managers do not set themselves to how they originally were,
+which can be the case when the <code>registry.sh</code> file was sourced while
+Verdaccio was the active registry, use the <code>_setRegistries [npm registry] [yarn registry]</code> command</p>
+<pre><code class="hljs css language-sh">_setRegistries https://registry.npmjs.org/ https://registry.yarnpkg
+</code></pre></li>
+</ol>
+<blockquote>
+<p>When the Verdaccio service is stopped, you will no longer be able to
+interact with any package registry. Remember to switch back to your
+original registries.</p>
+</blockquote>
+<h2><a class="anchor" aria-hidden="true" id="local-publish"></a><a href="#local-publish" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Local Publish</h2>
+<p>This service builds and publishes all <code>packages</code> to the Verdaccio registry.</p>
+<p>If you make changes to a package, or wish to republish the packages to the
+Verdaccio registry, run <code>make reup-packages</code>.</p>
+<blockquote>
+<p><strong>Note:</strong> Packages published to Verdaccio are on the <code>dev</code> tag at the registry
+<a href="http://172.30.20.18:4873">http://172.30.20.18:4873</a>.</p>
+</blockquote>
+<h2><a class="anchor" aria-hidden="true" id="terminal-renderer"></a><a href="#terminal-renderer" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Terminal Renderer</h2>
+<p>This service will render recorded
+<a href="https://github.com/faressoft/terminalizer">Terminalizer</a> files. The files are
+written to the <code>output</code> folder. This service is part of the <code>docker-compose.yml</code>
+file in <code>services/termr</code>.</p>
+<p>You can run the project without Docker by using <code>RAW_TERM_DIR=./rawTerminalData OUTPUT_DIR=./output node render.js</code> from the <code>services/termr</code> directory.</p>
+<blockquote>
+<p><strong>Note:</strong> The only font currently supported for rendering is <a href="https://github.com/abertsch/Menlo-for-Powerline">Menlo for
+Powerline</a>. Make sure that your configuration is set correctly and
+that, if you plan on running <code>render.js</code> outside of the Docker service, you
+have the Menlo for Powerline font installed locally on your system.</p>
+<pre><code class="hljs css language-yaml"><span class="hljs-comment"># recording.yml</span>
+<span class="hljs-attr">config:</span>
+  <span class="hljs-string">...</span>
+<span class="hljs-attr">  fontFamily:</span> <span class="hljs-string">"Menlo for Powerline"</span>
+</code></pre>
+</blockquote>
+<h2><a class="anchor" aria-hidden="true" id="docs-docusaurus"></a><a href="#docs-docusaurus" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Docs Docusaurus</h2>
+<p>Docusaurus builds the documentation.</p>
+<p>The <code>docker-compose.yml</code> file for Docusaurus is in the <code>docs/</code> folder.</p>
+<p>Build the documentation with <code>docker-compose up</code>.</p>
+<p>View the documentation locally at <a href="http://localhost:3000/create-nom-app/">http://localhost:3000/create-nom-app/</a></p>
+</span></div></article></div><div class="docLastUpdate"><em>Last updated on 7/21/2019 by Maxim Devoir</em></div><div class="docs-prevnext"><a class="docs-prev button" href="/create-nom-app/docs/contributing-project-structure"><span class="arrow-prev">← </span><span>Structure</span></a><a class="docs-next button" href="/create-nom-app/docs/contributing-nom-scripts"><span>Publishing and Testing</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#portainer">Portainer</a></li><li><a href="#verdaccio">Verdaccio</a><ul class="toc-headings"><li><a href="#setting-yarn-and-npm-to-the-verdaccio-registry">Setting Yarn and NPM to the Verdaccio Registry</a></li></ul></li><li><a href="#local-publish">Local Publish</a></li><li><a href="#terminal-renderer">Terminal Renderer</a></li><li><a href="#docs-docusaurus">Docs Docusaurus</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/create-nom-app/" class="nav-home"><img src="/create-nom-app/img/favicon.ico" alt="Create Nom App" width="66" height="58"/></a><div><h5>Docs</h5><a href="/create-nom-app/docs/getting-started">Getting Started</a><a href="/create-nom-app/docs/contributing-introduction">Contributing</a></div><div><h5>Community</h5><a href="/create-nom-app/en/users.html">User Showcase</a><a href="http://stackoverflow.com/questions/tagged/" target="_blank" rel="noreferrer noopener">Stack Overflow</a><a href="https://discordapp.com/">Project Chat</a><a href="https://twitter.com/" target="_blank" rel="noreferrer noopener">Twitter</a></div><div><h5>More</h5><a href="https://github.com/">GitHub</a><a class="github-button" href="https://github.com/MaximDevoir/create-nom-app" data-icon="octicon-star" data-size="normal" data-count-href="/facebook/docusaurus/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star Create Nom App on GitHub">Star</a></div></section><section class="copyright">Copyright © 2019 Maxim Devoir</section></footer></div></body></html>
