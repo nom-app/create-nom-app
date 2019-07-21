@@ -26,13 +26,11 @@ function discoverManager(manager, ignoreCache = false) {
   if (binary === null) {
     return
   }
-  console.log('binary', binary)
 
   const version = spawnSync(binary, ['--version'], {
     stdio: 'pipe'
   }).stdout.toString().trim()
 
-  console.log('version', version)
   packageManagers[manager] = {
     binary,
     version
