@@ -17,8 +17,6 @@ import packageManagers from './package-managers'
 import git from './discover-git'
 
 function main() {
-  // TODO: Implement update-checker with update-notifier
-
   const cwd = process.cwd()
   let projectDirectory
   let projectName
