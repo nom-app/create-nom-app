@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "cross-spawn": "^6.0.5",
     "glob": "^7.1.4",
     "is-directory": "^0.3.1"
   }
