@@ -18,4 +18,4 @@ The Contributors Documentation will help you with:
 
 * ensuring you have the prerequisites for development
 * understanding the design structure of the project
-* TODO: add more
+* the Docker services we use
