@@ -70,7 +70,7 @@ function buildAndPublish() {
 
   echo "unpublishing previous versions of $package from Verdaccio"
   # Unpublish previous version of package, which may have persisted on Verdaccio
-  npm unpublish --registry http://172.30.20.18:4873 --force
+  npm unpublish --force --registry http://172.30.20.18:4873 --verbose "$package"
 
   echo "yarn install"
   yarn install
@@ -79,7 +79,7 @@ function buildAndPublish() {
   yarn run start:once
 
   echo "publishing $package to Verdaccio"
-  npm publish --tag dev --registry http://172.30.20.18:4873 --verbose
+  npm publish --registry http://172.30.20.18:4873 --verbose
 
   cd "$prevPWD" || exit 1
 }
