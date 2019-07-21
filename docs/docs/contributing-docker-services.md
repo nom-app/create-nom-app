@@ -99,7 +99,8 @@ Verdaccio registry, run `make reup-packages`.
 
 This service will render recorded
 [Terminalizer](https://github.com/faressoft/terminalizer) files. The files are
-written to the `output` folder.
+written to the `output` folder. This service is part of the `docker-compose.yml`
+file in `services/termr`.
 
 You can run the project without Docker by using `RAW_TERM_DIR=./rawTerminalData
 OUTPUT_DIR=./output node render.js` from the `services/termr` directory.
