@@ -11,12 +11,8 @@
 const siteConfig = {
   title: 'Create Nom App',
   tagline: 'Begin your next module in seconds.',
-  url: 'https://md.github.io', // Your website URL
-  baseUrl: '/create-nom-app/', // TODO: I think this needs to be '/create-nom-app/' when publish to Github Pages.
-  // Base URL for your project */
-  // For github.io type URLs, you would set the url and baseUrl like:
-  //   url: 'https://facebook.github.io',
-  //   baseUrl: '/test-site/',
+  url: 'https://maximdevoir.github.io',
+  baseUrl: '/create-nom-app/',
   editUrl: 'https://github.com/MaximDevoir/create-nom-app/edit/master/docs/docs/',
   enableUpdateBy: true,
   enableUpdateTime: true,
