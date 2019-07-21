@@ -7,7 +7,7 @@ sidebar_label: Introduction
 Awesome, you want to contribute.
 
 > If you want to request a feature, report a bug, or have a question about Create
-> Nom App, raise an [issue]().
+> Nom App, raise an [issue](https://github.com/MaximDevoir/create-nom-app/issues).
 
 Create Nom App is a monolithic repository. That means all the source code for
 packages like `create-nom-app` and `nom-scripts`, the end-to-end tests, and the
