@@ -1,0 +1,188 @@
+# The configurations that used for the recording, feel free to edit them
+config:
+
+  # Specify a command to be executed
+  # like `/bin/bash -l`, `ls`, or any other commands
+  # the default is bash for Linux
+  # or powershell.exe for Windows
+  command: /bin/zsh -l
+
+  # Specify the current working directory path
+  # the default is the current working directory path
+  cwd: null
+
+  # Export additional ENV variables
+  env:
+    recording: true
+
+  # Explicitly set the number of columns
+  # or use `auto` to take the current
+  # number of columns of your shell
+  cols: 80
+
+  # Explicitly set the number of rows
+  # or use `auto` to take the current
+  # number of rows of your shell
+  rows: 30
+
+  # Amount of times to repeat GIF
+  # If value is -1, play once
+  # If value is 0, loop indefinitely
+  # If value is a positive number, loop n times
+  repeat: 0
+
+  # Quality
+  # 1 - 100
+  quality: 100
+
+  # Delay between frames in ms
+  # If the value is `auto` use the actual recording delays
+  frameDelay: auto
+
+  # Maximum delay between frames in ms
+  # Ignored if the `frameDelay` isn't set to `auto`
+  # Set to `auto` to prevent limiting the max idle time
+  maxIdleTime: auto
+
+  # The surrounding frame box
+  # The `type` can be null, window, floating, or solid`
+  # To hide the title use the value null
+  # Don't forget to add a backgroundColor style with a null as type
+  frameBox:
+    type: floating
+    title: null
+    style: []
+
+  # Add a watermark image to the rendered gif
+  # You need to specify an absolute path for
+  # the image on your machine or a URL, and you can also
+  # add your own CSS styles
+  watermark:
+    imagePath: null
+    style:
+      position: absolute
+      right: 15px
+      bottom: 15px
+      width: 100px
+      opacity: 0.9
+
+  # Cursor style can be one of
+  # `block`, `underline`, or `bar`
+  cursorStyle: block
+
+  # Font family
+  # You can use any font that is installed on your machine
+  # in CSS-like syntax
+  fontFamily: "Menlo for Powerline"
+
+  # The size of the font
+  fontSize: 12
+
+  # The height of lines
+  lineHeight: 1
+
+  # The spacing between letters
+  letterSpacing: 0
+
+  # Theme
+  theme:
+    background: "transparent"
+    foreground: "#afafaf"
+    cursor: "#c7c7c7"
+    black: "#232628"
+    red: "#fc4384"
+    green: "#b3e33b"
+    yellow: "#ffa727"
+    blue: "#75dff2"
+    magenta: "#ae89fe"
+    cyan: "#708387"
+    white: "#d5d5d0"
+    brightBlack: "#626566"
+    brightRed: "#ff7fac"
+    brightGreen: "#c8ed71"
+    brightYellow: "#ebdf86"
+    brightBlue: "#75dff2"
+    brightMagenta: "#ae89fe"
+    brightCyan: "#b1c6ca"
+    brightWhite: "#f9f9f4"
+
+# Records, feel free to edit them
+records:
+  - delay: 1500
+    content: "\e[00m$ "
+  - delay: 1477
+    content: c
+  - delay: 210
+    content: r
+  - delay: 154
+    content: e
+  - delay: 115
+    content: a
+  - delay: 182
+    content: t
+  - delay: 157
+    content: e
+  - delay: 54
+    content: '-'
+  - delay: 248
+    content: 'n'
+  - delay: 190
+    content: o
+  - delay: 64
+    content: m
+  - delay: 180
+    content: '-'
+  - delay: 118
+    content: a
+  - delay: 97
+    content: p
+  - delay: 123
+    content: p
+  - delay: 181
+    content: ' '
+  - delay: 242
+    content: h
+  - delay: 122
+    content: e
+  - delay: 138
+    content: l
+  - delay: 116
+    content: l
+  - delay: 168
+    content: o
+  - delay: 208
+    content: '-'
+  - delay: 146
+    content: w
+  - delay: 88
+    content: o
+  - delay: 107
+    content: r
+  - delay: 77
+    content: l
+  - delay: 115
+    content: d
+  - delay: 146
+    content: "\r\n"
+  - delay: 14
+    content: "Creating \e[34mhello-world\e[39m app.\r\n\r\nInstalling \e[32mnom-scripts\e[39m. This may take a few minutes...\r\n\r\n"
+  - delay: 256
+    content: "\e[2K\e[1G\e[1myarn add v1.16.0\e[22m\r\n"
+  - delay: 36
+    content: "\e[2K\e[1G\e[2m[1/4]\e[22m Resolving packages...\r\n\r\n"
+  - delay: 500
+    content: "\e[2K\e[1G\e[2K\e[1G\e[2m[2/4]\e[22m Fetching packages...\r\n\r\n"
+  - delay: 500
+    content: "\e[2K\e[1G\e[2m[3/4]\e[22m Linking dependencies...\r\n\r\n"
+  - delay: 3000
+    content: "\e[2K\e[1G\e[2m[4/4]\e[22m Building fresh packages...\r\n\r\n"
+  - delay: 1250
+    content: "\e[2K\e[1G\e[32msuccess\e[39m Saved lockfile.\r\n\r\n"
+  - delay: 250
+    content: "\e[2K\e[1G\e[32msuccess\e\e[2K\e[1GDone in 7.56s.\r\n"
+  - delay: 1800
+    content: "\r\nInitialized a git repository.\r\n\r\nSuccessfully created \e[34mhello-world\e[39m.\r\n\r\nBegin using your app with:\r\n\r\n  \e[32mcd\e[39m ~/hello-world\r\n  \e[32myarn start\e[39m\r\n\r\nAvailable commands:\r\n\r\n  \e[32myarn start\e[39m\r\n    Start in development mode.\r\n\r\n  \e[32myarn test\e[39m\r\n    Runs test scripts.\r\n\r\n  \e[32myarn build\e[39m\r\n    Builds and optimizes for production.\r\n\r\n"
+  - delay: 1
+    content: "\e[00m$ "
+  - delay: 8500
+    content: " "
