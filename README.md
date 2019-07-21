@@ -26,7 +26,8 @@ tag.
 
 ### Running the Docs Locally
 
-> To view the documentation online, visit [TODO:](./).
+> To view the documentation online, visit
+> <https://maximdevoir.github.io/create-nom-app/>.
 
 Run `make docs-local` and visit <http://localhost:3000/create-nom-app/>.
 
