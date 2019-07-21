@@ -1,4 +1,4 @@
-const cp = require('child_process')
+const cs = require('cross-spawn')
 const path = require('path')
 const isDir = require('is-directory')
 const glob = require('glob')
@@ -35,14 +35,14 @@ const rawTerminalFiles = glob.sync(`${RAW_TERM_DIR}/*.yml`)
 console.log('files to render', rawTerminalFiles)
 console.log('rawTerm is', process.env.RAW_TERM_DIR)
 
-rawTerminalFiles.forEach(file => {
+for (const file of rawTerminalFiles) {
   const basename = path.basename(file, '.yml')
 
-  console.log(`Rendering ${file}`)
-  // -screen 0 1920x1080x24
-  cp.spawn(`xvfb-run -a --server-args="${XVFB_SERVER_ARG}" terminalizer render --output=${basename} --quality=100 ${file}`, {
+  console.log(`\nRendering ${file}`)
+
+  cs.sync('xvfb-run', ['-a', '--server-args', `"${XVFB_SERVER_ARG}"`, 'terminalizer', 'render',  '--output', `"${basename}"`, '--quality', '100', `"${file}"`], {
     shell: '/bin/bash',
     stdio: 'inherit',
     cwd: OUTPUT_DIR
   })
-})
+}
