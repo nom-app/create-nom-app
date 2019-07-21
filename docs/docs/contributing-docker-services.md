@@ -55,8 +55,9 @@ From the root directory of the `create-nom-app` monorepo:
     # current yarn  registry: https://registry.yarnpkg.com
     ```
 
-    > **First Time Users Notice**: If this is your fist time running any `registry.sh` commands,
-    > you will want to save your original registries somewhere.
+    > **First Time Users Notice**: If this is your fist time running any
+    > `registry.sh` commands, you will want to save your original registries
+    > somewhere.
 
 3. Set your package managers registry to Verdaccio.
 
