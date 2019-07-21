@@ -48,3 +48,6 @@ docs-local: #[Docs] Build the documentation.
 #       configs.
 source-registry: # Sources the regsitry
 	source ./tasks/registry.sh
+
+render-terminal-recordings: # Renders terminalizer recordings.
+	docker-compose --file ./services/termr/docker-compose.yml up --build
