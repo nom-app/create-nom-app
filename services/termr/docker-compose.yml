@@ -1,0 +1,13 @@
+version: '3'
+services:
+  termr:
+    container_name: terminal_renderer
+    build: .
+    volumes:
+      - "./rawTerminalData:/home/rterm/rawTerminalData"
+      - "./output:/home/rterm/output"
+
+networks:
+  default:
+    external:
+      name: create-nom-app_cnan

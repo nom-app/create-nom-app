@@ -38,17 +38,6 @@ services:
     depends_on:
       - verdaccio
 
-  # TODO: [HIGH] This service must be removed from this compose file. The
-  # `termr` service uses over 1gb of images (mostly Ubuntu).
-  termr:
-    container_name: terminal_renderer
-    build: ./services/termr
-    volumes:
-      - "./services/termr/rawTerminalData:/home/rterm/rawTerminalData"
-      - "./services/termr/output:/home/rterm/output"
-    networks:
-      cnan:
-
 networks:
   # Create Nom App network
   cnan:
