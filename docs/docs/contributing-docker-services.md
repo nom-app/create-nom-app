@@ -110,11 +110,10 @@ OUTPUT_DIR=./output node render.js` from the `services/termr` directory.
 > have the Menlo for Powerline font installed locally on your system.
 >
 > ```yaml
+> # recording.yml
 > config:
->   fontFamily: "Menlo for Powerline"
 >   ...
-> records:
->    ...
+>   fontFamily: "Menlo for Powerline"
 > ```
 
 ## Docs Docusaurus
