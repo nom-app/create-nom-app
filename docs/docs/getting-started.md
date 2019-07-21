@@ -3,7 +3,9 @@ id: getting-started
 title: Getting Started
 ---
 
-TODO: Description of CNA
+Create Nom App is a zero-config tool to develop, test, and build Node modules.
+
+![cna-create-project](https://user-images.githubusercontent.com/10104630/61597124-1a500380-abc1-11e9-9446-b382301bb9af.gif)
 
 ## Quick Start
 
@@ -44,4 +46,50 @@ hello-world
 
 ## Scripts
 
-TODO:
+### Start
+
+Build your app in development mode. This will monitor and display any errors with the files
+
+<!--DOCUSAURUS_CODE_TABS-->
+<!--yarn-->
+```sh
+yarn start
+```
+
+<!--npm-->
+```sh
+npm start
+```
+<!--END_DOCUSAURUS_CODE_TABS-->
+
+### Test
+
+Runs unit tests.
+
+<!--DOCUSAURUS_CODE_TABS-->
+<!--yarn-->
+```sh
+yarn start
+```
+
+<!--npm-->
+```sh
+npm start
+```
+<!--END_DOCUSAURUS_CODE_TABS-->
+
+### Build
+
+Bundles and optimizes your app for use in production environments.
+
+<!--DOCUSAURUS_CODE_TABS-->
+<!--yarn-->
+```sh
+yarn build
+```
+
+<!--npm-->
+```sh
+npm run build
+```
+<!--END_DOCUSAURUS_CODE_TABS-->
