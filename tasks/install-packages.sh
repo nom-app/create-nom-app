@@ -64,6 +64,17 @@ function buildAndPublish() {
   package=$1
   pkgAbsoluteDir="$PACKAGES_DIR/$package"
 
+  # From https://gist.github.com/DarrenN/8c6a5b969481725a4413
+  # shellcheck disable=2002
+  pkgVersion=$(cat "$pkgAbsoluteDir/package.json" \
+    | grep version \
+    | head -1 \
+    | awk -F: '{ print $2 }' \
+    | sed 's/[",]//g' \
+    | tr -d '[:space:]')
+
+  echo "  $package@$pkgVersion"
+
   echo "$pkgAbsoluteDir"
 
   cd "$pkgAbsoluteDir" || exit 1
