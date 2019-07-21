@@ -25,10 +25,11 @@ const globbedSpecs = glob.sync('**/*.spec.*', {
   cwd: path.join(projectRoot, 'tests')
 })
 
-let specs = []
+const specs = []
 
-for (let spec of globbedSpecs) {
-  let specExt = path.extname(spec).slice(1)
+// eslint-disable-next-line no-restricted-syntax
+for (const spec of globbedSpecs) {
+  const specExt = path.extname(spec).slice(1)
 
   if (['js'].includes(specExt)) {
     specs.push(spec)
@@ -38,7 +39,8 @@ for (let spec of globbedSpecs) {
 console.log('globbedSpecs', globbedSpecs)
 console.log('specs', specs)
 
-for (let spec of specs) {
+// eslint-disable-next-line no-restricted-syntax
+for (const spec of specs) {
   mocha.addFile(path.join(projectRoot, 'tests', spec))
 }
 
