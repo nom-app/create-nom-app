@@ -169,18 +169,18 @@ records:
   - delay: 256
     content: "\e[2K\e[1G\e[1myarn add v1.16.0\e[22m\r\n"
   - delay: 36
-    content: "\e[2K\e[1G\e[2m[1/4]\e[22m Resolving packages...\r\n\r\n"
-  - delay: 500
-    content: "\e[2K\e[1G\e[2K\e[1G\e[2m[2/4]\e[22m Fetching packages...\r\n\r\n"
-  - delay: 500
-    content: "\e[2K\e[1G\e[2m[3/4]\e[22m Linking dependencies...\r\n\r\n"
+    content: "\e[2K\e[1G\e[2m[1/4]\e[22m Resolving packages...\r\n"
+  - delay: 750
+    content: "\e[2K\e[1G\e[2K\e[1G\e[2m[2/4]\e[22m Fetching packages...\r\n"
+  - delay: 2000
+    content: "\e[2K\e[1G\e[2m[3/4]\e[22m Linking dependencies...\r\n"
   - delay: 3000
     content: "\e[2K\e[1G\e[2m[4/4]\e[22m Building fresh packages...\r\n\r\n"
   - delay: 1250
-    content: "\e[2K\e[1G\e[32msuccess\e[39m Saved lockfile.\r\n\r\n"
+    content: "\e[2K\e[1G\e[32msuccess\e[39m Saved lockfile.\r\n"
   - delay: 250
     content: "\e[2K\e[1G\e[32msuccess\e\e[2K\e[1GDone in 7.56s.\r\n"
-  - delay: 1800
+  - delay: 2000
     content: "\r\nInitialized a git repository.\r\n\r\nSuccessfully created \e[34mhello-world\e[39m.\r\n\r\nBegin using your app with:\r\n\r\n  \e[32mcd\e[39m ~/hello-world\r\n  \e[32myarn start\e[39m\r\n\r\nAvailable commands:\r\n\r\n  \e[32myarn start\e[39m\r\n    Start in development mode.\r\n\r\n  \e[32myarn test\e[39m\r\n    Runs test scripts.\r\n\r\n  \e[32myarn build\e[39m\r\n    Builds and optimizes for production.\r\n\r\n"
   - delay: 1
     content: "\e[00m$ "
