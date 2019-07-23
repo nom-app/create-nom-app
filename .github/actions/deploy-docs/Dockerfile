@@ -10,10 +10,17 @@ LABEL "repository"="https://github.com/MaximDevoir/create-nom-app"
 LABEL "homepage"="https://github.com/MaximDevoir/create-nom-app/tree/master/.github/actions/"
 LABEL "maintainer"="Maxim Devoir <maximdevoir@gmail.com>"
 
+# Packages required by Git
 RUN apk update && \
     apk upgrade && \
     apk add --no-cache \
-    git
+    bash git openssh
+
+# Packages required by Docusaurus
+RUN apk update && \
+    apk upgrade && \
+    apk add --no-cache \
+    make
 
 COPY LICENSE README.md /
 
