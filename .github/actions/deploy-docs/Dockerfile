@@ -21,6 +21,8 @@ RUN apk update && \
     apk upgrade && \
     apk add --no-cache \
     autoconf \
+    automake \
+    gcc \
     make
 
 COPY LICENSE README.md /
