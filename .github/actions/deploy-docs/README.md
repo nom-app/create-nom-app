@@ -36,3 +36,6 @@ PAT](https://github.com/facebook/docusaurus/blob/master/docs/getting-started-pub
 |------------|-----------------|
 | `WEBSITE_DIR` | The `WEBSITE_DIR` points to the directory, relative to your repository root, containing the `siteConfig.js` file from Docusaurus. See the Docusaurus section on [directory structure](https://docusaurus.io/docs/en/site-preparation#directory-structure) for more information. |
 
+## Arguments
+
+None
