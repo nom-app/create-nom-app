@@ -71,7 +71,7 @@ class Footer extends React.Component {
               href={this.props.config.repoUrl}
               data-icon="octicon-star"
               data-size="normal"
-              data-count-href="/facebook/docusaurus/stargazers"
+              data-count-href="/maximdevoir/create-nom-app/stargazers"
               data-show-count="true"
               data-count-aria-label="# stargazers on GitHub"
               aria-label="Star Create Nom App on GitHub">
