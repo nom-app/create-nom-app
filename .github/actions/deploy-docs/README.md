@@ -22,6 +22,8 @@ action "Build and deploy" {
 |------------|-----------------|
 | `DOCS_DEPLOY_TOKEN` | This token must have full access to the repository. See this guide from GitHub on how to create a [personal access token](https://help.github.com/en/articles/creating-a-personal-access-token-for-the-command-line). |
 
+<img src="https://user-images.githubusercontent.com/10104630/61743118-704fb300-ad49-11e9-8a3c-73ef7dc4ffbb.png" align="right" />
+
 ### Creating Your Personal Access Token
 
 The personal access token (PAT) must have full access to the repository (the
