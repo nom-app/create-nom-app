@@ -20,8 +20,6 @@ RUN apk update && \
 RUN apk update && \
     apk upgrade && \
     apk add --no-cache \
-    autoconf \
-    automake \
     build-base
 
 COPY LICENSE README.md /
