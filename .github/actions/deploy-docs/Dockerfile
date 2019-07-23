@@ -10,6 +10,11 @@ LABEL "repository"="https://github.com/MaximDevoir/create-nom-app"
 LABEL "homepage"="https://github.com/MaximDevoir/create-nom-app/tree/master/.github/actions/"
 LABEL "maintainer"="Maxim Devoir <maximdevoir@gmail.com>"
 
+RUN apk update && \
+    apk upgrade && \
+    apk add --no-cache \
+    git
+
 COPY LICENSE README.md /
 
 ADD entrypoint.sh /entrypoint.sh
