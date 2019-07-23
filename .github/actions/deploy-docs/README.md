@@ -41,3 +41,7 @@ PAT](https://github.com/facebook/docusaurus/blob/master/docs/getting-started-pub
 ## Arguments
 
 None
+
+## License
+
+The [MIT](LICENSE) license
