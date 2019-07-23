@@ -22,9 +22,7 @@ RUN apk update && \
     apk add --no-cache \
     autoconf \
     automake \
-    g++ \
-    libc6-compat \
-    make
+    build-base
 
 COPY LICENSE README.md /
 
