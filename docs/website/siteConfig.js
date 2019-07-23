@@ -43,9 +43,9 @@ const siteConfig = {
   ],
 
   /* path to images for header/footer */
-  headerIcon: 'img/favicon.ico',
-  footerIcon: 'img/favicon.ico',
-  favicon: 'img/favicon.ico',
+  // headerIcon: 'img/favicon.ico', TODO: Re-add icons when an actual icon is created
+  // footerIcon: 'img/favicon.ico',
+  // favicon: 'img/favicon.ico',
 
   /* Colors for website */
   colors: {
