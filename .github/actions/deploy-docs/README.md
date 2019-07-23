@@ -4,6 +4,8 @@
 
 ## Usage
 
+<img src="https://user-images.githubusercontent.com/10104630/61741640-3335f180-ad46-11e9-9e6b-04318829a80f.png" align="right" width=250/>
+
 ```bash
 action "Build and deploy" {
   uses = "./.github/actions/deploy-docs"
