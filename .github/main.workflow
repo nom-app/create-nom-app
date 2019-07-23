@@ -10,5 +10,5 @@ workflow "Deploy Docs" {
 
 action "Build and deploy" {
   // needs = ["On master branch"]
-  uses = "./actions/deploy-docs/"
+  uses = "./.github/actions/deploy-docs"
 }
