@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "cross-spawn": "^6.0.5",
+    "fs-extra": "^8.1.0",
     "glob": "^7.1.4",
     "is-directory": "^0.3.1"
   }
