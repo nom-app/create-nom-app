@@ -2,6 +2,18 @@
 
 > Build and deploy a Docusaurus project to GitHub Pages.
 
+## Usage
+
+```bash
+action "Build and deploy" {
+  uses = "./.github/actions/deploy-docs"
+  secrets = ["DOCS_DEPLOY_TOKEN"]
+  env = {
+    WEBSITE_DIR = "docs/website"
+  }
+}
+```
+
 ## Environment
 
 | **Name** | **Description** |
