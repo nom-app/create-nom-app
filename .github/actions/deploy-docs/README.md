@@ -20,7 +20,7 @@ action "Build and deploy" {
 
 | **Secret** | **Description** |
 |------------|-----------------|
-| `DOCS_DEPLOY_TOKEN` | This token must have full access to the repository. See this guide from GitHub on how to create a [personal access token](https://help.github.com/en/articles/creating-a-personal-access-token-for-the-command-line). |
+| `DOCS_DEPLOY_TOKEN` | This token must have full access to the repository. View [this section](#creating-your-personal-access-token) on creating your PAT. |
 
 <img src="https://user-images.githubusercontent.com/10104630/61743118-704fb300-ad49-11e9-8a3c-73ef7dc4ffbb.png" align="right" />
 
