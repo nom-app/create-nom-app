@@ -30,3 +30,7 @@
 .nav-footer {
   background: #2f3136
 }
+
+.siteNavGroupActive a {
+  font-weight: 500 !important
+}
