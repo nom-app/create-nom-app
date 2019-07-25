@@ -13,6 +13,9 @@
       "contributing-project-structure",
       "contributing-docker-services"
     ],
+    "Docker": [
+      "docker/docker-verdaccio"
+    ],
     "nom-scripts": [
       "contributing-nom-scripts"
     ]
