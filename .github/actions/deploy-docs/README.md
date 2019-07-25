@@ -26,13 +26,16 @@ action "Build and deploy" {
 
 ### Creating Your Personal Access Token
 
-The personal access token (PAT) must have full access to the repository (the
-`repo` box must be checked during token generation).
+The personal access token (PAT) must have full access to the repository.
 
-Create Nom App has no official instructions on creating a PAT :(
+Create your [PAT
+here](https://github.com/settings/tokens/new?description=Deploy%20Docs%20for%20...&scopes=repo)
+and then click "Generate Token".
 
-You may view Docusaurus' guide on [creating a
-PAT](https://github.com/facebook/docusaurus/blob/master/docs/getting-started-publishing.md#using-circleci-20), ignore the steps not relevant to creating PATs.
+<br />
+<br />
+<br />
+<br />
 
 ## Environment
 
