@@ -1,7 +1,10 @@
 ---
 id: introduction
-title: Create Nom App | Introduction
+title: Introduction
 sidebar_label: Introduction
 ---
 
-TODO:
+Create Nom App makes building modules easy. Nom App maintains all the
+development dependencies behind-the-scenes so you can focus on coding.
+
+Click [Getting Started](getting-started.md) to begin your Nom App.
