@@ -48,7 +48,7 @@ hello-world
 
 ### Start
 
-Build your app in development mode. This will monitor and display any errors with the files
+Build your app in development mode. This will monitor and display any errors with the files.
 
 <!--DOCUSAURUS_CODE_TABS-->
 <!--yarn-->
