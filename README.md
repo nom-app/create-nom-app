@@ -2,6 +2,9 @@
 
 > The monorepo for Create Nom App
 
+Get started with your first Nom app now. Visit the [Getting
+Started](https://maximdevoir.github.io/create-nom-app/) page.
+
 ## Docker
 
 ### Testing in Docker
