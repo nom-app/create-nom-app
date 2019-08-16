@@ -30,9 +30,10 @@ class HomeSplash extends React.Component {
     );
 
     const Logo = props => (
-      <div className="projectLogo">
-        <img src={props.img_src} alt="Project Logo" />
-      </div>
+      <div></div>
+      // <div className="projectLogo">
+      //   <img src={props.img_src} alt="Project Logo" />
+      // </div>
     );
 
     const ProjectTitle = () => (
@@ -67,6 +68,7 @@ class HomeSplash extends React.Component {
             <Button href={docUrl('getting-started')}>Visit the Docs</Button>
             {/* <Button href={docUrl('doc1.html')}>Example Link</Button> */}
           </PromoSection>
+          <div><img src="https://user-images.githubusercontent.com/10104630/61597124-1a500380-abc1-11e9-9446-b382301bb9af.gif"/></div>
         </div>
       </SplashContainer>
     );
@@ -84,31 +86,21 @@ class Index extends React.Component {
         id={props.id}
         background={props.background}>
         <GridBlock
-          align="center"
+          align="left"
           contents={props.children}
           layout={props.layout}
         />
       </Container>
     );
 
-    const FeatureCallout = () => (
-      <div
-        className="productShowcaseSection paddingBottom"
-        style={{textAlign: 'center'}}>
-        <h2>Feature Callout</h2>
-        <MarkdownBlock>These are features of this project</MarkdownBlock>
-      </div>
-    );
-
-    const Description = () => (
-      <Block background="dark">
+    const OneDependency = () => (
+      <Block background="light">
         {[
           {
-            content:
-              'This is another description of how this project is useful',
+            content: ' dependency.',
             image: `https://user-images.githubusercontent.com/10104630/61597124-1a500380-abc1-11e9-9446-b382301bb9af.gif`,
-            imageAlign: 'right',
-            title: 'Description',
+            imageAlign: 'left',
+            title: 'One dependency. Zero-configuration.',
           },
         ]}
       </Block>
@@ -181,9 +173,8 @@ class Index extends React.Component {
         <HomeSplash siteConfig={siteConfig} language={language} />
         <div className="mainContainer">
           {/* <Features /> */}
-          <FeatureCallout />
+          {/* <OneDependency /> */}
           {/* <LearnHow /> */}
-          <Description />
           {/* <Showcase /> */}
         </div>
       </div>
