@@ -4,6 +4,9 @@
     "Getting Started": ["getting-started"],
     "Testing": [
       "testing/creating-tests"
+    ],
+    "Support": [
+      "support/issues"
     ]
   },
   "contrib": {
