@@ -3,10 +3,10 @@ import path from 'path'
 import chalk from 'chalk'
 import glob from 'glob'
 import Mocha from 'mocha'
+
 import discoverRoot from '../packages/discoverRoot'
 
 const projectRoot = discoverRoot()
-
 // TODO: Make statement DRY. This statement is repeated in multiple `./scripts`
 // files.
 if (projectRoot === undefined) {
@@ -35,9 +35,6 @@ for (const spec of globbedSpecs) {
   }
 }
 
-console.log('globbedSpecs', globbedSpecs)
-console.log('specs', specs)
-
 require('@babel/register')({
   presets: ['@babel/preset-env']
 })
@@ -47,6 +44,4 @@ for (const spec of specs) {
   mocha.addFile(path.join(projectRoot, 'tests', spec))
 }
 
-mocha.run((fails => console.log(fails)))
-
-console.log(mocha)
+mocha.run()
