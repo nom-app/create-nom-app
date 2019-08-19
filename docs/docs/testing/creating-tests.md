@@ -16,5 +16,5 @@ detect whether to use the Mocha or Jest runner based on the filename pattern:
 * Files with `.spec.js` suffix will run through the Mocha test runner.
 * Files with `.test.js` suffix will run through the Jest test runner.
 
-You can now use Mocha for it's powerful Assert library and use Jest for it's
+You can now use Mocha for it's powerful Assert library and Jest for it's
 powerful snapshot testing tools.
