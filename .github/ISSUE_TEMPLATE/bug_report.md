@@ -2,8 +2,6 @@
 name: Bug report
 about: Create a report to help us improve.
 title: ''
-labels: bug
-assignees: MaximDevoir
 ---
 
 <!-- Before you report an issue, check if it's been reported before: -->
