@@ -41,7 +41,7 @@ console.log('specs', specs)
 
 require("@babel/register")({
   presets: ["@babel/preset-env"]
-});
+})
 
 // eslint-disable-next-line no-restricted-syntax
 for (const spec of specs) {
