@@ -75,7 +75,8 @@
     "validate-npm-package-name": "^3.0.0",
     "webpack": "^4.35.2",
     "webpack-cli": "^3.3.5",
-    "webpack-node-externals": "^1.7.2"
+    "webpack-node-externals": "^1.7.2",
+    "winston": "^3.2.1"
   },
   "devDependencies": {
     "copy-webpack-plugin": "^5.0.3",
