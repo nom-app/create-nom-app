@@ -2,6 +2,9 @@
 
 > The monorepo for Create Nom App.
 
+[![license](https://badgen.net/badge/license/MIT/blue)](https://www.npmjs.com/package/create-nom-app)
+[![Deploy Docs](https://github.com/MaximDevoir/create-nom-app/workflows/Deploy%20Docs/badge.svg)](https://github.com/MaximDevoir/create-nom-app)
+
 Get started with your first Nom app now. Visit the [Getting
 Started](https://maximdevoir.github.io/create-nom-app/) page.
 
