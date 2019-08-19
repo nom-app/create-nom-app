@@ -1,6 +1,6 @@
 import { assert, expect } from 'chai'
 
-import main, { add, subtract } from '../src'
+import main, { add, subtract } from '../src/main'
 
 describe('Main App', () => {
   it('should export default add() function', () => {
