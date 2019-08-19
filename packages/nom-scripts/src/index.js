@@ -107,7 +107,7 @@ function main() {
       console.log(`Unrecognized script ${chalk.blue(script)}.`)
       console.log(`You may need to update your ${chalk.green('nom-scripts')} dependency.`)
       console.log('To learn more about this message, visit:')
-      console.log('https://TODO:base-url/create-nom-app/docs/unrecognized-script')
+      // console.log('https://TODO:base-url/create-nom-app/docs/unrecognized-script')
       break
   }
 
