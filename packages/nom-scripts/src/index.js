@@ -34,6 +34,9 @@ function main() {
       console.log(`v${version}`)
       process.exit(0)
     })
+    .option('--verbose', 'display low-level debugging information', () => {
+      process.env.LOG_LEVEL = 'debug'
+    })
 
   program.parse(process.argv)
 
