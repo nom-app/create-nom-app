@@ -2,7 +2,7 @@
 
 # Checks if both NPM and Yarn have set their registrys to Verdaccio.
 function checkRegistryConfig() {
-  local verdaccioRegistry="http://172.30.20.18:4873"
+  local verdaccioRegistry="172.30.20.18:4873"
   local npmRegistry
   local yarnRegistry
 
