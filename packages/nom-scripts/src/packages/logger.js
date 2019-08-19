@@ -1,6 +1,8 @@
-// TODO: This needs to go in its own package.
-// NOTICE: This module is duplicated to `nom-scripts`.
-// This is so incredibly not DRY.
+// TODO: NOTICE: This module is duplicated from `create-nom-app`.
+// DO NOT MODIFY THIS FILE. MODIFY THE `CREATE-NOM-APP` VARIANT, AND THEN COPY
+// TO THIS FILE.
+
+// DO NOT MODIFY THIS FILE
 import winston from 'winston'
 
 /**
