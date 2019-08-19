@@ -1,7 +1,6 @@
-import chai, { assert, expect } from 'chai'
-import main, { add, subtract } from '../src'
+import { assert, expect } from 'chai'
 
-chai.should()
+import main, { add, subtract } from '../src'
 
 describe('Main App', () => {
   it('should export default add() function', () => {
