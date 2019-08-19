@@ -1,6 +1,8 @@
 #!/bin/bash
 
 verdaccio_registry=http://172.30.20.18:4873
+npm_registry=https://registry.npmjs.org/
+yarn_registry=https://registry.yarnpkg.com
 original_npm_registry=$(npm config get registry)
 original_yarn_registry=$(yarn config get registry)
 
@@ -12,6 +14,16 @@ function useVerdaccioRegistry () {
 function useOriginalRegistry () {
   _printRegistryInformation
   _setRegistries "$original_npm_registry" "$original_yarn_registry"
+}
+
+function useNPMRegistry () {
+  _printRegistryInformation
+  _setRegistries "$npm_registry" "$npm_registry"
+}
+
+function useYarnRegisty () {
+  _printRegistryInformation
+  _setRegistries "$yarn_registry" "$yarn_registry"
 }
 
 function _printRegistryInformation () {
