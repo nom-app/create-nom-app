@@ -1,6 +1,5 @@
 import path from 'path'
 
-import { sync as spawnSync } from 'cross-spawn'
 import chalk from 'chalk'
 import glob from 'glob'
 import Mocha from 'mocha'
