@@ -38,8 +38,8 @@ for (const spec of globbedSpecs) {
 console.log('globbedSpecs', globbedSpecs)
 console.log('specs', specs)
 
-require("@babel/register")({
-  presets: ["@babel/preset-env"]
+require('@babel/register')({
+  presets: ['@babel/preset-env']
 })
 
 // eslint-disable-next-line no-restricted-syntax
