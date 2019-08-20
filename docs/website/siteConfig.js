@@ -11,8 +11,8 @@
 const siteConfig = {
   title: 'Create Nom App',
   tagline: 'Begin your next module in seconds.',
-  url: 'https://maximdevoir.github.io',
-  baseUrl: '/create-nom-app/',
+  url: 'https://create-nom.app',
+  baseUrl: '/',
   editUrl: 'https://github.com/MaximDevoir/create-nom-app/edit/master/docs/docs/',
   enableUpdateBy: true,
   enableUpdateTime: true,
