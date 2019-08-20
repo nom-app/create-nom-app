@@ -6,7 +6,7 @@
 .nyc_output
 
 # production
-/lib
+/dist
 
 # logs
 npm-debug.log*
