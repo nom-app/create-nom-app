@@ -71,6 +71,8 @@ const siteConfig = {
   // This copyright info is used in /core/Footer.js and blog RSS/Atom feeds.
   copyright: `Copyright © 2019 Maxim Devoir and contributors`,
 
+  gaTrackingId: 'UA-146069632-1',
+
   highlight: {
     // Highlight.js theme to use for syntax highlighting in code blocks.
     theme: 'default',
@@ -98,7 +100,7 @@ const siteConfig = {
 
   // You may provide arbitrary config keys to be used as needed by your
   // template. For example, if you need your repo's URL...
-    repoUrl: 'https://github.com/MaximDevoir/create-nom-app',
+  repoUrl: 'https://github.com/MaximDevoir/create-nom-app',
   scrollToTop: true,
 };
 
