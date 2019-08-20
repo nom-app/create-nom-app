@@ -34,7 +34,6 @@ const statsHandler = (err, stats) => {
     if (err.details) {
       console.error(err.details)
     }
-    return
   }
 }
 
