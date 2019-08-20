@@ -13,6 +13,7 @@ const siteConfig = {
   tagline: 'Begin your next module in seconds.',
   url: 'https://create-nom.app',
   baseUrl: '/',
+  cname: 'create-nom.app',
   editUrl: 'https://github.com/MaximDevoir/create-nom-app/edit/master/docs/docs/',
   enableUpdateBy: true,
   enableUpdateTime: true,
