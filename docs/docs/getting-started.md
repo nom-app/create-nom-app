@@ -69,12 +69,12 @@ Runs unit tests.
 <!--DOCUSAURUS_CODE_TABS-->
 <!--yarn-->
 ```sh
-yarn start
+yarn test
 ```
 
 <!--npm-->
 ```sh
-npm start
+npm test
 ```
 <!--END_DOCUSAURUS_CODE_TABS-->
 
