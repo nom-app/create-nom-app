@@ -22,7 +22,7 @@ export default {
   },
   mode: isProduction ? 'production' : 'development',
   optimization: {
-    // minimize: true
+    minimize: false
   },
   devtool: isProduction ? undefined : 'inline-source-map',
   // target and externals because
