@@ -29,7 +29,8 @@ export default {
     // Monorepo support. See https://github.com/liady/webpack-node-externals/issues/39#issuecomment-356647854
     nodeExternals({
       modulesDir: path.resolve(__dirname, '../../node_modules')
-    })
+    }),
+    /package\.json/
   ],
   output: {
     filename: libraryName,
