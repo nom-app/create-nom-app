@@ -46,7 +46,9 @@ function main() {
     context: projectRoot,
     entry: path.join(projectRoot, 'src', 'main.js'),
     mode: isProduction ? 'production' : 'development',
-    optimization: {},
+    optimization: {
+      minimize: false
+    },
     target: 'node',
     externals: [nodeExternals()],
     devtool: isProduction ? false : 'inline-source-map',
