@@ -33,7 +33,13 @@ export default {
     __dirname: false,
     __filename: false
   },
-  externals: [nodeExternals()],
+  externals: [
+    nodeExternals(),
+    // Monorepo support. See https://github.com/liady/webpack-node-externals/issues/39#issuecomment-356647854
+    nodeExternals({
+      modulesDir: path.resolve(__dirname, '../../node_modules')
+    })
+  ],
   output: {
     filename: (chunkData) => {
       const chunkName = chunkData.chunk.name
