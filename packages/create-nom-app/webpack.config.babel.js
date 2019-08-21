@@ -30,7 +30,13 @@ export default {
     nodeExternals({
       modulesDir: path.resolve(__dirname, '../../node_modules')
     }),
-    /package\.json/
+    (context, request, callback) => {
+      if (/package\.json/.test(request)) {
+        return callback(null, `require("${request}")`)
+      }
+
+      callback()
+    }
   ],
   output: {
     filename: libraryName,
