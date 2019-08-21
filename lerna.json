@@ -3,6 +3,7 @@
   "packages": [
     "packages/*"
   ],
+  "useWorkspaces": true,
   "version": "independent",
   "changelog": {
     "repo": "maximdevoir/create-nom-app",
