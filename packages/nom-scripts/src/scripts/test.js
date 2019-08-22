@@ -2,9 +2,13 @@ import path from 'path'
 
 import chalk from 'chalk'
 import glob from 'glob'
+import minimist from 'minimist'
 import Mocha from 'mocha'
 
 import discoverRoot from '../packages/discoverRoot'
+
+const args = minimist(process.argv.slice(2))
+const hasCoverageFlag = 'coverage' in args
 
 const projectRoot = discoverRoot()
 // TODO: Make statement DRY. This statement is repeated in multiple `./scripts`
@@ -35,13 +39,18 @@ for (const spec of globbedSpecs) {
   }
 }
 
-require('@babel/register')({
-  presets: ['@babel/preset-env']
-})
+if (hasCoverageFlag) {
+  console.error('Coverage reports are not supported in your version of nom-scripts.')
+  console.error('Upgrade your nom-scripts dependency to get the latest features.')
+} else {
+  // eslint-disable-next-line global-require
+  require('@babel/register')({
+    presets: ['@babel/preset-env']
+  })
+  // eslint-disable-next-line no-restricted-syntax
+  for (const spec of specs) {
+    mocha.addFile(path.join(projectRoot, 'tests', spec))
+  }
 
-// eslint-disable-next-line no-restricted-syntax
-for (const spec of specs) {
-  mocha.addFile(path.join(projectRoot, 'tests', spec))
+  mocha.run()
 }
-
-mocha.run()
