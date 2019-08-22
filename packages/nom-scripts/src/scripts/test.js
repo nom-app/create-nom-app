@@ -41,7 +41,12 @@ for (const spec of globbedSpecs) {
 
 if (hasCoverageFlag) {
   console.log('Coverage reports are not supported in your version of nom-scripts.')
+  console.log('')
   console.log('Upgrade your nom-scripts dependency to get the latest features.')
+  console.log('')
+  console.log('Learn more about coverage support at: ')
+  console.log('    https://create-nom.app/docs/feature/code-coverage')
+  process.exit()
 } else {
   // eslint-disable-next-line global-require
   require('@babel/register')({
