@@ -42,7 +42,6 @@ Run `make docs-local` and visit <http://localhost:3000/create-nom-app/>.
 
 ## License
 
-Licenses are also available within each package.
-
+MIT
 
 [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FMaximDevoir%2Fcreate-nom-app.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2FMaximDevoir%2Fcreate-nom-app?ref=badge_large)
