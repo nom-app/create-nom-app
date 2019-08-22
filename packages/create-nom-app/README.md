@@ -4,7 +4,7 @@
 
 ## Documentation
 
-Visit the [documentation](https://maximdevoir.github.io/create-nom-app/) on how
+Visit the [documentation](https://create-nom.app/) on how
 to begin your first Node app.
 
 ## License

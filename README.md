@@ -7,7 +7,7 @@
 [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FMaximDevoir%2Fcreate-nom-app.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2FMaximDevoir%2Fcreate-nom-app?ref=badge_shield)
 
 Get started with your first Nom app now. Visit the [Getting
-Started](https://maximdevoir.github.io/create-nom-app/) page.
+Started](https://create-nom.app/) page.
 
 ## Docker
 
@@ -34,9 +34,9 @@ tag.
 ### Running the Docs Locally
 
 > To view the documentation online, visit
-> <https://maximdevoir.github.io/create-nom-app/>.
+> <https://create-nom.app/>.
 
-Run `make docs-local` and visit <http://localhost:3000/create-nom-app/>.
+Run `make docs-local` and visit <http://localhost:3000/>.
 
 ## Deployments
 

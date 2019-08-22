@@ -39,7 +39,7 @@ restart: #[Docker] Restarts the project.
 	@make up
 
 docs-local: #[Docs] Build the documentation.
-	@echo "Documentation available at \033[1;32mhttp://localhost:3000/create-nom-app/\033[0m"
+	@echo "Documentation available at \033[1;32mhttp://localhost:3000/\033[0m"
 	docker-compose -f docs/docker-compose.yml up
 
 # TODO: Not working properly. Should load source script into shell. This Make
