@@ -125,6 +125,6 @@ The `docker-compose.yml` file for Docusaurus is in the `docs/` folder.
 
 Build the documentation with `docker-compose up`.
 
-View the documentation locally at <http://localhost:3000/create-nom-app/>
+View the documentation locally at <http://localhost:3000/>
 
 [MFP-font]: https://github.com/abertsch/Menlo-for-Powerline
