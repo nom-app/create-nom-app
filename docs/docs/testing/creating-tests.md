@@ -13,6 +13,8 @@ detect whether to use the Mocha or Jest runner based on the filename pattern:
 
 * Files with `.spec.js` suffix will run through the Mocha test runner.
 
+* Jest as a test runner is on the [roadmap](https://github.com/MaximDevoir/create-nom-app/issues/3).
+
 ## Running Tests
 
 You can run tests with the `test` script.
