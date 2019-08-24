@@ -39,7 +39,7 @@
     "test:watch": "cross-env NODE_ENV=test mocha --colors --watch --require @babel/register tests/*.spec.js"
   },
   "keywords": [
-    "nodejs",
+    "node",
     "zero-configuration",
     "build-tools"
   ],
