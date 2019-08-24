@@ -1,3 +1,3 @@
 # Nom Scripts
 
-View the documentation online.
+View the documentation at [create-nom.app](https://create-nom.app).
