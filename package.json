@@ -8,6 +8,7 @@
     "publish": "tasks/publish.sh"
   },
   "devDependencies": {
+    "jest": "^24.9.0",
     "lerna": "^3.16.0",
     "lerna-changelog": "^0.8.2"
   }
