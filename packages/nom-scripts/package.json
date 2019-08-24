@@ -1,6 +1,6 @@
 {
   "name": "nom-scripts",
-  "description": "",
+  "description": "Scripts to develop your Create Nom App.",
   "version": "0.0.9",
   "bin": {
     "nom-scripts": "./bin/nom-scripts.js"
