@@ -1,7 +1,7 @@
 {
   "name": "create-nom-app",
   "description": "Start building a Node app in seconds.",
-  "version": "0.0.8",
+  "version": "0.0.10",
   "bin": {
     "create-nom-app": "./bin/create-nom-app"
   },
@@ -39,7 +39,7 @@
     "test:watch": "cross-env NODE_ENV=test mocha --colors --watch --require @babel/register tests/*.spec.js"
   },
   "keywords": [
-    "nodejs",
+    "node",
     "zero-configuration",
     "build-tools"
   ],

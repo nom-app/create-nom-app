@@ -48,7 +48,7 @@ hello-world
 
 ### Start
 
-Build your app in development mode. This will monitor and display any errors with the files.
+Builds your app in development mode. You will be reported of any errors with your code.
 
 <!--DOCUSAURUS_CODE_TABS-->
 <!--yarn-->
@@ -80,7 +80,7 @@ npm test
 
 ### Build
 
-Bundles and optimizes your app for use in production environments.
+Builds your app for use in production environments.
 
 <!--DOCUSAURUS_CODE_TABS-->
 <!--yarn-->
