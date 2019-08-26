@@ -17,20 +17,7 @@ Password: `portpass`
 
 ## Verdaccio
 
-[Verdaccio](https://github.com/verdaccio/verdaccio) is a local private npm
-registry. It is primarily used to publish local development packages which are,
-in turn, used by e2e and integration testing.
-
-UI Entrypoint (primary): [172.30.20.18:4873](http://172.30.20.18:4873)
-
-UI Entrypoint (secondary): [0.0.0.0:4873](http://0.0.0.0:4873)
-
-username: `cna`
-
-password: `local-registry`
-
-> **Note**: The secondary entrypoint address, `localhost`/`0.0.0.0`, should not
-> be used to reference the registry; use the primary address.
+Moved to [docker/verdaccio](docker/verdaccio.md)
 
 ### Setting Yarn and NPM to the Verdaccio Registry
 
@@ -46,7 +33,7 @@ From the root directory of the `create-nom-app` monorepo:
 
     ```sh
     _printRegistryInformation
-    # verdaccio registry: http://172.30.20.18:4873
+    # verdaccio registry: http://0.0.0.0:4873
     #
     # original npm  registry: https://registry.npmjs.org
     # original yarn registry: https://registry.yarnpkg.com
@@ -93,7 +80,7 @@ If you make changes to a package, or wish to republish the packages to the
 Verdaccio registry, run `make reup-packages`.
 
 > **Note:** Packages published to Verdaccio are on the `dev` tag at the registry
-> <http://172.30.20.18:4873>.
+> <http://0.0.0.0:4873>.
 
 ## Terminal Renderer
 

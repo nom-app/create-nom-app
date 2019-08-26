@@ -1,10 +1,12 @@
 #!/bin/bash
 
-verdaccio_registry=http://172.30.20.18:4873
+verdaccio_registry=http://0.0.0.0:4873
 npm_registry=https://registry.npmjs.org/
 yarn_registry=https://registry.yarnpkg.com
 original_npm_registry=$(npm config get registry)
 original_yarn_registry=$(yarn config get registry)
+root_dir="$( cd -P "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+verdaccio_package=verdaccio@4.2.2
 
 function useVerdaccioRegistry () {
   _printRegistryInformation
@@ -48,4 +50,45 @@ function _setRegistries () {
 
   echo "setting new yarn registry: $newYarnRegistry"
   yarn config set registry "$newYarnRegistry"
+}
+
+function startLocalRegistry () {
+  current_npm_registry=$(npm config get registry)
+  if ! curl --output /dev/null --silent --max-time 5 --head --fail "$current_npm_registry"; then
+    echo "Unable to connect to registry - $current_npm_registry - for npx."
+    echo "Is the registry on the NPM client set correctly?"
+    return 1
+  fi
+  if checkVerdaccioServiceRunning; then
+    echo "Verdaccio service already running at $verdaccio_registry."
+    return 0
+  fi
+
+  local configPath
+  configPath=${1:-"$root_dir/services/verdaccio/conf/config.yaml"}
+  registryLog=$(mktemp)
+
+  echo "Registry log path: $registryLog"
+
+  (cd && nohup npx $verdaccio_package --config "$configPath" --listen "$verdaccio_registry" &> "$registryLog" &)
+  grep -q 'http address' <(tail -f "$registryLog")
+  useVerdaccioRegistry
+}
+
+function checkVerdaccioServiceRunning () {
+  if curl --output /dev/null --silent --head --fail "$verdaccio_registry"; then
+    return 0
+  else
+    return 1
+  fi
+}
+
+function stopLocalRegistry () {
+  useOriginalRegistry
+
+  verdaccio_pid=$(pgrep verdaccio | head -1)
+
+  if [ -n "$verdaccio_pid" ]; then
+    kill -9 "$verdaccio_pid"
+  fi
 }

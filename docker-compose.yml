@@ -1,17 +1,18 @@
 version: '3'
 services:
-  verdaccio:
-    image: verdaccio/verdaccio:4.x-next
-    container_name: cna_verdaccio
-    ports:
-      - "4873:4873"
-    networks:
-      cnan:
-        ipv4_address: 172.30.20.18
-    volumes:
-        # https://github.com/verdaccio/docker-examples/tree/master/docker-local-storage-volume
-        - "verdaccio:/verdaccio/storage"
-        - "./services/verdaccio/conf:/verdaccio/conf"
+  # Service is being discontinued.
+  # verdaccio:
+  #   image: verdaccio/verdaccio:4.x-next
+  #   container_name: cna_verdaccio
+  #   ports:
+  #     - "4873:4873"
+  #   networks:
+  #     cnan:
+  #       ipv4_address: 172.30.20.18
+  #   volumes:
+  #       # https://github.com/verdaccio/docker-examples/tree/master/docker-local-storage-volume
+  #       - "verdaccio:/verdaccio/storage"
+  #       - "./services/verdaccio/conf:/verdaccio/conf"
 
   portainer:
     image: portainer/portainer
@@ -27,16 +28,17 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
       - "portainer-data:/data"
 
-  local_publish:
-    container_name: cna_local_publish
-    build:
-      context: .
-      dockerfile: ./services/local-publish/Dockerfile
-    command: /bin/bash ./install-packages.sh
-    networks:
-      cnan:
-    depends_on:
-      - verdaccio
+  # Service being discontinued. Service is no longer needed as Verdaccio is not run from Docker.
+  # local_publish:
+  #   container_name: cna_local_publish
+  #   build:
+  #     context: .
+  #     dockerfile: ./services/local-publish/Dockerfile
+  #   command: /bin/bash ./install-packages.sh
+  #   networks:
+  #     cnan:
+  #   depends_on:
+  #     - verdaccio
 
 networks:
   # Create Nom App network

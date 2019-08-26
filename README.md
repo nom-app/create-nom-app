@@ -25,7 +25,7 @@ You can now install the development package on your own system when providing
 the `--registry` tag:
 
 ```bash
-npm install --global --registry http://172.30.20.18:4873 create-nom-app@dev
+npm install --global --registry http://0.0.0.0:4873 create-nom-app@dev
 ```
 
 **Note on Verdaccio Packages:** Packages published to Verdaccio are on the `dev`

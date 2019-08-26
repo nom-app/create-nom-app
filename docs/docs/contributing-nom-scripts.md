@@ -35,7 +35,7 @@ Follow this guide and learn how to test your forked
    `nom-scripts` package from Verdaccio.
 
    ```sh
-   npm unpublish --registry http://172.30.20.18:4873 --force
+   npm unpublish --registry http://0.0.0.0:4873 --force
    ```
 
 2. Build your forked `nom-scripts` package.
@@ -48,7 +48,7 @@ Follow this guide and learn how to test your forked
 3. Publish `nom-scripts` to Verdaccio.
 
    ```sh
-   npm publish --tag dev --registry http://172.30.20.18:4873 --verbose
+   npm publish --tag dev --registry http://0.0.0.0:4873 --verbose
    ```
 
 ## Installing `nom-scripts`
