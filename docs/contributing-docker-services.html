@@ -75,17 +75,7 @@ and manage Docker services through a simple web interface.</p>
 <p>Username: <code>admin</code></p>
 <p>Password: <code>portpass</code></p>
 <h2><a class="anchor" aria-hidden="true" id="verdaccio"></a><a href="#verdaccio" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Verdaccio</h2>
-<p><a href="https://github.com/verdaccio/verdaccio">Verdaccio</a> is a local private npm
-registry. It is primarily used to publish local development packages which are,
-in turn, used by e2e and integration testing.</p>
-<p>UI Entrypoint (primary): <a href="http://172.30.20.18:4873">172.30.20.18:4873</a></p>
-<p>UI Entrypoint (secondary): <a href="http://0.0.0.0:4873">0.0.0.0:4873</a></p>
-<p>username: <code>cna</code></p>
-<p>password: <code>local-registry</code></p>
-<blockquote>
-<p><strong>Note</strong>: The secondary entrypoint address, <code>localhost</code>/<code>0.0.0.0</code>, should not
-be used to reference the registry; use the primary address.</p>
-</blockquote>
+<p>Moved to <a href="/docs/docker/docker-verdaccio">docker/verdaccio</a></p>
 <h3><a class="anchor" aria-hidden="true" id="setting-yarn-and-npm-to-the-verdaccio-registry"></a><a href="#setting-yarn-and-npm-to-the-verdaccio-registry" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Setting Yarn and NPM to the Verdaccio Registry</h3>
 <p>From the root directory of the <code>create-nom-app</code> monorepo:</p>
 <ol>
@@ -94,7 +84,7 @@ be used to reference the registry; use the primary address.</p>
 </code></pre></li>
 <li><p>Print your registry information with</p>
 <pre><code class="hljs css language-sh">_printRegistryInformation
-<span class="hljs-comment"># verdaccio registry: http://172.30.20.18:4873</span>
+<span class="hljs-comment"># verdaccio registry: http://0.0.0.0:4873</span>
 <span class="hljs-comment">#</span>
 <span class="hljs-comment"># original npm  registry: https://registry.npmjs.org</span>
 <span class="hljs-comment"># original yarn registry: https://registry.yarnpkg.com</span>
@@ -131,7 +121,7 @@ original registries.</p>
 Verdaccio registry, run <code>make reup-packages</code>.</p>
 <blockquote>
 <p><strong>Note:</strong> Packages published to Verdaccio are on the <code>dev</code> tag at the registry
-<a href="http://172.30.20.18:4873">http://172.30.20.18:4873</a>.</p>
+<a href="http://0.0.0.0:4873">http://0.0.0.0:4873</a>.</p>
 </blockquote>
 <h2><a class="anchor" aria-hidden="true" id="terminal-renderer"></a><a href="#terminal-renderer" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Terminal Renderer</h2>
 <p>This service will render recorded
@@ -155,4 +145,4 @@ have the Menlo for Powerline font installed locally on your system.</p>
 <p>The <code>docker-compose.yml</code> file for Docusaurus is in the <code>docs/</code> folder.</p>
 <p>Build the documentation with <code>docker-compose up</code>.</p>
 <p>View the documentation locally at <a href="http://localhost:3000/">http://localhost:3000/</a></p>
-</span></div></article></div><div class="docLastUpdate"><em>Last updated on 8/22/2019 by Maxim Devoir</em></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/contributing-project-structure"><span class="arrow-prev">← </span><span>Structure</span></a><a class="docs-next button" href="/docs/docker/docker-verdaccio"><span>Verdaccio</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#portainer">Portainer</a></li><li><a href="#verdaccio">Verdaccio</a><ul class="toc-headings"><li><a href="#setting-yarn-and-npm-to-the-verdaccio-registry">Setting Yarn and NPM to the Verdaccio Registry</a></li></ul></li><li><a href="#local-publish">Local Publish</a></li><li><a href="#terminal-renderer">Terminal Renderer</a></li><li><a href="#docs-docusaurus">Docs Docusaurus</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"></a><div><h5>Docs</h5><a href="/docs/getting-started">Getting Started</a><a href="/docs/contributing-introduction">Contributing</a></div><div><h5>Community</h5><a href="https://discord.gg/T3qZyb2" target="_blank" rel="noreferrer noopener">Discord</a></div><div><h5>More</h5><a href="https://github.com/MaximDevoir/create-nom-app">GitHub</a><a class="github-button" href="https://github.com/MaximDevoir/create-nom-app" data-icon="octicon-star" data-size="normal" data-count-href="/maximdevoir/create-nom-app/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star Create Nom App on GitHub">Star</a></div></section><section class="copyright">Copyright © 2019 Maxim Devoir and contributors</section></footer></div></body></html>
+</span></div></article></div><div class="docLastUpdate"><em>Last updated on 8/26/2019 by Maxim Devoir</em></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/contributing-project-structure"><span class="arrow-prev">← </span><span>Structure</span></a><a class="docs-next button" href="/docs/docker/docker-verdaccio"><span>Verdaccio</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#portainer">Portainer</a></li><li><a href="#verdaccio">Verdaccio</a><ul class="toc-headings"><li><a href="#setting-yarn-and-npm-to-the-verdaccio-registry">Setting Yarn and NPM to the Verdaccio Registry</a></li></ul></li><li><a href="#local-publish">Local Publish</a></li><li><a href="#terminal-renderer">Terminal Renderer</a></li><li><a href="#docs-docusaurus">Docs Docusaurus</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"></a><div><h5>Docs</h5><a href="/docs/getting-started">Getting Started</a><a href="/docs/contributing-introduction">Contributing</a></div><div><h5>Community</h5><a href="https://discord.gg/T3qZyb2" target="_blank" rel="noreferrer noopener">Discord</a></div><div><h5>More</h5><a href="https://github.com/MaximDevoir/create-nom-app">GitHub</a><a class="github-button" href="https://github.com/MaximDevoir/create-nom-app" data-icon="octicon-star" data-size="normal" data-count-href="/maximdevoir/create-nom-app/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star Create Nom App on GitHub">Star</a></div></section><section class="copyright">Copyright © 2019 Maxim Devoir and contributors</section></footer></div></body></html>
