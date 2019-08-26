@@ -21,12 +21,12 @@ while [ -h "$SOURCE" ]; do # resolve $SOURCE until the file is no longer a symli
 done
 DIR="$( cd -P "$( dirname "$SOURCE" )" >/dev/null 2>&1 && pwd )"
 
-until curl --output /dev/null --silent --head --fail http://172.30.20.18:4873; do
+until curl --output /dev/null --silent --head --fail http://0.0.0.0:4873; do
     printf "."
     sleep 1s
 done
 
-printf "... service detected.\n"
+printf "... Verdaccio service detected.\n"
 
 # shellcheck source=./check-registry-config.sh
 source "${DIR}/check-registry-config.sh"
@@ -81,7 +81,7 @@ function buildAndPublish() {
 
   echo "unpublishing previous versions of $package from Verdaccio"
   # Unpublish previous version of package, which may have persisted on Verdaccio
-  npm unpublish --force --registry http://172.30.20.18:4873 --verbose "$package"
+  npm unpublish --force --registry http://0.0.0.0:4873 --verbose "$package"
 
   echo "yarn install"
   yarn install
@@ -90,7 +90,7 @@ function buildAndPublish() {
   yarn run start:once
 
   echo "publishing $package to Verdaccio"
-  npm publish --registry http://172.30.20.18:4873 --verbose
+  npm publish --registry http://0.0.0.0:4873 --verbose
 
   cd "$prevPWD" || exit 1
 }
