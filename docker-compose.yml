@@ -28,16 +28,17 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
       - "portainer-data:/data"
 
-  local_publish:
-    container_name: cna_local_publish
-    build:
-      context: .
-      dockerfile: ./services/local-publish/Dockerfile
-    command: /bin/bash ./install-packages.sh
-    networks:
-      cnan:
-    depends_on:
-      - verdaccio
+  # Service being discontinued. Service is no longer needed as Verdaccio is not run from Docker.
+  # local_publish:
+  #   container_name: cna_local_publish
+  #   build:
+  #     context: .
+  #     dockerfile: ./services/local-publish/Dockerfile
+  #   command: /bin/bash ./install-packages.sh
+  #   networks:
+  #     cnan:
+  #   depends_on:
+  #     - verdaccio
 
 networks:
   # Create Nom App network
