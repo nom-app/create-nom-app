@@ -1,0 +1,17 @@
+on: push
+name: Deploy Docs
+jobs:
+  onMasterBranch:
+    name: On master branch
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - name: On master branch
+      uses: actions/bin/filter@master
+      with:
+        args: branch master
+    - name: Build and deploy
+      uses: ./.github/actions/deploy-docs
+      env:
+        DOCS_DEPLOY_TOKEN: ${{ secrets.DOCS_DEPLOY_TOKEN }}
+        WEBSITE_DIR: docs/website
