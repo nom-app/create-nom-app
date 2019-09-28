@@ -7,7 +7,3 @@ services:
       - "./rawTerminalData:/home/rterm/rawTerminalData"
       - "./output:/home/rterm/output"
 
-networks:
-  default:
-    external:
-      name: create-nom-app_cnan
