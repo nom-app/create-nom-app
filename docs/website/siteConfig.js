@@ -14,13 +14,13 @@ const siteConfig = {
   url: 'https://create-nom.app',
   baseUrl: '/',
   cname: 'create-nom.app',
-  editUrl: 'https://github.com/MaximDevoir/create-nom-app/edit/master/docs/docs/',
+  editUrl: 'https://github.com/create-nom-app/create-nom-app/edit/master/docs/docs/',
   enableUpdateBy: true,
   enableUpdateTime: true,
 
   // Used for publishing and more
   projectName: 'create-nom-app',
-  organizationName: 'MaximDevoir',
+  organizationName: 'create-nom-app',
   // For top-level user or org sites, the organization is still the same.
   // e.g., for the https://JoelMarcey.github.io site, it would be set like...
   //   organizationName: 'JoelMarcey'
@@ -36,7 +36,7 @@ const siteConfig = {
       label: 'Contribute'
     },
     {
-      href: 'https://www.github.com/MaximDevoir/create-nom-app',
+      href: 'https://www.github.com/create-nom-app/create-nom-app',
       label: 'GitHub',
     },
     // TODO: Add Algolia search integration after public release.
@@ -100,7 +100,7 @@ const siteConfig = {
 
   // You may provide arbitrary config keys to be used as needed by your
   // template. For example, if you need your repo's URL...
-  repoUrl: 'https://github.com/MaximDevoir/create-nom-app',
+  repoUrl: 'https://github.com/create-nom-app/create-nom-app',
   scrollToTop: true,
 };
 
