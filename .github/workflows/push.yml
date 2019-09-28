@@ -1,4 +1,7 @@
 on: push
+  push:
+    branches:
+      - master
 name: Deploy Docs
 jobs:
   onMasterBranch:
