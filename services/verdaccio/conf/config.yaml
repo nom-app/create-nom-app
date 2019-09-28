@@ -11,11 +11,11 @@
 #
 
 # path to a directory with all packages
-storage: /verdaccio/storage
+storage: ./storage
 
 auth:
   htpasswd:
-    file: /verdaccio/conf/htpasswd
+    file: ./htpasswd
     # Maximum amount of users allowed to register, defaults to "+inf".
     # You can set this to -1 to disable registration.
     #max_users: 1000
