@@ -11,12 +11,12 @@
     "email": "maximdevoir@gmail.com"
   },
   "bugs": {
-    "url": "https://github.com/maximdevoir/create-nom-app/issues"
+    "url": "https://github.com/create-nom-app/create-nom-app/issues"
   },
-  "homepage": "https://github.com/maximdevoir/create-nom-app",
+  "homepage": "https://github.com/create-nom-app/create-nom-app",
   "repository": {
     "type": "git",
-    "url": "https://github.com/maximdevoir/create-nom-app.git",
+    "url": "https://github.com/create-nom-app/create-nom-app.git",
     "directory": "packages/create-nom-app"
   },
   "scripts": {

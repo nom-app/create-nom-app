@@ -5,10 +5,10 @@ sidebar_label: Issues
 ---
 
 If you believe you have encountered a bug with the software, search through the
-[issues page](https://github.com/MaximDevoir/create-nom-app/issues) to see if
+[issues page](https://github.com/create-nom-app/create-nom-app/issues) to see if
 someone else has described the same problem as you. When you can't find a
 related issue, file a [bug
-report](https://github.com/MaximDevoir/create-nom-app/issues/new?template=bug_report.md).
+report](https://github.com/create-nom-app/create-nom-app/issues/new?template=bug_report.md).
 
 ## Quickly Get Your Environment Information
 

@@ -1,6 +1,6 @@
 # create-nom-app
 
-This project was bootstrapped with [Create Nom App](https://github.com/MaximDevoir/create-nom-app).
+This project was bootstrapped with [Create Nom App](https://github.com/create-nom-app/create-nom-app).
 
 View the documentation at [create-nom.app](https://create-nom.app).
 

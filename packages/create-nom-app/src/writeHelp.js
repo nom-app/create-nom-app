@@ -10,7 +10,7 @@ const helpLines = [
   `Run ${chalk.green('create-nom-app')} --help to see all options.`,
   '',
   'If you encounter any issues, feel free to report it to:',
-  ' > https://github.com/MaximDevoir/create-nom-app/issues'
+  ' > https://github.com/create-nom-app/create-nom-app/issues'
 ]
 
 function writeHelp() {
