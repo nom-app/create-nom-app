@@ -3,7 +3,7 @@ on:
     branches:
       - master
     paths:
-      - docs/*
+      - "docs/*"
 name: Deploy Docs
 jobs:
   onMasterBranch:
