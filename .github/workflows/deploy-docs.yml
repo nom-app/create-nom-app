@@ -2,8 +2,8 @@ on:
   push:
     branches:
       - master
-  paths:
-     - "docs/*"
+    paths:
+      - "docs/*"
 name: Deploy Docs
 jobs:
   onMasterBranch:
