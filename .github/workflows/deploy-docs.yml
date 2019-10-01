@@ -14,5 +14,5 @@ jobs:
     - name: Build and deploy
       uses: ./.github/actions/deploy-docs
       env:
-        DOCS_DEPLOY_TOKEN: ${{ secrets.DOCS_DEPLOY_TOKEN }}
+        DOCS_DEPLOY_TOKEN: abc
         WEBSITE_DIR: docs/website
