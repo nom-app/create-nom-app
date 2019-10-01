@@ -4,6 +4,8 @@ on:
       - master
     paths:
       - "docs/*"
+      - ".github/workflows/deploy-docs.yml" # this workflow
+      - ".github/actions/deploy-docs/**" # `deploy-docs` action
 name: Deploy Docs
 jobs:
   onMasterBranch:
