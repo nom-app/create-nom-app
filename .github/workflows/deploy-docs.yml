@@ -2,14 +2,15 @@ on:
   push:
     branches:
       - master
-  #  paths:
-   #   - "docs/*"
+   paths:
+     - "docs/*"
 name: Deploy Docs
 jobs:
   onMasterBranch:
     name: On master branch
     runs-on: ubuntu-latest
     steps:
+    - uses: actions/checkout@master
     - name: Build and deploy
       uses: ./.github/actions/deploy-docs
       env:
