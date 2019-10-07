@@ -47,6 +47,12 @@ and then click "Generate Token".
 
 None
 
+## Limitations for Organizations
+
+Organizations that deploy this action on public repositories must use a PAT for `DOCS_DEPLOY_TOKEN`. See this
+[page](https://github.com/crazy-max/ghaction-github-pages/tree/v0.5.0#warning-limitation)
+for more info.
+
 ## License
 
 The [MIT](LICENSE) license
