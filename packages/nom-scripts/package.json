@@ -65,7 +65,7 @@
     "fs-extra": "^8.1.0",
     "glob": "^7.1.4",
     "is-directory": "^0.3.1",
-    "memory-fs": "^0.4.1",
+    "memory-fs": "^0.5.0",
     "minimist": "^1.2.0",
     "mocha": "^6.1.4",
     "nyc": "^14.1.1",
