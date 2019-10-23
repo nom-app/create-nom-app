@@ -57,7 +57,7 @@
     "cross-env": "^5.2.0",
     "cross-spawn": "^7.0.1",
     "eslint": "^6.0.1",
-    "eslint-config-airbnb-base": "^13.2.0",
+    "eslint-config-airbnb-base": "^14.0.0",
     "eslint-import-resolver-webpack": "^0.11.1",
     "eslint-loader": "^3.0.2",
     "eslint-plugin-import": "^2.18.0",
