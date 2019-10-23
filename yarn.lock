@@ -9210,9 +9210,9 @@ webpack-node-externals@^1.7.2:
   integrity sha512-ajerHZ+BJKeCLviLUUmnyd5B4RavLF76uv3cs6KNuO8W+HuQaEs0y0L7o40NQxdPy5w0pcv8Ew7yPUAQG0UdCg==
 
 webpack-permissions-plugin@^1.0.5:
-  version "1.0.5"
-  resolved "https://registry.yarnpkg.com/webpack-permissions-plugin/-/webpack-permissions-plugin-1.0.5.tgz#138aa471a4b4d49fa4349fc6ac284898f6bcc3ec"
-  integrity sha512-ujhpwM3pzvsgtw2tHVOF5kWfU34rlu/9WlVF2uGfyehC0fZF/2n0LAeV50IZJEgtk5f57BNPjLDro1aODf5mzw==
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/webpack-permissions-plugin/-/webpack-permissions-plugin-1.0.6.tgz#fc30020e41851ed01d8ff88db8c4c7299758c771"
+  integrity sha512-E5y7tQB6yX68XjrIIGvF+jOqKUOyO+0u3JMvatto7r325kNrf8fHV2uRqLPm1YE7WQnHfyc3ypSOJNgDowOkYA==
   dependencies:
     filehound "^1.17.3"
 
