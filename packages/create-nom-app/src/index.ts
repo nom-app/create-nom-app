@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 import './validators/validateNodeVersion'
 
 import chalk from 'chalk'
