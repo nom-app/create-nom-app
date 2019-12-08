@@ -19,10 +19,10 @@ function checkNodeVersion(majorMinimum) {
     // eslint-disable-next-line no-console
     console.error(
       chalk.red(
-        `Your version of Node ${currentNodeVersion} is unsupported.\n`
-        + `Create Nom App requires Node ${majorMinimum} or higher.\n`
-        + 'Please update Node. '
-        + 'https://nodejs.org/en/download/'
+        `Your version of Node ${currentNodeVersion} is unsupported.\n` +
+          `Create Nom App requires Node ${majorMinimum} or higher.\n` +
+          'Please update Node. ' +
+          'https://nodejs.org/en/download/'
       )
     )
 

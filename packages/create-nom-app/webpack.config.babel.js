@@ -70,19 +70,16 @@ export default {
     ]
   },
   resolve: {
-    modules: [
-      path.resolve(__dirname, 'src'),
-      'node_modules'
-    ]
+    modules: [path.resolve(__dirname, 'src'), 'node_modules']
   },
   plugins: [
     new webpack.BannerPlugin({ banner: `${shebangNode}\n\n"use strict";\n`, raw: true }),
     // TODO: Move hook into own module.
     {
-      apply: (compiler) => {
+      apply: compiler => {
         // This hook changes the permissions of the outputted
-        compiler.hooks.afterEmit.tap('BinaryPermissionsPlugin', (compilation) => {
-          Object.keys(compilation.assets).forEach((key) => {
+        compiler.hooks.afterEmit.tap('BinaryPermissionsPlugin', compilation => {
+          Object.keys(compilation.assets).forEach(key => {
             const assetName = key
             const asset = compilation.assets[key]
 

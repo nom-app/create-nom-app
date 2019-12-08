@@ -11,10 +11,10 @@ function validateNPMVersion(version) {
   if (!semver.gte(version, minimumNPMVersion)) {
     console.error(
       chalk.red(
-        'Unable to create the project.'
-        + `Your version of NPM ${version} is unsupported.\n`
-        + `Create Nom App requires NPM ${minimumNPMVersion} or higher.\n`
-        + 'Please update NPM.'
+        'Unable to create the project.' +
+          `Your version of NPM ${version} is unsupported.\n` +
+          `Create Nom App requires NPM ${minimumNPMVersion} or higher.\n` +
+          'Please update NPM.'
       )
     )
 

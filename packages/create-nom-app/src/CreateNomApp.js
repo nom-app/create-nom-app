@@ -56,8 +56,10 @@ class CreateNomApp {
   }
 
   handoff() {
-    const nomScriptsBin = path.resolve(this.options.projectDirectory,
-      path.join(this.options.projectDirectory, 'node_modules', '.bin', 'nom-scripts'))
+    const nomScriptsBin = path.resolve(
+      this.options.projectDirectory,
+      path.join(this.options.projectDirectory, 'node_modules', '.bin', 'nom-scripts')
+    )
     const handoffOptions = JSON.stringify({
       projectName: this.projectName,
       projectDirectory: this.options.projectDirectory,

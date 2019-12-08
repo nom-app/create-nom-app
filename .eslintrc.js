@@ -2,7 +2,7 @@ module.exports = {
   "root": true,
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
-    "project": __dirname + "/tsconfig.lint.json",
+    // "project": __dirname + "/tsconfig.lint.json",
     "sourceType": "module",
     "ecmaVersion": 2018
   },
@@ -18,6 +18,7 @@ module.exports = {
     //   - https://github.com/prettier/eslint-config-prettier/blob/dcca556e260af985ece4d9af92531fa649268f80/README.md#special-rules
   ],
   "env": {
+    "es6": true,
     "node": true
   }
 }

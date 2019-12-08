@@ -15,9 +15,7 @@ const packageManagers = {}
  */
 function discoverManager(manager, ignoreCache = false) {
   // The `manager` was previously discovered and is in the cache.
-  if (ignoreCache === false
-     && Object.prototype.hasOwnProperty.call(packageManagers, manager)
-  ) {
+  if (ignoreCache === false && Object.prototype.hasOwnProperty.call(packageManagers, manager)) {
     return
   }
 
@@ -29,7 +27,9 @@ function discoverManager(manager, ignoreCache = false) {
 
   const version = spawnSync(binary, ['--version'], {
     stdio: 'pipe'
-  }).stdout.toString().trim()
+  })
+    .stdout.toString()
+    .trim()
 
   packageManagers[manager] = {
     binary,
@@ -52,7 +52,7 @@ function discoverMany(managers = [], ignoreCache) {
     searchFor.push(...managers)
   }
 
-  searchFor.forEach((manager) => {
+  searchFor.forEach(manager => {
     discoverManager(manager, ignoreCache)
   })
 }
