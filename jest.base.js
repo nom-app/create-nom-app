@@ -32,6 +32,7 @@ module.exports = {
   rootDir: 'override-value-in-extended-modules',
   testEnvironment: 'node',
   transform: {
-    '^.+\\.(ts|js)$': 'ts-jest'
-  }
+    '^.+\\.tsx?$': 'ts-jest'
+  },
+  moduleFileExtensions: ['ts', 'js', 'json'] // Note: `--ext .ts,.ts,...` is still required when calling `eslint` from command line
 }
