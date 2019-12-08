@@ -16,5 +16,8 @@ module.exports = {
     // Only special rules should be added after `plugin:prettier/recommended`.
     // See the list of special rules:
     //   - https://github.com/prettier/eslint-config-prettier/blob/dcca556e260af985ece4d9af92531fa649268f80/README.md#special-rules
-  ]
+  ],
+  "env": {
+    "node": true
+  }
 }
