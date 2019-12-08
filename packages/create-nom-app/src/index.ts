@@ -17,6 +17,7 @@ import CreateNomApp from './CreateNomApp'
 import packageManagers from './package-managers'
 import git from './discover-git'
 
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 const { version } = require('../package.json')
 
 function main() {
@@ -27,7 +28,7 @@ function main() {
   const program = new commander.Command('create-nom-app')
     .arguments('<project-name>')
     .usage(`${chalk.blue('<project-name>')} [options]`)
-    .action((name) => {
+    .action(name => {
       projectName = name
       projectDirectory = path.join(cwd, projectName)
     })
@@ -70,7 +71,7 @@ function main() {
 
   packageManagers.discoverCommon()
 
-  const preferredPackageManager = (() => {
+  const preferredPackageManager = ((): false | 'npm' | 'yarn' => {
     if (program.useNpm) {
       return 'npm'
     }
@@ -100,7 +101,9 @@ function main() {
         return preferredPackageManager
       }
 
-      console.error(chalk.red(`You preferred the package manager ${preferredPackageManager}, which was not found on your system.`))
+      console.error(
+        chalk.red(`You preferred the package manager ${preferredPackageManager}, which was not found on your system.`)
+      )
       console.error(chalk.red('You can install the package manager you prefer, or remove any preference.'))
       process.exit(1)
     }
