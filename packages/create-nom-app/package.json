@@ -3,7 +3,7 @@
   "description": "Start building a Node app in seconds.",
   "version": "0.0.10",
   "bin": {
-    "create-nom-app": "./bin/create-nom-app"
+    "create-nom-app": "./bin/index.js"
   },
   "license": "MIT",
   "author": {
@@ -20,7 +20,7 @@
     "directory": "packages/create-nom-app"
   },
   "scripts": {
-    "build-with-tsc": "npm run build:clean && ncc build src/index.ts -o bin",
+    "build-with-tsc": "npm run build:clean && tsc --noEmit false",
     "build": "npm run build:clean && cross-env NODE_ENV=production npm run build:source",
     "build:source": "webpack --progress --colors --config webpack.config.babel.js",
     "build:clean": "rimraf ./lib && rimraf ./bin",

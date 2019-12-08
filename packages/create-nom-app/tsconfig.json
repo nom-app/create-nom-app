@@ -1,10 +1,12 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "noImplicitAny": false, // TODO: Set this to true and fix errors caused by rule change
-    "resolveJsonModule": true
+    "outDir": "bin",
+    "allowJs": true,
+    "baseUrl": ".",
+    "noImplicitAny": false // TODO: Set this to true and fix errors caused by rule change
   },
   "include": [
-    "src/**/*"
+    "src/index.ts"
   ]
 }
