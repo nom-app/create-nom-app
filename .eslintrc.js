@@ -2,7 +2,7 @@ module.exports = {
   "root": true,
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
-    // "project": __dirname + "/tsconfig.lint.json",
+    "project": __dirname + "/tsconfig.lint.json",
     "sourceType": "module",
     "ecmaVersion": 2018
   },
