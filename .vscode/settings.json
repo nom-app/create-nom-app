@@ -16,5 +16,6 @@
       "directory": "./packages/nom-scripts",
       "changeProcessCWD": true
     }
-  ]
+  ],
+  "typescript.tsdk": "node_modules/typescript/lib"
 }
