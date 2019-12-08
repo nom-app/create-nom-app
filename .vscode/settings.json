@@ -1,4 +1,6 @@
 {
+  "editor.wordWrapColumn": 120,
+  "editor.wordWrap": "wordWrapColumn",
   "eslint.enable": true,
   "eslint.packageManager": "yarn",
   // VSCode-eslint (dbaeumer.vscode-eslint) does not show linting errors in the
