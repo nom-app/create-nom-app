@@ -33,11 +33,12 @@
     "coverage:generate": "./node_modules/.bin/nyc --reporter=lcov --reporter=text npm test",
     "docs": "echo 'no documentation generation yet'",
     "husky:precommit": "lint-staged",
-    "lint": "eslint --ext .js,.ts .",
+    "lint": "eslint --ext .js,.ts,.json .",
     "lint:fix": "npm run lint -- --fix",
     "start": "npm run start:once -- --watch",
     "start:once": "cross-env NODE_ENV=development npm run build:source --",
-    "test": "cross-env NODE_ENV=test mocha --colors --require @babel/register tests/*.spec.js",
+    "test": "jest --config ./jest.config.js --runInBand --detectOpenHandles",
+    "test:deprecated": "cross-env NODE_ENV=test mocha --colors --require @babel/register tests/*.spec.js",
     "test:watch": "cross-env NODE_ENV=test mocha --colors --watch --require @babel/register tests/*.spec.js"
   },
   "lint-staged": {

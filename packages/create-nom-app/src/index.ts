@@ -20,7 +20,7 @@ import git from './discover-git'
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const { version } = require('../package.json')
 
-function main() {
+function main(): void {
   const cwd = process.cwd()
   let projectDirectory
   let projectName

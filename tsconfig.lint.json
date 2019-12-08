@@ -1,3 +1,4 @@
+// Configuration, designed for eslint, to lint the entire project
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
@@ -5,7 +6,11 @@
   },
   "include": [
     "**/*.ts",
+    "**/*.test.ts",
     "**/*.js",
+    "**/**/*.js",
+    "**/**/*.ts",
+    "**/**/tsconfig*.json",
     "*.js",
     ".*.js"
   ]

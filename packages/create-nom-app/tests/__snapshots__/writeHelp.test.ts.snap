@@ -1,0 +1,82 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`writeHelp display help 1`] = `
+[MockFunction] {
+  "calls": Array [
+    Array [
+      "  ",
+    ],
+    Array [
+      "  Only [34m<project-name>[39m is required.",
+    ],
+    Array [
+      "  ",
+    ],
+    Array [
+      "  Example:",
+    ],
+    Array [
+      "    [32mcreate-nom-app[39m [34mmy-first-app[39m",
+    ],
+    Array [
+      "  ",
+    ],
+    Array [
+      "  Run [32mcreate-nom-app[39m --help to see all options.",
+    ],
+    Array [
+      "  ",
+    ],
+    Array [
+      "  If you encounter any issues, feel free to report it to:",
+    ],
+    Array [
+      "   > https://github.com/create-nom-app/create-nom-app/issues",
+    ],
+  ],
+  "results": Array [
+    Object {
+      "type": "return",
+      "value": undefined,
+    },
+    Object {
+      "type": "return",
+      "value": undefined,
+    },
+    Object {
+      "type": "return",
+      "value": undefined,
+    },
+    Object {
+      "type": "return",
+      "value": undefined,
+    },
+    Object {
+      "type": "return",
+      "value": undefined,
+    },
+    Object {
+      "type": "return",
+      "value": undefined,
+    },
+    Object {
+      "type": "return",
+      "value": undefined,
+    },
+    Object {
+      "type": "return",
+      "value": undefined,
+    },
+    Object {
+      "type": "return",
+      "value": undefined,
+    },
+    Object {
+      "type": "return",
+      "value": undefined,
+    },
+  ],
+}
+`;
+
+exports[`writeHelp display help 2`] = `[MockFunction]`;
