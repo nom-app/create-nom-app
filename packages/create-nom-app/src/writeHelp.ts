@@ -13,8 +13,8 @@ const helpLines = [
   ' > https://github.com/create-nom-app/create-nom-app/issues'
 ]
 
-function writeHelp() {
-  helpLines.forEach((line) => {
+function writeHelp(): void {
+  helpLines.forEach(line => {
     console.log(`  ${line}`)
   })
 }
