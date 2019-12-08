@@ -20,6 +20,7 @@
     "directory": "packages/create-nom-app"
   },
   "scripts": {
+    "build-with-tsc": "npm run build:clean && ncc build src/index.ts -o bin",
     "build": "npm run build:clean && cross-env NODE_ENV=production npm run build:source",
     "build:source": "webpack --progress --colors --config webpack.config.babel.js",
     "build:clean": "rimraf ./lib && rimraf ./bin",
