@@ -21,7 +21,7 @@ Object.entries(globalThreshold).forEach(([mark, threshold]) => {
   const watermarksThreshold = config.watermarks[mark]
 
   if (watermarksThreshold && typeof watermarksThreshold[0] === 'number') {
-    [config[mark]] = watermarksThreshold
+    ;[config[mark]] = watermarksThreshold
     return
   }
 

@@ -11,10 +11,10 @@ function validateYarnVersion(version) {
   if (!semver.gte(version, minimumYarnVersion)) {
     console.error(
       chalk.red(
-        'Unable to create the project.'
-        + `Your version of Yarn ${version} is unsupported.\n`
-        + `Create Nom App requires Yarn ${minimumYarnVersion} or higher.\n`
-        + 'Please update Yarn.'
+        'Unable to create the project.' +
+          `Your version of Yarn ${version} is unsupported.\n` +
+          `Create Nom App requires Yarn ${minimumYarnVersion} or higher.\n` +
+          'Please update Yarn.'
       )
     )
 

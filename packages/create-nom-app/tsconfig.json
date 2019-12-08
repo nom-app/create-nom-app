@@ -6,7 +6,5 @@
     "baseUrl": ".",
     "noImplicitAny": true // TODO: Set this to true and fix errors caused by rule change. It's set to true because I have incorrectly configured linting, so the errors won't show through the Command Line, but will show through the VSCode Editor. See https://github.com/create-nom-app/create-nom-app/issues/86
   },
-  "include": [
-    "src/index.ts"
-  ]
+  "include": ["src/index.ts"]
 }
