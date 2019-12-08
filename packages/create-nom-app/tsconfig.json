@@ -1,0 +1,10 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "noImplicitAny": false, // TODO: Set this to true and fix errors caused by rule change
+    "resolveJsonModule": true
+  },
+  "include": [
+    "src/**/*"
+  ]
+}

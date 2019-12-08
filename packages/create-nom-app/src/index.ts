@@ -7,7 +7,6 @@ import path from 'path'
 import logger from './logger'
 import writeHelp from './writeHelp'
 import writeEnvInfo from './writeEnvInfo'
-import { version } from '../package.json'
 import validateProjectName from './validators/validateProjectName'
 import validateProjectDirectory from './validators/validateProjectDirectory'
 import validateNPMVersion from './validators/validateNPMVersion'
@@ -15,6 +14,8 @@ import validateYarnVersion from './validators/validateYarnVersion'
 import CreateNomApp from './CreateNomApp'
 import packageManagers from './package-managers'
 import git from './discover-git'
+
+const { version } = require('../package.json')
 
 function main() {
   const cwd = process.cwd()
