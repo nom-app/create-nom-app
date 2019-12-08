@@ -4,7 +4,6 @@ import { sync as spawnSync } from 'cross-spawn'
 import path from 'path'
 import fs from 'fs-extra'
 
-import pkg from '../package'
 import logger from './logger'
 
 const defaultOptions = {
