@@ -25,11 +25,11 @@ module.exports = {
   // },
   globals: {
     'ts-jest': {
-      tsConfig: 'override-value-in-extended-modules'
+      tsConfig: 'override-value-in-extended-module'
     }
   },
   preset: 'ts-jest',
-  rootDir: 'override-value-in-extended-modules',
+  rootDir: 'override-value-in-extended-module',
   testEnvironment: 'node',
   transform: {
     '^.+\\.(js|ts)x?$': 'ts-jest'
