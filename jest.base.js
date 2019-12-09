@@ -34,5 +34,5 @@ module.exports = {
   transform: {
     '^.+\\.(js|ts)x?$': 'ts-jest'
   },
-  moduleFileExtensions: ['ts', 'js', 'json'] // Note: `--ext .ts,.ts,...` is still required when calling `eslint` from command line
+  moduleFileExtensions: ['ts', 'js', 'json'] // Note: `--ext .ts,.ts, etc.` is required when calling `eslint` directly from the command line
 }
