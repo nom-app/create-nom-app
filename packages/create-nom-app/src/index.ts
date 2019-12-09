@@ -20,7 +20,7 @@ import git from './discover-git'
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const { version } = require('../package.json')
 
-function main(): void {
+function main(args = process.argv): void {
   const cwd = process.cwd()
   let projectDirectory = ''
   let projectName: undefined | string
@@ -47,7 +47,7 @@ function main(): void {
       process.exit(0)
     })
 
-  program.parse(process.argv)
+  program.parse(args)
 
   if (program.rawArgs.includes('-h') || program.rawArgs.includes('--help')) {
     program.help()
