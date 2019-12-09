@@ -1,7 +1,14 @@
 import { sync as spawnSync } from 'cross-spawn'
 import { sync as whichSync } from 'which'
 
-const packageManagers = {}
+interface PackageManager {
+  binary: string
+  version: string
+}
+
+const packageManagers: {
+  [key: string]: PackageManager
+} = {}
 // TODO: Bring this module to its own package, preferably using
 // nom-scripts/create-nom-app to handle dependencies.
 
@@ -13,7 +20,7 @@ const packageManagers = {}
  * @param {boolean} ignoreCache Whether or not to ignore checking the cache.
  * @returns {undefined} Always returns `undefined`.
  */
-function discoverManager(manager, ignoreCache = false) {
+function discoverManager(manager: string, ignoreCache = false): void {
   // The `manager` was previously discovered and is in the cache.
   if (ignoreCache === false && Object.prototype.hasOwnProperty.call(packageManagers, manager)) {
     return
@@ -43,8 +50,8 @@ function discoverManager(manager, ignoreCache = false) {
  * @param {string|array} searchFor A list of managers to search for.
  * @param {boolean|undefined} ignoreCache See discoverManager
  */
-function discoverMany(managers = [], ignoreCache) {
-  const searchFor = []
+function discoverMany(managers: string[] = [], ignoreCache?: boolean): void {
+  const searchFor: string[] = []
 
   if (typeof managers === 'string') {
     searchFor.push(managers)
@@ -60,14 +67,14 @@ function discoverMany(managers = [], ignoreCache) {
 /**
  * Discover common package managers: npm, yarn.
  */
-function discoverCommon() {
+function discoverCommon(): void {
   discoverMany(['npm', 'yarn'])
 }
 
 /**
  * Clears the cache of package managers.
  */
-function clearCache() {
+function clearCache(): void {
   // eslint-disable-next-line no-restricted-syntax
   for (const manager in packageManagers) {
     if (Object.prototype.hasOwnProperty.call(packageManagers, manager)) {
@@ -82,8 +89,8 @@ function clearCache() {
  * @param {string} manager The manager to check.
  * @returns {boolean} Whether or not `manager` is in `packageMangers`
  */
-function hasManager(manager) {
-  if (Object.prototype.hasOwnProperty.call(packageManagers, manager)) {
+function hasManager(manager: string): boolean {
+  if (manager in packageManagers) {
     return true
   }
 
@@ -99,12 +106,15 @@ function hasManager(manager) {
  * @param {string} manager The name of the package manager to get.
  * @returns {object}
  */
-function getManager(manager) {
+function getManager(manager: string): PackageManager {
   if (hasManager(manager)) {
     return packageManagers[manager]
   }
 
-  return {}
+  return {
+    version: '',
+    binary: ''
+  }
 }
 
 export default {

@@ -106,7 +106,7 @@ function main(args = process.argv): void {
    * process quits.
    */
   // eslint-disable-next-line consistent-return
-  const usePackageManager = ((): void | 'npm' | 'yarn' | string => {
+  const usePackageManager = ((): void | 'npm' | 'yarn' => {
     if (preferredPackageManager) {
       if (packageManagers.hasManager(preferredPackageManager)) {
         return preferredPackageManager
@@ -122,7 +122,7 @@ function main(args = process.argv): void {
     // eslint-disable-next-line no-restricted-syntax
     for (const manager of pkgManagerDefaultPreference) {
       if (packageManagers.hasManager(manager)) {
-        return manager
+        return manager as 'npm' | 'yarn'
       }
     }
   })()
