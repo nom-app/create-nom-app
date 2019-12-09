@@ -161,4 +161,8 @@ function main(): void {
   return undefined
 }
 
-main()
+if (process.env.SKIP_DEFAULT_CREATE_NOM_APP_CLI_ACTION !== 'true') {
+  main()
+}
+
+export default main
