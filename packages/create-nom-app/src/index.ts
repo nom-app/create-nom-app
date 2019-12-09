@@ -63,10 +63,6 @@ function main(args = process.argv): void {
       : ['__mocked_process_exec_path__', '__mocked_cna_binary_exec_path__'].concat(args)
   program.parse(argsToParse)
 
-  if (program.rawArgs.includes('-h') || program.rawArgs.includes('--help')) {
-    program.help()
-  }
-
   if (program.info) {
     return void writeEnvInfo()
   }
