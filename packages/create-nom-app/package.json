@@ -33,7 +33,7 @@
     "coverage:generate": "./node_modules/.bin/nyc --reporter=lcov --reporter=text npm test",
     "docs": "echo 'no documentation generation yet'",
     "husky:precommit": "lint-staged",
-    "lint": "eslint --ext .js,.ts,.json .",
+    "lint": "tsc --noEmit && eslint --ext .js,.ts,.json .",
     "lint:fix": "npm run lint -- --fix",
     "start": "npm run start:once -- --watch",
     "start:once": "cross-env NODE_ENV=development npm run build:source --",
