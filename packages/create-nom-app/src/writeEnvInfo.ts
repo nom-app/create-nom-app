@@ -1,9 +1,14 @@
+// eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+// @ts-ignore
 import envinfo from 'envinfo'
 import chalk from 'chalk'
 
-async function writeEnvInfo() {
-  console.log(chalk.bold('\nEnvironment Info:'))
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const { version } = require('../package.json')
 
+async function writeEnvInfo(): Promise<void> {
+  console.log(chalk.bold('\nEnvironment Info:'))
+  process.stdout.write(`  Create Nom App: ${version}`)
   await envinfo
     .run(
       {
