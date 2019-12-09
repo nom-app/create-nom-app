@@ -1,4 +1,9 @@
-// Configuration, designed for eslint, to lint the entire project
+// Configuration designed for and used by ESLint. All source files from all
+// workspaces must be included.
+//
+// You can run `yarn run tsc --project ./tsconfig.lint.json --showConfig` to get
+// a list of files included by the configuration. These files will get passed
+// off to the ESLint tool.
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
