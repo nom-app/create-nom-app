@@ -20,7 +20,7 @@
     "directory": "packages/create-nom-app"
   },
   "scripts": {
-    "build-with-tsc": "npm run build:clean && tsc --noEmit false",
+    "build-with-tsc": "npm run build:clean && tsc --project ./tsconfig.build.json --noEmit false",
     "build": "npm run build:clean && cross-env NODE_ENV=production npm run build:source",
     "build:source": "webpack --progress --colors --config webpack.config.babel.js",
     "build:clean": "rimraf ./lib && rimraf ./bin",
