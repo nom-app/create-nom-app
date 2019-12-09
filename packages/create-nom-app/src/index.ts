@@ -60,7 +60,7 @@ function main(): void {
   if (typeof projectName !== 'string') {
     console.log(`${chalk.green('create-nom-app')} ${chalk.blue('<project-name>')} [options]`)
     writeHelp()
-    process.exit(0)
+    process.exit(1)
   }
 
   if (program.useNpm && program.useYarn) {
