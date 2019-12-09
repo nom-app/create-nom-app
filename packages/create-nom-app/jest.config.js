@@ -3,6 +3,7 @@ const baseConfig = require('../../jest.base')
 
 const config = Object.assign({}, baseConfig, {
   rootDir: __dirname,
+  roots: ['<roodDir>', '<rootDir>/tests'],
   setupFiles: ['./tests/setup.ts']
 })
 
