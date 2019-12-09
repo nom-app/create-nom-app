@@ -5,7 +5,7 @@ import chalk from 'chalk'
 
 const currentNodeVersion = process.versions.node
 const semver = currentNodeVersion.split('.')
-const major = semver[0]
+const major = Number(semver[0])
 
 /**
  * Check the current version of node against `majorMinimum`. If current version
@@ -13,8 +13,10 @@ const major = semver[0]
  * application exits with status code `1`.
  *
  * @param {Integer} majorMinimum The minimum major version of Node to allow.
+ * @example
+ * In Node environments <10,`checkNodeVersion(10)` logs an error to the console and the process exits.
  */
-function checkNodeVersion(majorMinimum) {
+function checkNodeVersion(majorMinimum: number): void {
   if (major < majorMinimum) {
     // eslint-disable-next-line no-console
     console.error(

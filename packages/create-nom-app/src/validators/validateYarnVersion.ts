@@ -5,7 +5,7 @@ import logger from '../logger'
 
 const minimumYarnVersion = '1.8.0'
 
-function validateYarnVersion(version) {
+function validateYarnVersion(version: string): void {
   logger.verbose('Validating Yarn version', version)
 
   if (!semver.gte(version, minimumYarnVersion)) {
