@@ -1,5 +1,31 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Create Nom App CLI --info display environment information 1`] = `
+[MockFunction] {
+  "calls": Array [
+    Array [
+      "[1m[22m
+[1mEnvironment Info:[22m",
+    ],
+    Array [
+      "A mocked call to envinfo.run was made",
+    ],
+  ],
+  "results": Array [
+    Object {
+      "type": "return",
+      "value": undefined,
+    },
+    Object {
+      "type": "return",
+      "value": undefined,
+    },
+  ],
+}
+`;
+
+exports[`Create Nom App CLI --info display environment information 2`] = `[MockFunction]`;
+
 exports[`Create Nom App CLI show usage instructions and exit with code 1 when no project name is supplied 1`] = `
 [MockFunction] {
   "calls": Array [
