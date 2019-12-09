@@ -2,7 +2,8 @@
 const baseConfig = require('../../jest.base')
 
 const config = Object.assign({}, baseConfig, {
-  rootDir: __dirname
+  rootDir: __dirname,
+  setupFiles: ['./tests/setup.ts']
 })
 
 config.globals['ts-jest'].tsConfig = 'tsconfig.test.json'

@@ -1,0 +1,1 @@
+process.env.SKIP_DEFAULT_CREATE_NOM_APP_CLI_ACTION = 'true'
