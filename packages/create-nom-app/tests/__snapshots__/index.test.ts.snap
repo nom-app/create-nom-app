@@ -76,6 +76,54 @@ exports[`Create Nom App CLI --info display environment information 1`] = `
 
 exports[`Create Nom App CLI --info display environment information 2`] = `[MockFunction]`;
 
+exports[`Create Nom App CLI -v, --version, -V --version 1`] = `
+[MockFunction] {
+  "calls": Array [
+    Array [
+      "v__mocked_version_0.0.0-development__",
+    ],
+  ],
+  "results": Array [
+    Object {
+      "type": "return",
+      "value": undefined,
+    },
+  ],
+}
+`;
+
+exports[`Create Nom App CLI -v, --version, -V -V 1`] = `
+[MockFunction] {
+  "calls": Array [
+    Array [
+      "v__mocked_version_0.0.0-development__",
+    ],
+  ],
+  "results": Array [
+    Object {
+      "type": "return",
+      "value": undefined,
+    },
+  ],
+}
+`;
+
+exports[`Create Nom App CLI -v, --version, -V -v 1`] = `
+[MockFunction] {
+  "calls": Array [
+    Array [
+      "v__mocked_version_0.0.0-development__",
+    ],
+  ],
+  "results": Array [
+    Object {
+      "type": "return",
+      "value": undefined,
+    },
+  ],
+}
+`;
+
 exports[`Create Nom App CLI show usage instructions and exit with code 1 when no project name is supplied 1`] = `
 [MockFunction] {
   "calls": Array [

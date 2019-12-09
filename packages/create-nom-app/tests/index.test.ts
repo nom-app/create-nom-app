@@ -10,19 +10,17 @@ describe('Create Nom App CLI', () => {
   let spyOnStdOut: jest.SpyInstance
 
   beforeEach(() => {
+    jest.clearAllMocks()
     exitCode = null
     spyOnLog = jest.spyOn(console, 'log').mockImplementation()
     spyOnErr = jest.spyOn(console, 'error').mockImplementation()
     spyOnStdOut = jest.spyOn(process.stdout, 'write').mockImplementation()
     spyOnExit = jest.spyOn(process, 'exit').mockImplementation(x => {
-      exitCode = x || null
+      exitCode = x || 0
       throw new Error(`Mock process.exit()`)
     })
   })
 
-  afterEach(() => {
-    jest.clearAllMocks()
-  })
   test('show usage instructions and exit with code 1 when no project name is supplied', () => {
     try {
       void CNA([])
@@ -40,7 +38,7 @@ describe('Create Nom App CLI', () => {
       try {
         void CNA(['-h'])
       } catch (e) {}
-      expect(exitCode).toStrictEqual(null)
+      expect(exitCode).toStrictEqual(0)
       expect(spyOnExit).toHaveBeenCalled()
       expect(spyOnStdOut).toMatchSnapshot()
     })
@@ -49,7 +47,7 @@ describe('Create Nom App CLI', () => {
       try {
         void CNA(['--help'])
       } catch (e) {}
-      expect(exitCode).toStrictEqual(null)
+      expect(exitCode).toStrictEqual(0)
       expect(spyOnExit).toHaveBeenCalled()
       expect(spyOnStdOut).toMatchSnapshot()
     })
@@ -72,6 +70,33 @@ describe('Create Nom App CLI', () => {
       } catch (e) {}
       expect(spyOnLog).toMatchSnapshot()
       expect(spyOnErr).toMatchSnapshot()
+    })
+  })
+
+  describe('-v, --version, -V', () => {
+    test('-v', () => {
+      try {
+        void CNA(['-v'])
+      } catch (e) {}
+      expect(exitCode).toStrictEqual(0)
+      expect(spyOnExit).toHaveBeenCalledTimes(1)
+      expect(spyOnLog).toMatchSnapshot()
+    })
+    test('-V', () => {
+      try {
+        void CNA(['-V'])
+      } catch (e) {}
+      expect(exitCode).toStrictEqual(0)
+      expect(spyOnExit).toHaveBeenCalledTimes(1)
+      expect(spyOnLog).toMatchSnapshot()
+    })
+    test('--version', () => {
+      try {
+        void CNA(['--version'])
+      } catch (e) {}
+      expect(exitCode).toStrictEqual(0)
+      expect(spyOnExit).toHaveBeenCalledTimes(1)
+      expect(spyOnLog).toMatchSnapshot()
     })
   })
 })
