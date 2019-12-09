@@ -22,14 +22,14 @@ const { version } = require('../package.json')
 
 function main(): void {
   const cwd = process.cwd()
-  let projectDirectory
-  let projectName
+  let projectDirectory = ''
+  let projectName: undefined | string
 
   const program = new commander.Command('create-nom-app')
     .arguments('<project-name>')
     .usage(`${chalk.blue('<project-name>')} [options]`)
     .action(name => {
-      projectName = name
+      projectName = (name || '') as string
       projectDirectory = path.join(cwd, projectName)
     })
     .on('--help', () => {
@@ -54,7 +54,7 @@ function main(): void {
   }
 
   if (program.info) {
-    return writeEnvInfo()
+    return void writeEnvInfo()
   }
 
   if (typeof projectName !== 'string') {
@@ -83,6 +83,7 @@ function main(): void {
     return false
   })()
 
+  const pkgManagerDefaultPreference = ['yarn', 'npm']
   /**
    * If the user has a preference (via --use-{package-manager}) then it will
    * load that manager. If the preferred manager does not exist, an error will
@@ -95,20 +96,18 @@ function main(): void {
    * process quits.
    */
   // eslint-disable-next-line consistent-return
-  const usePackageManager = (() => {
+  const usePackageManager = ((): void | 'npm' | 'yarn' | string => {
     if (preferredPackageManager) {
       if (packageManagers.hasManager(preferredPackageManager)) {
         return preferredPackageManager
       }
 
       console.error(
-        chalk.red(`You preferred the package manager ${preferredPackageManager}, which was not found on your system.`)
+        chalk.red(`Your preferred package manager, ${preferredPackageManager}, was not found on your system.`)
       )
-      console.error(chalk.red('You can install the package manager you prefer, or remove any preference.'))
+      console.error(chalk.red('You can install the package manager, or remove any preference.'))
       process.exit(1)
     }
-
-    const pkgManagerDefaultPreference = ['yarn', 'npm']
 
     // eslint-disable-next-line no-restricted-syntax
     for (const manager of pkgManagerDefaultPreference) {
@@ -116,13 +115,14 @@ function main(): void {
         return manager
       }
     }
+  })()
 
+  if (typeof usePackageManager !== 'string') {
     console.error(chalk.red('Unable to find any package managers on your system.'))
     console.error(chalk.red(`Searched for ${pkgManagerDefaultPreference.join(', ')}.`))
     console.error(chalk.red('Please install a package manager.'))
     process.exit(1)
-  })()
-
+  }
   const packageManagerBinary = packageManagers.getManager(usePackageManager).binary
 
   logger.debug('pref', preferredPackageManager, ';using', usePackageManager, ';binary', packageManagerBinary)
