@@ -5,7 +5,7 @@ import logger from '../logger'
 
 const minimumNPMVersion = '6.0.0'
 
-function validateNPMVersion(version) {
+function validateNPMVersion(version: string): void {
   logger.verbose('Validating NPM version', version)
 
   if (!semver.gte(version, minimumNPMVersion)) {
