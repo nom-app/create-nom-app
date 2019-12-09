@@ -68,6 +68,7 @@ describe('Create Nom App CLI', () => {
       try {
         void CNA(['--info'])
       } catch (e) {}
+      expect(spyOnStdOut).toMatchSnapshot()
       expect(spyOnLog).toMatchSnapshot()
       expect(spyOnErr).toMatchSnapshot()
     })
