@@ -47,7 +47,21 @@ function main(args = process.argv): void {
       process.exit(0)
     })
 
-  program.parse(args)
+  /**
+   * The first and second element in process.argv are `process.execPath` and the
+   * path of the JavaScript file being executed, respectively. When functionally
+   * interacting with the Create Nom App, any arguments passed must be appended
+   * to an array of elements mocking the structure of `process.argv`. This is
+   * required so that Commander can correctly parse the arguments.
+   *
+   * Learn more at:
+   *   - https://nodejs.org/docs/latest/api/process.html#process_process_argv
+   */
+  const argsToParse =
+    args === process.argv
+      ? process.argv
+      : ['__mocked_process_exec_path__', '__mocked_cna_binary_exec_path__'].concat(args)
+  program.parse(argsToParse)
 
   if (program.rawArgs.includes('-h') || program.rawArgs.includes('--help')) {
     program.help()
