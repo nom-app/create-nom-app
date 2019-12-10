@@ -30,7 +30,7 @@
     "husky:precommit": "lint-staged",
     "lint": "tsc --noEmit && eslint --ext .js,.ts,.json .",
     "lint:fix": "npm run lint -- --fix",
-    "test": "jest --config ./jest.config.js --runInBand --detectOpenHandles"
+    "test": "jest --config ./jest.config.js --runInBand --detectOpenHandles --coverage"
   },
   "lint-staged": {
     "*.{js,ts}": [
