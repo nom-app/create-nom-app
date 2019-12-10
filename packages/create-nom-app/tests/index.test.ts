@@ -1,4 +1,4 @@
-/* eslint no-empty: "warn"*/
+/* eslint no-empty: "off"*/
 
 import CNA from '../src/index'
 
