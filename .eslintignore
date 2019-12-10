@@ -1,3 +1,6 @@
 # Ignore files from linting. Learn more at https://eslint.org/docs/user-guide/command-line-interface#ignoring-files-from-linting
-packages/*/bin
-packages/*/node_modules
+node_modules
+**/coverage/**
+**/docs/**
+**/lib/**
+**/bin/**
