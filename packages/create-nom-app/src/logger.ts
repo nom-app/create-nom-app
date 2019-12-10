@@ -20,7 +20,7 @@ const logger = winston.createLogger({
       handleExceptions: true,
       json: false,
       colorize: true
-    })
+    } as any) // TODO: remove the `any` cast. Supposedly, `json` and `colorize` are not valid. It might be best to remove this once snapshots cover these lines to ensure the output is not changed by removing untyped options.
   ],
   exitOnError: false
 })
