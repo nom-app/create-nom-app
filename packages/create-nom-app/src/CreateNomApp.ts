@@ -6,14 +6,24 @@ import fs from 'fs-extra'
 
 import logger from './logger'
 
-const defaultOptions = {
-  projectDirectory: null,
-  packageManager: null,
-  gitBinary: null
+interface Options {
+  projectDirectory: string
+  packageManager: {
+    manager: 'npm' | 'yarn'
+    binary: string
+  }
+  gitBinary?: string
+}
+
+const defaultOptions: Pick<Options, 'gitBinary'> = {
+  gitBinary: undefined
 }
 
 class CreateNomApp {
-  constructor(projectName, options) {
+  projectName: string
+  options: Options
+
+  constructor(projectName: string, options: Options) {
     console.log(`Creating ${chalk.blue(projectName)} app.`)
 
     // TODO: Do recursive deep-assign
@@ -21,11 +31,11 @@ class CreateNomApp {
     this.options = Object.assign({}, defaultOptions, options)
   }
 
-  ensureProjectDir() {
+  ensureProjectDir(): void {
     fs.ensureDirSync(this.options.projectDirectory)
   }
 
-  installPackages() {
+  installPackages(): void {
     console.log(`\nInstalling ${chalk.green('nom-scripts')}. This may take a few minutes...\n`)
 
     logger.debug('package manager is', this.options.packageManager.manager, 'at', this.options.packageManager.binary)
@@ -54,7 +64,7 @@ class CreateNomApp {
     }
   }
 
-  handoff() {
+  handoff(): void {
     const nomScriptsBin = path.resolve(
       this.options.projectDirectory,
       path.join(this.options.projectDirectory, 'node_modules', '.bin', 'nom-scripts')
@@ -72,7 +82,7 @@ class CreateNomApp {
 
     if (handoffProc.status !== 0) {
       console.error('Create Nom App failed failed to initialize the project.')
-      process.exit(handoffProc.status)
+      process.exit(handoffProc.status || 1)
     }
   }
 }
