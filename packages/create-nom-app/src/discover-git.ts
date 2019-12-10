@@ -4,7 +4,7 @@ import { sync as whichSync } from 'which'
 // Semver regex string provided by https://github.com/semver/semver/issues/232#issue-48635632
 const semverRegex = /(0|[5-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(-(0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(\.(0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*)?(\+[0-9a-zA-Z-]+(\.[0-9a-zA-Z-]+)*)?/g
 
-interface GitInfo {
+export interface GitInfo {
   gitInstalled?: boolean
   gitVersion?: string
   gitBinary?: string

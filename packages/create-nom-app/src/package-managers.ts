@@ -1,7 +1,7 @@
 import { sync as spawnSync } from 'cross-spawn'
 import { sync as whichSync } from 'which'
 
-interface PackageManager {
+export interface PackageManager {
   binary: string
   version: string
 }
