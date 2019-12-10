@@ -10,6 +10,9 @@
     "name": "Maxim Devoir",
     "email": "maximdevoir@gmail.com"
   },
+  "files": [
+    "bin"
+  ],
   "bugs": {
     "url": "https://github.com/create-nom-app/create-nom-app/issues"
   },
