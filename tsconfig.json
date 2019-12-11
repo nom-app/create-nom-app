@@ -13,7 +13,7 @@
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
     "noUnusedLocals": true,
-    "skipLibCheck": false,
+    "skipLibCheck": true,
     "noEmit": true,
     "downlevelIteration": true,
     "allowSyntheticDefaultImports": true,
