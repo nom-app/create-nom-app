@@ -1,3 +1,6 @@
+// TODO: Convert to TypeScript.
+// TODO: After TypeScript conversion, execute this file with `ts-node`.
+/* eslint-disable @typescript-eslint/no-var-requires */
 const cs = require('cross-spawn')
 const fs = require('fs-extra')
 const path = require('path')
@@ -5,10 +8,10 @@ const isDir = require('is-directory')
 const glob = require('glob')
 
 const XVFB_SERVER_ARG = process.env.XVFB_SERVER_ARG || '-screen 0 1920x1080x24'
-let RAW_TERM_DIR = path.isAbsolute(process.env.RAW_TERM_DIR)
+const RAW_TERM_DIR = path.isAbsolute(process.env.RAW_TERM_DIR)
   ? process.env.RAW_TERM_DIR
   : path.resolve(process.env.RAW_TERM_DIR)
-let OUTPUT_DIR = path.isAbsolute(process.env.OUTPUT_DIR)
+const OUTPUT_DIR = path.isAbsolute(process.env.OUTPUT_DIR)
   ? process.env.OUTPUT_DIR
   : path.resolve(process.env.OUTPUT_DIR)
 
@@ -36,9 +39,24 @@ for (const file of rawTerminalFiles) {
 
   console.log(`\nRendering ${file}`)
 
-  cs.sync('xvfb-run', ['-a', '--server-args', `"${XVFB_SERVER_ARG}"`, 'terminalizer', 'render',  '--output', `"${basename}"`, '--quality', '100', `"${file}"`], {
-    shell: '/bin/bash',
-    stdio: 'inherit',
-    cwd: OUTPUT_DIR
-  })
+  cs.sync(
+    'xvfb-run',
+    [
+      '-a',
+      '--server-args',
+      `"${XVFB_SERVER_ARG}"`,
+      'terminalizer',
+      'render',
+      '--output',
+      `"${basename}"`,
+      '--quality',
+      '100',
+      `"${file}"`
+    ],
+    {
+      shell: '/bin/bash',
+      stdio: 'inherit',
+      cwd: OUTPUT_DIR
+    }
+  )
 }
