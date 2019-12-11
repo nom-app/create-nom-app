@@ -1,6 +1,16 @@
-# Ignore files from linting. Learn more at https://eslint.org/docs/user-guide/command-line-interface#ignoring-files-from-linting
+# Ignore files from linting. Learn more at:
+#   - https://eslint.org/docs/user-guide/command-line-interface#ignoring-files-from-linting
+
+# ESLint does not search up for a root `.eslintignore` file.
+# If you run the ESLint tool outside the root workspace directory, you must add
+# the flag `--ignore-path` and point to the location of the root `.eslintignore`
+# file.
 node_modules
-**/coverage/**
-**/docs/**
-**/lib/**
-**/bin/**
+coverage/
+docs/
+lib/
+bin/
+# TODO: Remove nom-scripts entry from eslintignore. Why was this added? During
+# migration to TypeScript, ESLint # logic had not been centralized to the root
+# workspace out of all the packages.
+packages/nom-scripts
