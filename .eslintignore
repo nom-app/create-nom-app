@@ -10,3 +10,16 @@ coverage/
 docs/
 lib/
 bin/
+
+**/nom-scripts/webpack.config.babel.js
+
+# TODO: We shouldn't be ignoring templates.
+# If we're going to lint templates, we will have to use a separate `eslint` config
+# file for each template. Lint configurations will be separate from the root
+# workspace configuration becase:
+#   * templates may use different environment settings
+#     https://eslint.org/docs/user-guide/configuring#specifying-environments
+#   * templates may use different parsers
+#   * templates may use different rules
+#   * we don't want to convolute our root workspace config just to lint templates
+**/templates/base/
