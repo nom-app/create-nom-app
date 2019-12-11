@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 import path from 'path'
 
 import chalk from 'chalk'
@@ -14,15 +16,15 @@ const projectRoot = discoverRoot()
 // TODO: Make statement DRY. This statement is repeated in multiple `./scripts`
 // files.
 if (projectRoot === undefined) {
-  console.error(`${chalk.red.inverse('FAIL')} ${chalk.blue('nom-scripts')} did not find a ${chalk.green('create-nom-app')} project.`)
+  console.error(
+    `${chalk.red.inverse('FAIL')} ${chalk.blue('nom-scripts')} did not find a ${chalk.green('create-nom-app')} project.`
+  )
   console.error('Did you run the script from the root directory of your create-nom-app?')
 
   process.exit(1)
 }
 
-const mocha = new Mocha({
-
-})
+const mocha = new Mocha()
 
 const globbedSpecs = glob.sync('**/*.spec.*', {
   cwd: path.join(projectRoot, 'tests')
@@ -48,7 +50,7 @@ if (hasCoverageFlag) {
   console.log('    https://create-nom.app/docs/feature/code-coverage')
   process.exit()
 } else {
-  // eslint-disable-next-line global-require
+  // eslint-disable-next-line @typescript-eslint/no-var-requires
   require('@babel/register')({
     presets: ['@babel/preset-env']
   })

@@ -17,20 +17,24 @@ import { sync as isDirSync } from 'is-directory'
  * being used (`yarn` or `npm`). Returns `npm` when no package manager lockfile
  * was found.
  */
-function whichManager(projectRoot) {
+function whichManager(projectRoot = ''): 'npm' | 'yarn' {
   if (!isDirSync(projectRoot)) {
     return 'npm'
   }
 
-  const lockFiles = [['yarn', 'yarn.lock'], ['npm', 'package-lock.json']]
+  const lockFiles = [
+    ['yarn', 'yarn.lock'],
+    ['npm', 'package-lock.json']
+  ]
 
   // eslint-disable-next-line no-restricted-syntax
   for (const [manager, lockfile] of lockFiles) {
     if (fs.existsSync(path.join(projectRoot, lockfile))) {
-      return manager
+      return manager as 'npm' | 'yarn' // TODO: We should rewrite this so we don't have to hard-code the return values
     }
   }
 
+  // defaults to npm
   return 'npm'
 }
 
