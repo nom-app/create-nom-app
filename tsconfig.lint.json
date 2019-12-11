@@ -7,19 +7,24 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
-    "noEmit": true,
+    "noEmit": true
   },
+  /**
+   * A list of all source files that are included in the linting process.
+   */
   "include": [
     "**/**/*",
+    "*.js",
+    ".*.js",
+    "*.json",
     "**/__mocks__/**/*.ts",
     "**/*.ts",
     "**/*.test.ts",
     "**/*.js",
     "**/**/*.js",
+    "**/**/*.json",
     "**/**/*.ts",
     "**/**/*.d.ts",
-    "**/**/tsconfig*.json",
-    "*.js",
-    ".*.js"
+    "**/**/tsconfig*.json"
   ]
 }
