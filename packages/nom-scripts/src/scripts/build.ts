@@ -1,29 +1,24 @@
+#!/usr/bin/env node
+
 import path from 'path'
 import fs from 'fs-extra'
 import chalk from 'chalk'
-import minimist from 'minimist'
+// import minimist from 'minimist'
 import { sync as rimrafSync } from 'rimraf'
 import { sync as isDirSync } from 'is-directory'
-import webpack from 'webpack'
+import webpack, { ICompiler } from 'webpack'
 import FriendlyErrorsWebpackPlugin from 'friendly-errors-webpack-plugin'
 import nodeExternals from 'webpack-node-externals'
 
 import discoverRoot from '../packages/discoverRoot'
-import whichManager from '../packages/package-managers-local'
+// import whichManager from '../packages/package-managers-local'
+// const packageManager = whichManager(projectRoot)
 
 const projectRoot = discoverRoot()
 
-if (projectRoot === undefined) {
-  console.error(`${chalk.red.inverse('FAIL')} ${chalk.blue('nom-scripts')} did not find a ${chalk.green('create-nom-app')} project.`)
-  console.error('Did you run the script from the root directory of your create-nom-app?')
-
-  process.exit(1)
-}
-
-const packageManager = whichManager(projectRoot)
 const isProduction = true
 
-const statsHandler = (err, stats) => {
+const statsHandler: ICompiler.Handler = (err, stats) => {
   if (err || stats.hasErrors()) {
     console.log('Failed to build the app.')
     return
@@ -32,8 +27,17 @@ const statsHandler = (err, stats) => {
   console.log('Built your app.')
 }
 
+function main(): void {
+  if (typeof projectRoot !== 'string') {
+    console.error(
+      `${chalk.red.inverse('FAIL')} ${chalk.blue('nom-scripts')} did not find a ${chalk.green(
+        'create-nom-app'
+      )} project.`
+    )
+    console.error('Did you run the script from the root directory of your create-nom-app?')
 
-function main() {
+    process.exit(1)
+  }
   const pkgPath = path.join(projectRoot, 'package.json')
   const pkg = JSON.parse(fs.readFileSync(pkgPath, 'utf8'))
   const distDir = path.join(projectRoot, 'dist')
@@ -60,7 +64,7 @@ function main() {
       umdNamedDefine: true,
       // Issue described at https://github.com/webpack/webpack/issues/6525
       // Solution provided by https://github.com/webpack/webpack/issues/6522#issuecomment-371120689
-      globalObject: 'typeof self !== \'undefined\' ? self : this'
+      globalObject: "typeof self !== 'undefined' ? self : this"
     },
     module: {
       rules: [
@@ -77,9 +81,7 @@ function main() {
     resolve: {
       modules: ['node_modules']
     },
-    plugins: [
-      new FriendlyErrorsWebpackPlugin()
-    ]
+    plugins: [new FriendlyErrorsWebpackPlugin()]
   })
 
   compiler.run(statsHandler)

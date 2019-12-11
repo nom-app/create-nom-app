@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 /* eslint-disable no-underscore-dangle */
 import { sync as spawnSync } from 'cross-spawn'
 import os from 'os'
@@ -9,8 +11,28 @@ import minimist from 'minimist'
 
 import logger from '../packages/logger'
 
-class InitializeCNA {
-  constructor(options) {
+interface InitCNAOptions {
+  projectDirectory: string
+  projectName: string
+  packageManager: {
+    manager: 'npm' | 'yarn'
+    binary: string
+  }
+  gitBinary?: string
+  hasPreviousInit: boolean
+}
+
+class InitializeCNA implements InitCNAOptions {
+  projectDirectory: string
+  projectName: string
+  packageManager: {
+    manager: 'npm' | 'yarn'
+    binary: string
+  }
+  gitBinary?: string
+  hasPreviousInit: boolean
+
+  constructor(options: InitCNAOptions) {
     this.projectDirectory = options.projectDirectory
     this.projectName = options.projectName
     this.packageManager = options.packageManager
@@ -23,12 +45,12 @@ class InitializeCNA {
    * We can tell if their is likely an init by checking for common directories
    * and files created during the init process.
    */
-  hasInit() {
+  hasInit(): boolean {
     let hasLikelyInited = false
 
     const pathsToCheck = ['src', 'tests', 'README.md']
 
-    pathsToCheck.some((dir) => {
+    pathsToCheck.some(dir => {
       const dirExists = fs.existsSync(path.join(this.projectDirectory, dir))
 
       if (dirExists) {
@@ -42,7 +64,7 @@ class InitializeCNA {
     return hasLikelyInited
   }
 
-  verifyNoPreviousInit() {
+  verifyNoPreviousInit(): void {
     if (this.hasPreviousInit) {
       console.error('It looks like the directory has already been initialized.')
       process.exit(1)
@@ -52,7 +74,7 @@ class InitializeCNA {
   /**
    * Initializes a Git repo inside the project directory.
    */
-  gitRepo() {
+  gitRepo(): void {
     if (typeof this.gitBinary !== 'string') {
       console.log('Skipping Git repo creation. Could not find Git on the system.')
       return
@@ -76,15 +98,17 @@ class InitializeCNA {
     console.log('\nInitialized a git repository.')
   }
 
-  _writeBasePackage() {
-    const installedNomScriptsVersion = (() => {
+  _writeBasePackage(): void {
+    const installedNomScriptsVersion = ((): RegExpMatchArray | null => {
       const pathToNS = path.join(this.projectDirectory, 'node_modules', '.bin', 'nom-scripts')
       // Semver regex string provided by https://github.com/semver/semver/issues/232#issue-48635632
       const semverRegex = /(0|[5-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(-(0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(\.(0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*)?(\+[0-9a-zA-Z-]+(\.[0-9a-zA-Z-]+)*)?/g
 
       return spawnSync(pathToNS, ['--version'], {
         stdio: 'pipe'
-      }).stdout.toString().match(semverRegex)
+      })
+        .stdout.toString()
+        .match(semverRegex)
     })()
 
     const basePackage = {
@@ -111,11 +135,11 @@ class InitializeCNA {
     fs.writeJSONSync(path.join(this.projectDirectory, 'package.json'), basePackage, {
       spaces: 2,
       EOL: os.EOL,
-      mode: '644'
+      mode: 0o644
     })
   }
 
-  app() {
+  app(): void {
     logger.debug('Copying structure and files from template.')
     const sourceTemplatePath = path.join(__dirname, '..', 'templates', 'base')
     logger.debug('from: ', sourceTemplatePath)
@@ -125,7 +149,7 @@ class InitializeCNA {
     // Convert files to dotfiles, relative to project root directory.
     const dotfiles = ['gitignore', ['npmignore']]
 
-    dotfiles.forEach((entry) => {
+    dotfiles.forEach(entry => {
       const dotfile = typeof entry === 'string' ? entry : path.join(...entry)
       const nonDotfilePath = path.join(this.projectDirectory, dotfile)
       const pathToDotfile = path.join(this.projectDirectory, `.${dotfile}`)
@@ -142,7 +166,7 @@ class InitializeCNA {
     this._writeBasePackage()
   }
 
-  success() {
+  success(): void {
     const isYarn = this.packageManager.manager === 'yarn'
     const commands = {
       start: `${isYarn ? 'yarn' : 'npm'} start`,

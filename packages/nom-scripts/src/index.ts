@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 import chalk from 'chalk'
 import { sync as spawnSync } from 'cross-spawn'
 import commander from 'commander'
@@ -5,6 +7,7 @@ import minimist from 'minimist'
 
 import logger from './packages/logger'
 
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 const { version } = require('../package.json')
 
 process.on('unhandledRejection', (reason, promise) => {
@@ -14,13 +17,13 @@ process.on('unhandledRejection', (reason, promise) => {
 
 const scriptsString = `${chalk.blue('start')} | ${chalk.blue('test')} | ${chalk.blue('build')} | ${chalk.blue('eject')}`
 
-function main() {
-  let script
+function main(): void {
+  let script = ''
 
   const program = new commander.Command('nom-scripts')
     .arguments('command')
     .usage(scriptsString)
-    .action((command) => {
+    .action((command: any) => {
       if (typeof command !== 'string') {
         return
       }
@@ -41,10 +44,9 @@ function main() {
 
   program.parse(process.argv)
 
-  if (typeof script !== 'string') {
+  if (typeof script !== 'string' || script.length === 0) {
     console.log(`${chalk.green('nom-scripts')} ${scriptsString}\n`)
     commander.help()
-    process.exit(0)
   }
 
   switch (script) {
@@ -58,7 +60,7 @@ function main() {
       const argsToForward: string[] = []
       const receivedArgs = minimist(process.argv.slice(3))
 
-      Object.keys(receivedArgs).forEach((arg) => {
+      Object.keys(receivedArgs).forEach(arg => {
         if (arg === '_') {
           argsToForward.push(...receivedArgs._)
           return
@@ -73,11 +75,13 @@ function main() {
         }
       })
 
-      // Webpack or Babel override/mangle the Node `resolve` mechanism. A
+      // Either Webpack or Babel override and mangle Node `resolve` behavior. A
       // solution is to place statement in `eval`.
       // https://github.com/webpack/webpack/issues/1554#issuecomment-336462319
       // eslint-disable-next-line no-eval
-      const proc = spawnSync('node', [eval(`require.resolve('./scripts/${script}')`)].concat(argsToForward), { stdio: 'inherit' })
+      const proc = spawnSync('node', [eval(`require.resolve('./scripts/${script}')`)].concat(argsToForward), {
+        stdio: 'inherit'
+      })
 
       if (proc.signal) {
         if (proc.signal === 'SIGKILL') {

@@ -2,7 +2,8 @@
 // DO NOT MODIFY THIS FILE. MODIFY THE `CREATE-NOM-APP` VARIANT, AND THEN COPY
 // TO THIS FILE.
 
-// DO NOT MODIFY THIS FILE
+// NOTICE: This module is duplicated to `nom-scripts`.
+// This is so incredibly not DRY.
 import winston from 'winston'
 
 /**
@@ -22,7 +23,7 @@ const logger = winston.createLogger({
       handleExceptions: true,
       json: false,
       colorize: true
-    })
+    } as any) // TODO: remove the `any` cast. Supposedly, `json` and `colorize` are not valid. It might be best to remove this once snapshots cover these lines to ensure the output is not changed by removing untyped options.
   ],
   exitOnError: false
 })

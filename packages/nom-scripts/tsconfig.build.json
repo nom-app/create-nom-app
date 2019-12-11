@@ -1,5 +1,5 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {},
-  "include": ["./src/index.ts", "./src/scripts/eject.ts"]
+  "include": ["./src/index.ts", "./src/scripts/*.ts", "@types/../**/*.d.ts"]
 }
