@@ -18,5 +18,10 @@
       "changeProcessCWD": true
     }
   ],
-  "typescript.tsdk": "node_modules/typescript/lib"
+  "files.trimTrailingWhitespace": true,
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "javascript.preferences.importModuleSpecifier": "auto",
+  "typescript.preferences.importModuleSpecifier": "auto",
+  "javascript.preferences.quoteStyle": "single",
+  "typescript.preferences.quoteStyle": "single"
 }
