@@ -3,8 +3,9 @@ import { sync as spawnSync } from 'cross-spawn'
 import commander from 'commander'
 import minimist from 'minimist'
 
-import { version } from '../package.json'
 import logger from './packages/logger'
+
+const { version } = require('../package.json')
 
 process.on('unhandledRejection', (reason, promise) => {
   console.error('Unhandled Rejection at:', promise, 'reason:', reason)
@@ -54,7 +55,7 @@ function main() {
     case 'eject': {
       logger.debug('spawning', `./scripts/${script}`)
 
-      const argsToForward = []
+      const argsToForward: string[] = []
       const receivedArgs = minimist(process.argv.slice(3))
 
       Object.keys(receivedArgs).forEach((arg) => {
@@ -100,7 +101,7 @@ function main() {
         process.exit(1)
       }
 
-      process.exit(proc.status)
+      process.exit(proc.status || 128)
       break
     }
     default:
