@@ -4,7 +4,7 @@ import commander from 'commander'
 import minimist from 'minimist'
 
 import { version } from '../package.json'
-import logger from '../../create-nom-app/src/logger'
+import logger from './packages/logger'
 
 process.on('unhandledRejection', (reason, promise) => {
   console.error('Unhandled Rejection at:', promise, 'reason:', reason)
