@@ -2,7 +2,7 @@
   // Root level configuration should have the strictest rules. If necessary,
   // packages extending the configuration may override rules.
   "compilerOptions": {
-  "allowJs": false,
+    "allowJs": false,
     "module": "commonjs",
     "moduleResolution": "node",
     "lib": ["es2015", "es2017"],
