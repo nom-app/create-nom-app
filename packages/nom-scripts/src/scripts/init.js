@@ -7,7 +7,7 @@ import chalk from 'chalk'
 import fs from 'fs-extra'
 import minimist from 'minimist'
 
-import logger from '../../../create-nom-app/src/logger'
+import logger from '../packages/logger'
 
 class InitializeCNA {
   constructor(options) {
