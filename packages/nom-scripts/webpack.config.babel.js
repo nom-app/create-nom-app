@@ -39,6 +39,7 @@ export default {
     nodeExternals({
       modulesDir: path.resolve(__dirname, '../../node_modules')
     }),
+    // eslint-disable-next-line consistent-return
     (context, request, callback) => {
       if (/package\.json/.test(request)) {
         return callback(null, `require("${request}")`)
@@ -114,6 +115,7 @@ export default {
           Object.keys(compilation.assets).forEach((key) => {
             const assetName = key
             const asset = compilation.assets[key]
+            // eslint-disable-next-line no-underscore-dangle
             const assetContent = process.env.NODE_ENV === 'production' ? asset._value : asset.children?.[0]._value
 
             if (typeof assetContent !== 'string') {
