@@ -69,6 +69,7 @@ function startLocalRegistry () {
   registryLog=$(mktemp)
 
   echo "Registry log path: $registryLog"
+  echo "Starting Verdaccio registry..."
 
   (cd && nohup npx $verdaccio_package --config "$configPath" --listen "$verdaccio_registry" &> "$registryLog" &)
   grep -q 'http address' <(tail -f "$registryLog")
