@@ -1,5 +1,11 @@
 #!/bin/bash
 
+# Print each command and their arguments as they are executed
+set -x
+
+# Exit if a command returns a non-zero code
+set -e
+
 # Specify a package to install. ./install-packages.sh nom-scripts
 installPackage=$1
 
