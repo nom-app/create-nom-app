@@ -23,8 +23,9 @@
     "bin"
   ],
   "scripts": {
-    "build": "npm run build:clean && cross-env NODE_ENV=production npm run build:source",
-    "build-with-tsc": "npm run build:clean && cross-env NODE_ENV=production  tsc --project ./tsconfig.build.json --noEmit false",
+    "build": "npm run build:clean && npm run build:source-build-with-tsc && npm run build:copy-tempaltes",
+    "build:source-build-with-tsc": "npm run build:clean && cross-env NODE_ENV=production  tsc --project ./tsconfig.build.json --noEmit false",
+    "build:copy-templates": "ts-node copy-templates.ts",
     "build:source": "webpack --progress --colors --config webpack.config.babel.js",
     "build:clean": "rimraf ./lib && rimraf ./bin",
     "clean": "npm run build:clean && npm run coverage:clean",
@@ -39,8 +40,7 @@
     "lint:fix": "npm run lint -- --fix",
     "start": "npm run start:once -- --watch",
     "start:once": "cross-env NODE_ENV=development npm run build:source --",
-    "test": "cross-env NODE_ENV=test mocha --colors --require @babel/register tests/*.spec.js",
-    "test:watch": "cross-env NODE_ENV=test mocha --colors --watch --require @babel/register tests/*.spec.js"
+    "test": "jest --config ./jest.config.js --runInBand --detectOpenHandles --coverage"
   },
   "keywords": [
     "nom-scripts"
