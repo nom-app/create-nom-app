@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-"use strict";
+'use strict'
 
 import fs from 'fs-extra'
 import path from 'path'
@@ -10,7 +10,7 @@ const copyPath = path.join(__dirname, 'bin', 'templates')
 
 try {
   fs.copySync(templateDir, copyPath)
-} catch(e) {
+} catch (e) {
   console.log('Failed to copy template files to build folder.')
   throw e
 }
