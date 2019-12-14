@@ -92,8 +92,8 @@ function buildAndPublish() {
   echo "yarn install"
   yarn install
 
-  echo "yarn run start:once"
-  yarn run start:once
+  echo "yarn run build"
+  yarn run build
 
   echo "publishing $package to Verdaccio"
   npm publish --registry http://0.0.0.0:4873 --verbose
