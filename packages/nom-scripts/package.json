@@ -30,8 +30,6 @@
     "build:clean": "rimraf ./lib && rimraf ./bin",
     "docs": "echo 'no documentation generation yet'",
     "lint": "tsc --noEmit && eslint --ignore-path ../../.eslintignore --ext .ts,.js .",
-    "start": "npm run start:once -- --watch",
-    "start:once": "cross-env NODE_ENV=development npm run build:source --",
     "test": "jest --config ./jest.config.js --runInBand --detectOpenHandles --coverage"
   },
   "keywords": [
