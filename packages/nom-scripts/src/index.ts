@@ -15,20 +15,20 @@ process.on('unhandledRejection', (reason, promise) => {
   throw reason
 })
 
-const scriptsString = `${chalk.blue('start')} | ${chalk.blue('test')} | ${chalk.blue('build')} | ${chalk.blue('eject')}`
+const scriptsString = `${chalk.blue('start')} | ${chalk.blue('test')} | ${chalk.blue('build')}`
 
 function main(): void {
-  let script = ''
+  let script: null | string = null
 
   const program = new commander.Command('nom-scripts')
     .arguments('command')
     .usage(scriptsString)
-    .action((command: any) => {
-      if (typeof command !== 'string') {
+    .action((command: commander.Command) => {
+      const commandArg0 = command.args[0]
+      if (typeof commandArg0 !== 'string') {
         return
       }
-
-      script = command
+      script = commandArg0
     })
     .option('-v, --version', `output the version number ${version}`, () => {
       console.log(`v${version}`)
@@ -41,10 +41,11 @@ function main(): void {
     .option('--verbose', 'display low-level debugging information', () => {
       process.env.LOG_LEVEL = 'debug'
     })
+    .allowUnknownOption()
 
   program.parse(process.argv)
-
-  if (typeof script !== 'string' || script.length === 0) {
+  if (typeof script !== 'string' || script!.length === 0) {
+    console.log(`A command is required by ${chalk.green('nom-scripts')} to run.\n`)
     console.log(`${chalk.green('nom-scripts')} ${scriptsString}\n`)
     commander.help()
   }
@@ -106,14 +107,14 @@ function main(): void {
       }
 
       if (proc.status) {
-      process.exit(proc.status || 128)
+        process.exit(proc.status || 128)
       }
       break
     }
     default:
       console.log(`Unrecognized script ${chalk.blue(script)}.`)
       console.log(`You may need to update your ${chalk.green('nom-scripts')} dependency.`)
-      console.log('To learn more about this message, visit:')
+      // console.log('To learn more about this message, visit:')
       // console.log('https://TODO:base-url/create-nom-app/docs/unrecognized-script')
       break
   }
