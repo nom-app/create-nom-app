@@ -1,0 +1,25 @@
+# Ignore files from linting. Learn more at:
+#   - https://eslint.org/docs/user-guide/command-line-interface#ignoring-files-from-linting
+
+# ESLint does not search up for a root `.eslintignore` file.
+# If you run the ESLint tool outside the root workspace directory, you must add
+# the flag `--ignore-path` and point to the location of the root `.eslintignore`
+# file.
+node_modules
+coverage/
+docs/
+lib/
+bin/
+
+**/nom-scripts/webpack.config.babel.js
+
+# TODO: We shouldn't be ignoring templates.
+# If we're going to lint templates, we will have to use a separate `eslint` config
+# file for each template. Lint configurations will be separate from the root
+# workspace configuration becase:
+#   * templates may use different environment settings
+#     https://eslint.org/docs/user-guide/configuring#specifying-environments
+#   * templates may use different parsers
+#   * templates may use different rules
+#   * we don't want to convolute our root workspace config just to lint templates
+**/templates/base/

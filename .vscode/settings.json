@@ -1,0 +1,27 @@
+{
+  "editor.wordWrapColumn": 80,
+  "eslint.enable": true,
+  "eslint.packageManager": "yarn",
+  // VSCode-eslint (dbaeumer.vscode-eslint) does not show linting errors in the
+  // editor for our common monorepo setup by defaultq. To show lint errors in
+  // the editor, each package must be added to `eslint.workingDirectories`.
+  //
+  // Learn more and follow the issue at
+  // https://github.com/microsoft/vscode-eslint/issues/745
+  "eslint.workingDirectories": [
+    {
+      "directory": "./packages/create-nom-app",
+      "changeProcessCWD": true
+    },
+    {
+      "directory": "./packages/nom-scripts",
+      "changeProcessCWD": true
+    }
+  ],
+  "files.trimTrailingWhitespace": true,
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "javascript.preferences.importModuleSpecifier": "auto",
+  "typescript.preferences.importModuleSpecifier": "auto",
+  "javascript.preferences.quoteStyle": "single",
+  "typescript.preferences.quoteStyle": "single"
+}

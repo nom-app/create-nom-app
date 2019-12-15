@@ -3,7 +3,7 @@
   "description": "Scripts to develop your Create Nom App.",
   "version": "0.0.11",
   "bin": {
-    "nom-scripts": "./bin/nom-scripts.js"
+    "nom-scripts": "./bin/index.js"
   },
   "license": "MIT",
   "author": {
@@ -19,24 +19,18 @@
     "url": "https://github.com/create-nom-app/create-nom-app.git",
     "directory": "packages/nom-scripts"
   },
+  "files": [
+    "bin"
+  ],
   "scripts": {
-    "build": "npm run build:clean && cross-env NODE_ENV=production npm run build:source",
+    "build": "npm run build:clean && npm run build:source-build-with-tsc && npm run build:copy-templates",
+    "build:source-build-with-tsc": "npm run build:clean && cross-env NODE_ENV=production  tsc --project ./tsconfig.build.json --noEmit false",
+    "build:copy-templates": "ts-node copy-templates.ts",
     "build:source": "webpack --progress --colors --config webpack.config.babel.js",
     "build:clean": "rimraf ./lib && rimraf ./bin",
-    "clean": "npm run build:clean && npm run coverage:clean",
-    "coverage": "npm run coverage:clean && npm run coverage:generate",
-    "coverage:check": "./node_modules/.bin/nyc --check-coverage npm test",
-    "coverage:clean": "rimraf ./.nyc_output && rimraf ./coverage",
-    "coverage:coveralls": "npm run coverage:coveralls:report -- | ./node_modules/.bin/coveralls",
-    "coverage:coveralls:report": "npm run coverage && ./node_modules/.bin/nyc report --reporter=text-lcov",
-    "coverage:generate": "./node_modules/.bin/nyc --reporter=lcov --reporter=text npm test",
     "docs": "echo 'no documentation generation yet'",
-    "lint": "eslint .",
-    "lint:fix": "npm run lint -- --fix",
-    "start": "npm run start:once -- --watch",
-    "start:once": "cross-env NODE_ENV=development npm run build:source --",
-    "test": "cross-env NODE_ENV=test mocha --colors --require @babel/register tests/*.spec.js",
-    "test:watch": "cross-env NODE_ENV=test mocha --colors --watch --require @babel/register tests/*.spec.js"
+    "lint": "tsc --noEmit && eslint --ignore-path ../../.eslintignore --ext .ts,.js .",
+    "test": "jest --config ./jest.config.js --runInBand --detectOpenHandles --coverage"
   },
   "keywords": [
     "nom-scripts"
@@ -77,8 +71,12 @@
     "winston": "^3.2.1"
   },
   "devDependencies": {
-    "copy-webpack-plugin": "^5.0.3",
-    "coveralls": "^3.0.4",
-    "webpack-permissions-plugin": "^1.0.5"
+    "@types/friendly-errors-webpack-plugin": "^0.1.2",
+    "@types/memory-fs": "^0.3.2",
+    "@types/minimist": "^1.2.0",
+    "@types/mocha": "^5.2.7",
+    "@types/rimraf": "^2.0.3",
+    "@types/webpack": "^4.41.0",
+    "@types/webpack-node-externals": "^1.7.0"
   }
 }

@@ -1,5 +1,11 @@
 #!/bin/bash
 
+# Print each command and their arguments as they are executed
+set -x
+
+# Exit if a command returns a non-zero code
+set -e
+
 # Specify a package to install. ./install-packages.sh nom-scripts
 installPackage=$1
 
@@ -81,13 +87,13 @@ function buildAndPublish() {
 
   echo "unpublishing previous versions of $package from Verdaccio"
   # Unpublish previous version of package, which may have persisted on Verdaccio
-  npm unpublish --force --registry http://0.0.0.0:4873 --verbose "$package"
+  npm unpublish --force --registry http://0.0.0.0:4873 --verbose "$package@$pkgVersion"
 
   echo "yarn install"
   yarn install
 
-  echo "yarn run start:once"
-  yarn run start:once
+  echo "yarn run build"
+  yarn run build
 
   echo "publishing $package to Verdaccio"
   npm publish --registry http://0.0.0.0:4873 --verbose

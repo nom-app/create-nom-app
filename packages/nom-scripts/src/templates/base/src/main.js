@@ -16,7 +16,4 @@ function subtract(number1, number2) {
 
 export default add
 
-export {
-  add,
-  subtract
-}
+export { add, subtract }

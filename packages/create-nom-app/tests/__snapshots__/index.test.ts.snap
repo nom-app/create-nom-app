@@ -1,0 +1,227 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Create Nom App CLI --help, -h display help (--help) 1`] = `
+[MockFunction] {
+  "calls": Array [
+    Array [
+      "Usage: create-nom-app [34m<project-name>[39m [options]
+
+Options:
+  --info         print environment info
+  --use-npm      
+  --use-yarn     
+  -v, --version  output the version number __mocked_version_0.0.0-development__
+  -V             
+  -h, --help     output usage information
+",
+    ],
+  ],
+  "results": Array [
+    Object {
+      "type": "return",
+      "value": undefined,
+    },
+  ],
+}
+`;
+
+exports[`Create Nom App CLI --help, -h display help (-h) 1`] = `
+[MockFunction] {
+  "calls": Array [
+    Array [
+      "Usage: create-nom-app [34m<project-name>[39m [options]
+
+Options:
+  --info         print environment info
+  --use-npm      
+  --use-yarn     
+  -v, --version  output the version number __mocked_version_0.0.0-development__
+  -V             
+  -h, --help     output usage information
+",
+    ],
+  ],
+  "results": Array [
+    Object {
+      "type": "return",
+      "value": undefined,
+    },
+  ],
+}
+`;
+
+exports[`Create Nom App CLI --info display environment information 1`] = `
+[MockFunction] {
+  "calls": Array [
+    Array [
+      "  Create Nom App: __mocked_version_0.0.0-development__",
+    ],
+  ],
+  "results": Array [
+    Object {
+      "type": "return",
+      "value": undefined,
+    },
+  ],
+}
+`;
+
+exports[`Create Nom App CLI --info display environment information 2`] = `
+[MockFunction] {
+  "calls": Array [
+    Array [
+      "[1m[22m
+[1mEnvironment Info:[22m",
+    ],
+    Array [
+      "A mocked call to envinfo.run was made",
+    ],
+  ],
+  "results": Array [
+    Object {
+      "type": "return",
+      "value": undefined,
+    },
+    Object {
+      "type": "return",
+      "value": undefined,
+    },
+  ],
+}
+`;
+
+exports[`Create Nom App CLI --info display environment information 3`] = `[MockFunction]`;
+
+exports[`Create Nom App CLI -v, --version, -V --version 1`] = `
+[MockFunction] {
+  "calls": Array [
+    Array [
+      "v__mocked_version_0.0.0-development__",
+    ],
+  ],
+  "results": Array [
+    Object {
+      "type": "return",
+      "value": undefined,
+    },
+  ],
+}
+`;
+
+exports[`Create Nom App CLI -v, --version, -V -V 1`] = `
+[MockFunction] {
+  "calls": Array [
+    Array [
+      "v__mocked_version_0.0.0-development__",
+    ],
+  ],
+  "results": Array [
+    Object {
+      "type": "return",
+      "value": undefined,
+    },
+  ],
+}
+`;
+
+exports[`Create Nom App CLI -v, --version, -V -v 1`] = `
+[MockFunction] {
+  "calls": Array [
+    Array [
+      "v__mocked_version_0.0.0-development__",
+    ],
+  ],
+  "results": Array [
+    Object {
+      "type": "return",
+      "value": undefined,
+    },
+  ],
+}
+`;
+
+exports[`Create Nom App CLI show usage instructions and exit with code 1 when no project name is supplied 1`] = `
+[MockFunction] {
+  "calls": Array [
+    Array [
+      "[32mcreate-nom-app[39m [34m<project-name>[39m [options]",
+    ],
+    Array [
+      "  ",
+    ],
+    Array [
+      "  Only [34m<project-name>[39m is required.",
+    ],
+    Array [
+      "  ",
+    ],
+    Array [
+      "  Example:",
+    ],
+    Array [
+      "    [32mcreate-nom-app[39m [34mmy-first-app[39m",
+    ],
+    Array [
+      "  ",
+    ],
+    Array [
+      "  Run [32mcreate-nom-app[39m --help to see all options.",
+    ],
+    Array [
+      "  ",
+    ],
+    Array [
+      "  If you encounter any issues, feel free to report it to:",
+    ],
+    Array [
+      "   > https://github.com/create-nom-app/create-nom-app/issues",
+    ],
+  ],
+  "results": Array [
+    Object {
+      "type": "return",
+      "value": undefined,
+    },
+    Object {
+      "type": "return",
+      "value": undefined,
+    },
+    Object {
+      "type": "return",
+      "value": undefined,
+    },
+    Object {
+      "type": "return",
+      "value": undefined,
+    },
+    Object {
+      "type": "return",
+      "value": undefined,
+    },
+    Object {
+      "type": "return",
+      "value": undefined,
+    },
+    Object {
+      "type": "return",
+      "value": undefined,
+    },
+    Object {
+      "type": "return",
+      "value": undefined,
+    },
+    Object {
+      "type": "return",
+      "value": undefined,
+    },
+    Object {
+      "type": "return",
+      "value": undefined,
+    },
+    Object {
+      "type": "return",
+      "value": undefined,
+    },
+  ],
+}
+`;
