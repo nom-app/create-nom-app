@@ -120,8 +120,7 @@ class InitializeCNA implements InitCNAOptions {
       scripts: {
         start: 'nom-scripts start',
         test: 'nom-scripts test',
-        build: 'nom-scripts build',
-        eject: 'nom-scripts eject'
+        build: 'nom-scripts build'
       },
       eslintConfig: {
         extends: 'eslint-config-airbnb'
