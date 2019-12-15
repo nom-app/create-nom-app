@@ -118,9 +118,9 @@ class InitializeCNA implements InitCNAOptions {
       main: 'dist/main.js',
       private: true,
       scripts: {
+        build: 'nom-scripts build',
         start: 'nom-scripts start',
-        test: 'nom-scripts test',
-        build: 'nom-scripts build'
+        test: 'nom-scripts test'
       },
       eslintConfig: {
         extends: 'eslint-config-airbnb'
