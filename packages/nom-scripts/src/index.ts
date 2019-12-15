@@ -105,7 +105,9 @@ function main(): void {
         process.exit(1)
       }
 
+      if (proc.status) {
       process.exit(proc.status || 128)
+      }
       break
     }
     default:

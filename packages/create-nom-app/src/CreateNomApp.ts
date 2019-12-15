@@ -79,9 +79,11 @@ class CreateNomApp {
       stdio: 'inherit',
       cwd: this.options.projectDirectory
     })
-
-    if (handoffProc.status !== 0) {
-      console.error('Create Nom App failed failed to initialize the project.')
+    if (handoffProc.status) {
+      console.error(
+        `Create Nom App failed failed to initialize the project and exited with code ${handoffProc.status}.`
+      )
+      console.error(handoffProc.error)
       process.exit(handoffProc.status || 1)
     }
   }
