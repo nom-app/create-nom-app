@@ -21,7 +21,7 @@
   },
   "files": [
     "bin"
-],
+  ],
   "scripts": {
     "build": "npm run build:clean && npm run build:source-build-with-tsc && npm run build:copy-templates",
     "build:source-build-with-tsc": "npm run build:clean && cross-env NODE_ENV=production  tsc --project ./tsconfig.build.json --noEmit false",
