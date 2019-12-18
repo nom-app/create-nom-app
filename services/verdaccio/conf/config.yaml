@@ -11,7 +11,8 @@
 #
 
 # path to a directory with all packages
-storage: ./node_modules # do not change this or programs will crash from out-of-memory.
+# do not change this or programs will crash from out-of-memory.
+storage: ./node_modules
 
 auth:
   htpasswd:
