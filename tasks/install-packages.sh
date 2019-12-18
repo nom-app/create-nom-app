@@ -27,6 +27,8 @@ while [ -h "$SOURCE" ]; do # resolve $SOURCE until the file is no longer a symli
 done
 DIR="$( cd -P "$( dirname "$SOURCE" )" >/dev/null 2>&1 && pwd )"
 
+# FIXME: This line will loop forever in CI environments, and because there is
+# output, the CI will run for a very long time.
 until curl --output /dev/null --silent --head --fail http://0.0.0.0:4873; do
     printf "."
     sleep 1s
