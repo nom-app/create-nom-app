@@ -13,7 +13,7 @@ cd "$(dirname "$(dirname "${BASH_SOURCE[0]}")")"
 yarn
 
 # Cleans build directory, code coverage results, and more
-./node_modules/.bin/lerna exec -- yarn clean
+./node_modules/.bin/lerna exec -- yarn build:clean
 
 # Build packages
 ./node_modules/.bin/lerna exec -- yarn build
