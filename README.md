@@ -38,8 +38,6 @@ tag.
 
 Run `make docs-local` and visit <http://localhost:3000/>.
 
-## Deployments
-
 ## License
 
 MIT
