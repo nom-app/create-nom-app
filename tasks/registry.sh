@@ -77,7 +77,7 @@ function startLocalRegistry () {
 
   (cd && nohup npx $verdaccio_package --config "$configPath" --listen "$verdaccio_registry" > "$registryLog" 2>&1 & echo $! > "$background_pid_tmp")
   background_verdaccio_id="$(cat "$background_pid_tmp")"
-  if (timeout 30s tail -F -n0 "$registryLog" &) | grep -q "http address" ; then
+  if (timeout 45s tail -F -n0 "$registryLog" &) | grep -q "http address" ; then
     echo "Verdaccio registry is running."
   else
     echo "Verdaccio service did not start within the time alloted."
