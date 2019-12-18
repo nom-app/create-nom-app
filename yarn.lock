@@ -6531,7 +6531,7 @@ lerna-changelog@^1.0.0:
     progress "^2.0.0"
     yargs "^13.0.0"
 
-lerna@^3.16.0:
+lerna@3.19.0:
   version "3.19.0"
   resolved "https://registry.npmjs.org/lerna/-/lerna-3.19.0.tgz#6d53b613eca7da426ab1e97c01ce6fb39754da6c"
   integrity sha512-YtMmwEqzWHQCh7Ynk7BvjrZri3EkSeVqTAcwZIqWlv9V/dCfvFPyRqp+2NIjPB5nj1FWXLRH6F05VT/qvzuuOA==
