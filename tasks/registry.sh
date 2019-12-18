@@ -9,7 +9,7 @@ yarn_registry=https://registry.yarnpkg.com
 original_npm_registry=$(npm config get registry)
 original_yarn_registry=$(yarn config get registry)
 root_dir="$( dirname "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
-verdaccio_package=verdaccio@4.2.2
+verdaccio_package=verdaccio@4.4.0
 
 function useVerdaccioRegistry () {
   _printRegistryInformation
