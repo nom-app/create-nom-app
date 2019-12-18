@@ -89,7 +89,7 @@ function buildAndPublish() {
 
   echo "unpublishing previous versions of $package from Verdaccio"
   # Unpublish previous version of package, which may have persisted on Verdaccio
-  npm unpublish --force --registry http://0.0.0.0:4873 --verbose "$package@$pkgVersion"
+  npm unpublish --force --registry http://0.0.0.0:4873 --verbose "$package@$pkgVersion" || true
 
   echo "yarn install"
   yarn install
