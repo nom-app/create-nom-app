@@ -70,12 +70,27 @@ function startLocalRegistry () {
   local configPath
   configPath=${1:-"$root_dir/services/verdaccio/conf/config.yaml"}
   registryLog=$(mktemp)
+  background_pid_tmp=$(mktemp)
 
   echo "Registry log path: $registryLog"
   echo "Starting Verdaccio registry..."
 
-  (cd && nohup npx $verdaccio_package --config "$configPath" --listen "$verdaccio_registry" &> "$registryLog" &)
-  grep -q 'http address' <(tail -f "$registryLog")
+  (cd && nohup npx $verdaccio_package --config "$configPath" --listen "$verdaccio_registry" > "$registryLog" 2>&1 & echo $! > "$background_pid_tmp")
+  background_verdaccio_id="$(cat "$background_pid_tmp")"
+  if (timeout 30s tail -F -n0 "$registryLog" &) | grep -q "http address" ; then
+    echo "Verdaccio registry is running."
+  else
+    echo "Verdaccio service did not start within the time alloted."
+    # FIXME: This doesn't always stop Verdaccio from running. If `timeout` is
+    # set to `1s`, the spawned bash process will be killed, but Verdaccio will
+    # still load. Current workaround is to run `stopLocalRegistry` with a "safe
+    # exit" parameter - though this still does not guarantee Verdaccio will be
+    # killed.
+    kill -9 "$background_verdaccio_id"
+    stopLocalRegistry true
+    return 0
+  fi
+
   useVerdaccioRegistry
 }
 
@@ -87,12 +102,24 @@ function checkVerdaccioServiceRunning () {
   fi
 }
 
+
+# $1 {boolean=false}  safe_exit  When true, the program will wait a few seconds
+# before searching for the Verdaccio process to kill.
 function stopLocalRegistry () {
-  useOriginalRegistry
+  local safeExit="${1-"false"}"
+  if [[ "$original_npm_registry" == *"$verdaccio_registry"* ]]; then
+    useNPMRegistry
+  else
+    useOriginalRegistry
+  fi
+  if [ "$safeExit" = "true" ]; then
+    echo "Performing a safe exit..."
+    sleep 15s
+  fi
 
   verdaccio_pid=$(pgrep verdaccio | head -1)
-
   if [ -n "$verdaccio_pid" ]; then
+    echo "Killing Verdaccio service ($verdaccio_pid)"
     kill -9 "$verdaccio_pid"
   fi
 }
