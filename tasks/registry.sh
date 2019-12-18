@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Use the largest common substring between each set registry value. Yarn
+# automatically removes a forward slash, and NPM automatically adds the slash,
+# when setting the registry.
 verdaccio_registry=http://0.0.0.0:4873
 npm_registry=https://registry.npmjs.org/
 yarn_registry=https://registry.yarnpkg.com
