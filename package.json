@@ -6,7 +6,8 @@
   "scripts": {
     "changelog": "lerna-changelog",
     "publish": "tasks/publish.sh",
-    "lint": "yarn run eslint --ext .js,.ts,.json ."
+    "lint": "yarn run eslint --ext .js,.ts,.json .",
+    "test:simple": "./tasks/test.sh"
   },
   "commitlint": {
     "extends": [
