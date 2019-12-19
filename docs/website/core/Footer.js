@@ -64,14 +64,14 @@ class Footer extends React.Component {
           </div>
           <div>
             <h5>More</h5>
-            <a href="https://github.com/create-nom-app/create-nom-app">GitHub</a>
-            <a href="https://github.com/create-nom-app/create-nom-app/blob/master/.github/CODE_OF_CONDUCT.md">Code of Conduct</a>
+            <a href="https://github.com/nom-app/create-nom-app">GitHub</a>
+            <a href="https://github.com/nom-app/create-nom-app/blob/master/.github/CODE_OF_CONDUCT.md">Code of Conduct</a>
             <a
               className="github-button"
               href={this.props.config.repoUrl}
               data-icon="octicon-star"
               data-size="normal"
-              data-count-href="/create-nom-app/create-nom-app/stargazers"
+              data-count-href="/nom-app/create-nom-app/stargazers"
               data-show-count="false"
               data-count-aria-label="# stargazers on GitHub"
               aria-label="Star Create Nom App on GitHub">

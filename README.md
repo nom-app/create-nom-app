@@ -3,7 +3,7 @@
 > The monorepo for Create Nom App.
 
 [![license](https://badgen.net/badge/license/MIT/blue)](https://www.npmjs.com/package/create-nom-app)
-[![Deploy Docs](https://github.com/create-nom-app/create-nom-app/workflows/Deploy%20Docs/badge.svg)](https://github.com/create-nom-app/create-nom-app)
+[![Deploy Docs](https://github.com/nom-app/create-nom-app/workflows/Deploy%20Docs/badge.svg)](https://github.com/nom-app/create-nom-app)
 [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fcreate-nom-app%2Fcreate-nom-app.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fcreate-nom-app%2Fcreate-nom-app?ref=badge_shield)
 
 Get started with your first Nom app now. Visit the [Getting
