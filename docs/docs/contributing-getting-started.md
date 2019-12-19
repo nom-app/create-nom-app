@@ -6,7 +6,7 @@ title: How to Contribute
 ## Fork the Repo
 
 To begin contributing, [fork](https://help.github.com/en/articles/fork-a-repo)
-the official [Create Nom App](https://github.com/create-nom-app/create-nom-app)
+the official [Create Nom App](https://github.com/nom-app/create-nom-app)
 repository.
 
 ## Clone the Repo
@@ -48,7 +48,7 @@ branch.
 We recommend adding an `upstream` remote.
 
 ```bash
-git remote add upstream https://github.com/create-nom-app/create-nom-app.git
+git remote add upstream https://github.com/nom-app/create-nom-app.git
 
 git fetch upstream
 ```

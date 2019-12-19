@@ -6,8 +6,8 @@ LABEL "com.github.actions.description"="Deploy Create Nom App documentation to G
 LABEL "com.github.actions.icon"="upload-cloud"
 LABEL "com.github.actions.color"="red"
 
-LABEL "repository"="https://github.com/create-nom-app/create-nom-app"
-LABEL "homepage"="https://github.com/create-nom-app/create-nom-app/tree/master/.github/actions/"
+LABEL "repository"="https://github.com/nom-app/create-nom-app"
+LABEL "homepage"="https://github.com/nom-app/create-nom-app/tree/master/.github/actions/"
 LABEL "maintainer"="Maxim Devoir <maximdevoir@gmail.com>"
 
 # Packages required by Git

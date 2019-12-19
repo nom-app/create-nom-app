@@ -174,7 +174,7 @@ exports[`Create Nom App CLI show usage instructions and exit with code 1 when no
       "  If you encounter any issues, feel free to report it to:",
     ],
     Array [
-      "   > https://github.com/create-nom-app/create-nom-app/issues",
+      "   > https://github.com/nom-app/create-nom-app/issues",
     ],
   ],
   "results": Array [
