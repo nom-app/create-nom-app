@@ -31,7 +31,7 @@ exports[`writeHelp display help 1`] = `
       "  If you encounter any issues, feel free to report it to:",
     ],
     Array [
-      "   > https://github.com/create-nom-app/create-nom-app/issues",
+      "   > https://github.com/nom-app/create-nom-app/issues",
     ],
   ],
   "results": Array [
