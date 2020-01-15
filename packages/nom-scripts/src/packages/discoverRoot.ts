@@ -6,9 +6,8 @@ const cwd = process.cwd()
 /**
  * Attempts to search for the root directory of the create-nom-app project.
  *
- * Searches for:
- *
- * : cwd/package.json
+ * A directory is considered *root* if the `nom-scripts` dependency exists in a
+ * package.json's dependencies. Searches for:
  */
 function discoverRoot(): string | undefined {
   const candidates = [path.join(cwd)]
