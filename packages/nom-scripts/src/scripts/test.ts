@@ -4,6 +4,7 @@ import path from 'path'
 
 import chalk from 'chalk'
 import glob from 'glob'
+import jest from 'jest'
 import minimist from 'minimist'
 import Mocha from 'mocha'
 
@@ -49,15 +50,15 @@ if (hasCoverageFlag) {
   console.log('Learn more about coverage support at: ')
   console.log('    https://create-nom.app/docs/feature/code-coverage')
   process.exit()
-} else {
-  // eslint-disable-next-line @typescript-eslint/no-var-requires
-  require('@babel/register')({
-    presets: ['@babel/preset-env']
-  })
-  // eslint-disable-next-line no-restricted-syntax
-  for (const spec of specs) {
-    mocha.addFile(path.join(projectRoot, 'tests', spec))
-  }
-
-  mocha.run()
 }
+
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+require('@babel/register')({
+  presets: ['@babel/preset-env']
+})
+// eslint-disable-next-line no-restricted-syntax
+for (const spec of specs) {
+  mocha.addFile(path.join(projectRoot, 'tests', spec))
+}
+
+mocha.run()
