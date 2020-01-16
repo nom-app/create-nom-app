@@ -87,7 +87,7 @@ function buildAndPublish() {
 
   cd "$pkgAbsoluteDir" || exit 1
 
-  echo "unpublishing previous versions of $package from Verdaccio"
+  echo "unpublishing previous versions of $package@$pkgVersion from Verdaccio"
   # Unpublish previous version of package, which may have persisted on Verdaccio
   npm unpublish --force --registry http://0.0.0.0:4873 --verbose "$package@$pkgVersion" || true
 
