@@ -1,5 +1,14 @@
 #!/bin/bash
 
+echo "publish.sh will publish packages to NPM and is not recommended to run."
+echo ""
+echo "If you intend to publish packages to NPM, don't. Publishing packages should be handled in the CI by a bot."
+echo ""
+echo "You probably meant to publish packages to the local Verdaccio registry."
+echo ""
+echo "To update packages on the registry, run 'bash ./tasks/install-packages.sh'"
+exit 1
+
 # Print each command and their arguments as they are executed
 set -x
 
