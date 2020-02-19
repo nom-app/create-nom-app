@@ -69,7 +69,7 @@ const siteConfig = {
   */
 
   // This copyright info is used in /core/Footer.js and blog RSS/Atom feeds.
-  copyright: `Copyright © 2019 Maxim Devoir and contributors`,
+  copyright: `Copyright © 2020 Maxim Devoir and contributors`,
 
   gaTrackingId: 'UA-146069632-1',
 
