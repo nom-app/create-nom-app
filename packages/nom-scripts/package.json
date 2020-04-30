@@ -30,7 +30,9 @@
     "build:clean": "rimraf ./lib && rimraf ./bin",
     "docs": "echo 'no documentation generation yet'",
     "lint": "tsc --noEmit && eslint --ignore-path ../../.eslintignore --ext .ts,.js .",
-    "test": "jest --config ./jest.config.js --runInBand --detectOpenHandles --coverage"
+    "test": "jest --config ./jest.config.js --runInBand --detectOpenHandles --coverage",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "keywords": [
     "nom-scripts"
@@ -68,7 +70,8 @@
     "webpack": "^4.35.2",
     "webpack-cli": "^3.3.5",
     "webpack-node-externals": "^1.7.2",
-    "winston": "^3.2.1"
+    "winston": "^3.2.1",
+    "snyk": "^1.316.1"
   },
   "devDependencies": {
     "@types/friendly-errors-webpack-plugin": "^0.1.2",
@@ -78,5 +81,6 @@
     "@types/rimraf": "^2.0.3",
     "@types/webpack": "^4.41.0",
     "@types/webpack-node-externals": "^1.7.0"
-  }
+  },
+  "snyk": true
 }
