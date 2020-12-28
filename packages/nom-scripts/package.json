@@ -65,7 +65,7 @@
     "nyc": "^15.0.0",
     "rimraf": "^3.0.0",
     "validate-npm-package-name": "^3.0.0",
-    "webpack": "^4.35.2",
+    "webpack": "^5.0.0",
     "webpack-cli": "^3.3.5",
     "webpack-node-externals": "^1.7.2",
     "winston": "^3.2.1"
