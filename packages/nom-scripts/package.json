@@ -76,7 +76,7 @@
     "@types/minimist": "^1.2.0",
     "@types/mocha": "^5.2.7",
     "@types/rimraf": "^2.0.3",
-    "@types/webpack": "^4.41.0",
+    "@types/webpack": "^5.28.0",
     "@types/webpack-node-externals": "^1.7.0"
   }
 }
